@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>微信支付</title>
+<script type="text/javascript">
+        window.history.forward(1);
+
+    //调用微信JS api 支付
+    function jsApiCall()
+    {
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest',
+            {$jsApiParameters}, //josn串
+             function (res)
+             {
+                 if(res.err_msg == "get_brand_wcpay_request:ok")
+                 {
+                     //支付成功
+                     //  alert('支付成功');
+                     <if condition="$user_info['user_id'] == 1 || $user_info['user_id'] == 2">
+                        location.href = '{:U('Order/index', array('order_id'=>$order_id))}';
+                     <else />
+                        location.href = '{:U('Order/index', array('order_id'=>$order_id))}';
+                     </if>
+                 }
+                 else if(res.err_msg == "get_brand_wcpay_request:cancel")
+                 {
+                     //取消支付
+                     location.href = '{:U('Order/index', array('order_id'=>$order_id))}';
+                 }
+                 else
+                 {
+                     //支付失败
+                     WeixinJSBridge.log(res.err_msg);
+                     alert("error:" + res.err_code + res.err_desc + res.err_msg);
+                 }
+             }
+         );
+    }
+
+    function callpay()
+    {
+        if (typeof WeixinJSBridge == "undefined")
+        {
+            if (document.addEventListener)
+            {
+                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+            }
+            else if (document.attachEvent)
+            {
+                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+            }
+        }
+        else
+        {
+            jsApiCall();
+        }
+    }
+</script>
+</head>
+<body onload="callpay();">
+    <div align="center">
+        <span>正在请求微信支付...</span>
+    </div>
+</body>
+</html>

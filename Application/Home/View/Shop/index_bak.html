@@ -1,0 +1,186 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/shop-1.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="share">
+<script>
+	var _collectApi = '{:U('Collect/enCollect')}';          // 收藏接口
+	var _uncollectApi = '{:U('Collect/unCollect')}';  		// 取消收藏接口
+	var _checkCollectApi = '{:U('Collect/isCollect')}';   	// 收藏状态监测接口
+	var _shareInfo = {
+	    title: '{:C('WEB_SITE_TITLE')}',
+	    desc: '{:C('WEB_SITE_DESCRIPTION')}',
+	    imgUrl: 'http://static.ys.com/pai/img/logo_120.jpg',
+	    link: '{:C('WEB_SITE_URL')}'
+	};
+</script>
+</block>
+<block name="js">
+	<script src="__HOME__js/widget/scrollLoad.js"></script>
+	<script src="__HOME__js/pages/shop.js"></script>
+    <script>
+        var _page = 1;
+        var _listApi = '{:U('Shop/index', array('id'=>$shop_info['user_id']))}';
+        function _listMoreHandler(data) {
+            if (!window.$listWrap) {
+                window.$listWrap = $('#item-list');
+            }
+            if (data.htmlString) {
+                var $list = $(data.htmlString);
+                $listWrap.append($list);
+                // 设置图片居中
+                initImageCenter($list.find('.img-center'));
+                // 设置图片懒加载
+                initImageLazy($list.find('.lazy'));
+            }
+        }
+    </script>
+</block>
+<block name="main">
+	<div class="am-g">
+	    <div class="shop-header">
+	        <div class="user-info">
+	            <div class="avatar">
+	                <a href="{:U('Shop/user', array('id'=>$shop_info['user_id']))}">
+	                    <img alt="{$shop_info['user_name']}" src="{$shop_info['user_avatar']}">
+	                </a>
+	            </div>
+	            <dl>
+	                <dt>{$shop_info['user_name']}</dt>
+	                <dd class="fans">
+	                    <label>收藏人数:</label>
+	                    <em>{:collect_shop_num($shop_info['user_id'])}</em>
+	                </dd>
+	                <dd class="collect">
+	                    <a class="btn-collect" href="javascript:;" data-collect="2401" data-id="{$shop_info['user_id']}">
+	                        <span>收藏店铺</span>
+	                    </a>
+	                </dd>
+	            </dl>
+	        </div>
+	    </div>
+	</div>
+	<div class="am-g">
+	<notempty name="sale_list">
+	    <div class="ui-section pre">
+	        <div class="ui-section-hd">
+				<h3>正在拍卖</h3>
+			</div>
+	        <div class="ui-section-bd">
+	            <ul class="ui-list goods-list">
+				<volist name="sale_list" id="val">
+	                <li class="ui-list-item">
+	                    <div class="ui-list-item-inner item" id="item-{$val['product_id']}" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+	                        <a class="am-img-thumbnail img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}" style="height: 125px;">
+	                            <img class="lazy" data-height="603" data-original="{$val['product_img']}" data-width="749" src="{$val['product_img']}" style="display: block; max-width: none; width: 155px; height: 125px; margin: 0px -15px;">
+	                        </a>
+	                        <dl class="info">
+	                            <dt><a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a></dt>
+							<switch	name="val['product_type']">
+								<case value="1|2">
+									<!-- <dd class="money bail">
+		                                <label>保证金:</label><i>¥</i><em>{$val['bail_money']}</em>
+		                            </dd> -->
+		                            <dd class="money reserve">
+										<label>保留价:</label><span>{$val['reserve_price']?'有':'无'}</span>
+		                            </dd>
+		                            <dd class="money step">
+		                                <label>加价幅度:</label><i>¥</i><em><em>{$val['range_price']}</em></em>
+		                            </dd>
+		                            <dd class="money current">
+		                                <label>开始价:</label><i>¥</i><em><em>{$val['start_price']}</em></em>
+		                            </dd>
+								</case>
+								<case value="3">
+									<!-- <dd class="money bail">
+		                                <label>保证金:</label><i>¥</i><em>{$val['bail_money']}</em>
+		                            </dd> -->
+		                            <dd class="money current">
+		                                <label>秒杀价:</label><i>¥</i><em><em>{$val['range_price']}</em></em>
+		                            </dd>
+		                            <dd class="money current">
+		                                <label>秒杀数:</label><i></i><em><em>{$val['reserve_price']}</em></em>
+		                            </dd>
+								</case>
+							</switch>
+	                            <dd class="type blue">
+	                                <span>{$product_type[$val['product_type']]}</span>
+	                            </dd>
+	                            <dd class="time">
+	                                <label>剩:</label>
+	                                <span data-endtime="{$val['end_time']}"></span>
+	                            </dd>
+	                        </dl>
+	                    </div>
+	                </li>
+				</volist>
+	            </ul>
+	        </div>
+	    </div>
+	</volist>
+	<notempty name="view_list">
+		<div class="ui-section ing">
+			<div class="ui-section-hd">
+				<h3>即将拍卖</h3>
+			</div><!-- /.blk-hdle -->
+			<div class="ui-section-bd">
+				<ul class="ui-list goods-list">
+				<volist name="view_list" id="val">
+					<li class="ui-list-item">
+	                    <div class="ui-list-item-inner item" id="item-{$val['product_id']}" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+	                        <a class="am-img-thumbnail img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}" style="height: 125px;">
+	                            <img class="lazy" data-height="603" data-original="{$val['product_img']}" data-width="749" src="{$val['product_img']}" style="display: block; max-width: none; width: 155px; height: 125px; margin: 0px -15px;">
+	                        </a>
+	                        <dl class="info">
+	                            <dt><a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a></dt>
+								<switch	name="val['product_type']">
+									<case value="1|2">
+										<dd class="money bail">
+			                                <label>保证金:</label><i>¥</i><em>{$val['bail_money']}</em>
+			                            </dd>
+			                            <dd class="money reserve">
+											<label>保留价:</label><span>{$val['reserve_price']?'有':'无'}</span>
+			                            </dd>
+			                            <dd class="money step">
+			                                <label>加价幅度:</label><i>¥</i><em><em>{$val['range_price']}</em></em>
+			                            </dd>
+			                            <dd class="money current">
+			                                <label>开始价:</label><i>¥</i><em><em>{$val['start_price']}</em></em>
+			                            </dd>
+									</case>
+									<case value="3">
+										<dd class="money bail">
+			                                <label>保证金:</label><i>¥</i><em>{$val['bail_money']}</em>
+			                            </dd>
+			                            <dd class="money current">
+			                                <label>秒杀价:</label><i>¥</i><em><em>{$val['range_price']}</em></em>
+			                            </dd>
+			                            <dd class="money current">
+			                                <label>秒杀数:</label><i></i><em><em>{$val['reserve_price']}</em></em>
+			                            </dd>
+									</case>
+								</switch>
+	                            <dd class="type blue">
+	                                <span>{$product_type[$val['product_type']]}</span>
+	                            </dd>
+	                            <dd class="time">
+	                                <label>剩:</label>
+	                                <span data-endtime="{$val['begin_time']}"></span>
+	                            </dd>
+	                        </dl>
+	                    </div>
+	                </li>
+				</volist>
+				</ul>
+			</div>
+		</div>
+	</volist>
+	    <div class="ui-section end">
+	        <div class="ui-section-hd"><h3>已结束</h3></div>
+	        <div class="ui-section-bd">
+	            <ul class="ui-list goods-list history" id="item-list">
+	            </ul>
+	        </div>
+	    </div>
+	</div>
+</block>

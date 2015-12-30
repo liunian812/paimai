@@ -1,0 +1,109 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/user-info.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="share">
+<script>
+	var _collectApi = '{:U('Collect/enCollect')}';          // 收藏接口
+	var _uncollectApi = '{:U('Collect/unCollect')}';  		// 取消收藏接口
+	var _checkCollectApi = '{:U('Collect/isCollect')}';   	// 收藏状态监测接口
+	var _shareInfo = {
+	    title: '{:C('WEB_SITE_TITLE')}',
+	    desc: '{:C('WEB_SITE_DESCRIPTION')}',
+	    imgUrl: 'http://static.ys.com/pai/img/logo_120.jpg',
+	    link: '{:C('WEB_SITE_URL')}'
+	};
+</script>
+</block>
+<block name="main">
+	<div class="am-g">
+	    <div class="user-header">
+	        <div class="user-info">
+	            <div class="avatar">
+	                <a href="{:U('Shop/user',array('id'=>$shop_info['user_id']))}">
+	                    <img alt="{$shop_info['user_name']}" src="{$shop_info['user_avatar']}">
+	                </a>
+	            </div>
+	            <dl>
+	                <dt>{$shop_info['user_name']}</dt>
+	                <dd class="fans">
+	                    <label>粉丝人数:</label><em>{:collect_shop_num($shop_info['user_id'])}</em>
+	                </dd>
+	            </dl>
+	        </div>
+	    </div>
+	</div>
+	<div class="am-g">
+	    <ul class="ui-list">
+	        <li class="ui-list-item">
+	            <div class="ui-list-item-inner">
+	                <span class="title">地  区</span>
+	                <span class="sub-title">{$shop_info['area']['province']} {$shop_info['area']['city']}</span>
+	            </div>
+	        </li>
+	        <li class="ui-list-item">
+	            <div class="ui-list-item-inner">
+	                <span class="title">签  名</span>
+	                <span class="sub-title">{$shop_info['signature']}</span>
+	            </div>
+	        </li>
+	        <li class="ui-list-item">
+	            <div class="ui-list-item-inner">
+	                <span class="title">主营项目</span>
+	                <span class="sub-title">{$shop_info['main_business']}</span>
+	            </div>
+	        </li>
+	        <li class="ui-list-item">
+	            <div class="ui-list-item-inner">
+	                <span class="title">手机号码</span>
+	                <a class="sub-title" href="tel://{$shop_info['mobile']}">
+	                    <i class="ys-icon-phone"></i>{$shop_info['mobile']}
+	                </a>
+	            </div>
+	        </li>
+	        <li class="ui-list-item">
+	            <div class="ui-list-item-inner">
+	                <span class="title">微  信</span>
+	                <span class="sub-title">{$shop_info['wechat_number']}</span>
+	            </div>
+	        </li>
+	    </ul>
+	    <ul class="ui-list ui-list-inset last">
+	        <li class="ui-list-item">
+	            <div class="ui-list-item-inner shop" data-page-url="{:U('Shop/index', array('id'=>$shop_info['user_id']))}">
+	                <span class="title">店  铺</span>
+					<span class="sub-title">点击进入</span>
+	                <!-- <ul>
+	                    <li>
+	                        <a class="am-img-thumbnail img-center" href="dianpu.html" style="height: 40px;">
+	                            <img alt="实力民间陶艺人陈天 天际壶" class="lazy" data-height="603" data-original="__HOME__images/35dee7cde80347108f21c2f1cbbb0efc.jpg_240.jpg"
+	                            data-width="749" src="__HOME__images/35dee7cde80347108f21c2f1cbbb0efc.jpg_240.jpg"
+	                            style="display: block; max-width: none; width: 49px; height: 40px; margin: 0px -4px;">
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a class="am-img-thumbnail img-center" href="dianpu.html" style="height: 40px;">
+	                            <img alt="实力工艺员周国君 一品竹壶" class="lazy" data-height="501" data-original="__HOME__images/b0566cac14304bf09423a0d7a1461305.jpg_240.jpg"
+	                            data-width="750" src="__HOME__images/b0566cac14304bf09423a0d7a1461305.jpg_240.jpg"
+	                            style="display: block; max-width: none; width: 59px; height: 40px; margin: 0px -9px;">
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a class="am-img-thumbnail img-center" href="dianpu.html" style="height: 40px;">
+	                            <img alt="国高助工艺师王红娟 线圆壶" class="lazy" data-height="455" data-original="__HOME__images/9ae1a1fb29de4b2794534e4eacab9ed2.jpg_240.jpg"
+	                            data-width="633" src="__HOME__images/9ae1a1fb29de4b2794534e4eacab9ed2.jpg_240.jpg"
+	                            style="display: block; max-width: none; width: 55px; height: 40px; margin: 0px -7px;">
+	                        </a>
+	                    </li>
+	                </ul> -->
+	            </div>
+	        </li>
+	    </ul>
+	    <div class="am-u-sm-12">
+	        <a class="am-btn am-btn-primary am-btn-block" href="javascript:;" data-collect="2401"
+	        data-id="{$shop_info['user_id']}" data-text-collect="收藏店铺" data-text-collected="取消收藏">
+	            <span>收藏店铺</span>
+	        </a>
+	    </div>
+	</div>
+</block>

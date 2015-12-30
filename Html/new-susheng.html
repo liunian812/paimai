@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://index.html/user/product/new-susheng -->
+<html lang="zh-CN" class="js cssanimations"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>手机拍卖用拍卖神器</title>
+    <meta name="keywords">
+    <meta name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+<link rel="stylesheet" href="css/amazeui.min.css">
+<link rel="stylesheet" href="css/common.css">
+
+    
+    <link rel="stylesheet" href="css/seller-goods-edit-1.css">
+    
+
+
+<script src="js/hm.js"></script><script>
+    var _shareInfo = {
+        title: '拍卖神器',
+        content: '手机拍卖就用拍卖神器！',
+        pics: 'http://static.ys.com/pai/img/logo_120.jpg',
+        url: 'http://index.html'
+    };
+</script>
+
+<script src="js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: 'wxef5047e223dc7570',
+        timestamp: '1444379091',
+        nonceStr: 'wqF3QfWJ0Kgy5lXu',
+        signature: 'bc22aa30ea0131c666ac70593a5a31c696c9fe4b',
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'openLocation', 'getLocation', 'scanQRCode', 'openProductSpecificView', 'chooseWXPay']
+    });
+</script>
+
+
+</head>
+<body class="">
+    <div class="am-container">
+        <div class="am-g">
+            
+
+
+    <script>
+    // var _isDebug = true;
+    var _getImageUrlApi = '/api/wechat/image/sync';
+    var _goodsListUrl = 'http://index.html/user/product/new-zengjia'; //取消跳转地址
+        // 上传配置
+        var _previewExt = '_240.jpg';       // '_120.jpg';  // 预览图片后缀
+        // 藏品图片
+        var _fileNumLimit = 6;
+        var _images = [];
+    </script>
+
+        </div>
+        
+
+<div class="am-g">
+    <form class="am-form am-form-horizontal" id="my-form" method="post" action="http://index.html/api/product/addproduct1">
+        <input type="hidden" name="goUrl" value="" disabled="disabled">
+        <input type="hidden" name="productId" value="">
+        <input type="hidden" name="auctionType" value="1401">
+
+        <ul class="ui-list">
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <input type="text" class="am-input" name="productName" maxlength="15" placeholder="拍品名称（15字以内）">
+                </div>
+            </li>
+        </ul>
+
+        <ul class="ui-list">
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <textarea class="am-input" name="productDescription" rows="5" maxlength="200" placeholder="藏品描述（200字以内）"></textarea>
+                </div>
+            </li>
+        </ul>
+
+        <div class="am-u-sm-12">
+            <div class="ui-tip">
+                <p>最多上传6张图片</p>
+            </div>
+        </div>
+
+        <div class="ui-list-item-inner upload-tip" id="upload-tip" style="display:none;">
+            <p>上传中<em class="current">1</em>/<em class="total">1</em></p>
+        </div>
+
+        <ul class="ui-list file-container">
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner file-list" id="file-list">
+                    <div class="file-picker" id="file-picker">+</div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="am-u-sm-12">
+            <button type="submit" class="am-btn am-btn-primary am-btn-block btn-next">下一步</button>
+            <button type="button" class="am-btn am-btn-default am-btn-block btn-cancel">取消</button>
+        </div>
+
+        <div class="am-u-sm-12">
+            <div class="ui-tip">
+                <h3>速胜式拍卖规则</h3>
+                <ol>
+                    <li>以起拍价开始竞拍，由低到高出价，出价金额不小于当前价与加价幅度之和</li>
+                    <li>第一位出价达到或超过保留价者得拍，拍卖立即结束</li>
+                    <li>到结拍时，仍无人出价达到或超过保留价，则拍品流拍</li>
+                </ol>
+            </div>
+        </div>
+    </form>
+    <div id="log" style="display:none"></div>
+</div>
+
+        <div class="am-g">
+            
+
+
+<nav class="bottom-bar fixed-bottom" id="bottom-bar">
+    <ul>
+
+        <li class="home ">
+
+            <a href="http://index.html/" title="首页">
+                <i class="ys-icon-bottom-bar-home"></i><span>首页</span>
+            </a>
+        </li>
+
+        <li class="auction ">
+
+            <a href="http://index.html/user/auction/item-auction-list" title="我参加的拍卖">
+                <i class="ys-icon-bottom-bar-auction"></i><span>我出价的</span>
+            </a>
+        </li>
+
+        <li class="post ">
+
+            <a class="post" href="javascript:;" title="发布拍品" data-am-modal="{target:&#39;#upload-actions&#39;}">
+                <i class="ys-icon-bottom-bar-post"></i><span>发布</span>
+            </a>
+        </li>
+
+        <li class="goods ">
+
+            <a href="http://index.html/user/product" title="拍品管理">
+                <i class="ys-icon-bottom-bar-goods"></i><span>我上传的</span>
+            </a>
+        </li>
+
+        <li class="user-home ">
+
+            <a href="http://index.html/user" title="用户中心">
+                <i class="ys-icon-bottom-bar-user"></i><span>我的</span>
+            </a>
+        </li>
+    </ul>
+</nav><!-- /.bottom-bar -->
+
+<div class="am-g">
+    <div class="am-modal-actions" id="upload-actions">
+        <div class="am-modal-actions-group">
+            <ul class="am-list">
+                <li>
+                    <a href="new-zengjia.html">普通增价拍发布</a>
+                </li>
+                <li>
+                    <a href="new-susheng.html">速胜增价拍发布</a>
+                </li>
+            </ul>
+        </div>
+        <div class="am-modal-actions-group">
+            <button class="am-btn am-btn-default am-btn-block" data-am-modal-close="">取消</button>
+        </div>
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/ejs.min.js"></script>
+<script src="js/amazeui.min.js"></script>
+<script src="js/common.js"></script><script src="js/main.js"></script>
+
+    
+    <script src="js/fileInput.js"></script>
+    <script src="js/seller-goods-edit-1.js"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?39c508629bad19a59e5d6d10503c2489";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+</body></html>

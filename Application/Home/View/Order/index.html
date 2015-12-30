@@ -1,0 +1,169 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/seller-order-detail.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="js">
+	<script src="__HOME__js/widget/seller-order-detail.js"></script>
+</block>
+<block name="main">
+	<switch name="order['status']">
+		<case value="1">
+			<div class="am-g">
+		        <div class="am-alert am-alert-warning">
+		            <label>违约倒计时:</label>
+		            <strong class="time">
+		                <span data-endtime="{$order_info['end_time']}"><em>0</em></span>
+		            </strong>
+		        </div>
+			    <div class="ui-section order-info">
+			        <div class="ui-section-bd">
+		                <dl>
+		                    <dt><i class="ys-icon-order-pay"></i>拍卖已成交，买家未付款</dt>
+		                    <dd>
+		                        <label>拍卖订单号:</label>
+		                        <em>{$order_info['order_id']}</em>
+		                    </dd>
+		                    <dd>
+		                        <label>成交时间</label>
+		                        <span class="time">{:date('Y-m-d H:i:d', $order_info['create_time'])}</span>
+		                    </dd>
+		                    <dd>
+		                        <label>自动违约时间</label>
+		                        <span>{:date('Y-m-d H:i:d', $order_info['end_time'])}</span>
+		                    </dd>
+		                    <dd>
+		                        <label>买家电话</label>
+		                        <a href="tel://{$order_info['shop_info']['mobile']}">{$order_info['shop_info']['mobile']}</a>
+		                    </dd>
+		                </dl>
+			    	</div>
+			    </div>
+				<div class="ui-section buyer-info">
+		            <div class="ui-section-hd">
+		                <h3>收货地址</h3>
+		            </div>
+		            <div class="ui-section-bd">
+		                <ul>
+		                    <li class="name"><label>收货人:</label><span>张铃</span></li>
+		                    <li class="mobile"><label>手机号码:</label><a href="tel://18911651811">18911651811</a></li>
+		                    <li class="address"><label>收货地址:</label><span> 北京 北京 海淀 上地十街</span></li>
+		                </ul>
+		            </div>
+		        </div>
+			    <div class="ui-section order-detail">
+				    <div class="ui-section-bd">
+				        <div class="user-info" data-page-url="{:U('index',array('order_id'=>$order_info['order_id']))}">
+				            <a class="avatar" href="{:U('index',array('order_id'=>$order_info['order_id']))}"><img alt="laite" src="{$order_info['shop_info']['user_avatar']}"></a>
+				            <a class="nickname" href="{:U('index',array('order_id'=>$order_info['order_id']))}">{$order_info['shop_info']['user_name']}</a>
+				        </div>
+				        <div class="goods-info" data-page-url="{:U('Index/product',array('id'=>$order_info['product_id']))}">
+				            <div class="am-img-thumbnail img-center" style="height: 80px;">
+								<img src="{$order_info['product_info']['product_img']}" />
+							</div>
+							<div class="info">
+			                    <h3>{$order_info['product_info']['product_name']}</h3>
+			                    <ul>
+			                        <li class="money">
+			                            <label>保证金:</label><i>¥</i><em>{$order_info['product_info']['bail_money']}</em>
+			                        </li>
+			                        <li class="money">
+			                            <label>成交价:</label><i>¥</i><em>{$order_info['price']}</em>
+			                        </li>
+			                        <li class="money">
+			                            <label>运费:</label><i>¥</i><em>{$order_info['product_info']['postage']}</em>
+			                        </li>
+			                    </ul>
+			                </div>
+				        </div>
+				    </div>
+			    </div>
+			</div>
+		</case>
+		<case value="2">
+			<span class="status">确认发货</span>
+		</case>
+		<case value="3">
+			<span class="status">待收货</span>
+		</case>
+		<case value="4">
+			<span class="status">成功</span>
+		</case>
+		<case value="5">
+			<span class="status">关闭</span>
+		</case>
+	</switch>
+
+	<div class="am-g">
+        <div class="am-alert am-alert-warning">
+            <label>违约倒计时:</label>
+            <strong class="time">
+                <span data-endtime="{$order_info['end_time']}"><em>0</em></span>
+            </strong>
+        </div>
+	    <div class="ui-section order-info">
+	        <div class="ui-section-bd">
+                <dl>
+                    <dt><i class="ys-icon-order-pay"></i>拍卖已成交，买家未付款</dt>
+                    <dd>
+                        <label>拍卖订单号:</label>
+                        <em>{$order_info['order_id']}</em>
+                    </dd>
+                    <dd>
+                        <label>成交时间</label>
+                        <span class="time">{:date('Y-m-d H:i:d', $order_info['create_time'])}</span>
+                    </dd>
+                    <dd>
+                        <label>自动违约时间</label>
+                        <span>{:date('Y-m-d H:i:d', $order_info['end_time'])}</span>
+                    </dd>
+                    <dd>
+                        <label>买家电话</label>
+                        <a href="tel://{$order_info['shop_info']['mobile']}">{$order_info['shop_info']['mobile']}</a>
+                    </dd>
+                </dl>
+	    	</div>
+	    </div>
+		<div class="ui-section buyer-info">
+            <div class="ui-section-hd">
+                <h3>收货地址</h3>
+            </div>
+            <div class="ui-section-bd">
+                <ul>
+                    <li class="name"><label>收货人:</label><span>张铃</span></li>
+                    <li class="mobile"><label>手机号码:</label><a href="tel://18911651811">18911651811</a></li>
+                    <li class="address"><label>收货地址:</label><span> 北京 北京 海淀 上地十街</span></li>
+                </ul>
+            </div>
+        </div>
+	    <div class="ui-section order-detail">
+		    <div class="ui-section-bd">
+		        <div class="user-info" data-page-url="{:U('index',array('order_id'=>$order_info['order_id']))}">
+		            <a class="avatar" href="{:U('index',array('order_id'=>$order_info['order_id']))}"><img alt="laite" src="{$order_info['shop_info']['user_avatar']}"></a>
+		            <a class="nickname" href="{:U('index',array('order_id'=>$order_info['order_id']))}">{$order_info['shop_info']['user_name']}</a>
+		        </div>
+		        <div class="goods-info" data-page-url="{:U('Index/product',array('id'=>$order_info['product_id']))}">
+		            <div class="am-img-thumbnail img-center" style="height: 80px;">
+						<img src="{$order_info['product_info']['product_img']}" />
+					</div>
+					<div class="info">
+	                    <h3>{$order_info['product_info']['product_name']}</h3>
+	                    <ul>
+	                        <li class="money">
+	                            <label>保证金:</label><i>¥</i><em>{$order_info['product_info']['bail_money']}</em>
+	                        </li>
+	                        <li class="money">
+	                            <label>成交价:</label><i>¥</i><em>{$order_info['price']}</em>
+	                        </li>
+	                        <li class="money">
+	                            <label>运费:</label><i>¥</i><em>{$order_info['product_info']['postage']}</em>
+	                        </li>
+	                    </ul>
+	                </div>
+		        </div>
+		    </div>
+	    </div>
+	</div>
+
+
+
+</block>

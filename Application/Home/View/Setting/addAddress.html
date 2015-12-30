@@ -1,0 +1,85 @@
+<extend name="Public/base" />
+
+<block name="js">
+<script src="__HOME__js/utils/localSelectorHelper.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/pages/address-edit.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+</block>
+<block name="main">
+    <div class="am-g">
+        <script type="text/javascript">
+            var _province = '{$address_info['area']['province']|default=北京}';
+            var _city = '{$address_info['area']['city']}';
+            var _area = '{$address_info['area']['area']}';
+        </script>
+    </div>
+    <div class="am-g">
+        <form class="am-form am-form-horizontal" id="my-form" method="post" action="">
+            <input type="hidden" name="userAddressId" value="{$address_info['address_id']|default=0}">
+            <input type="hidden" name="goUrl" value="{:U('addressList')}">
+            <ul class="ui-list">
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-form-laClass1.csbel am-u-sm-3">收货人</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" name="consignName" maxlength="8" autocomplete="off"
+                            placeholder="请输入收货人姓名" value="{$address_info['consign_name']}">
+                        </div>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-form-label am-u-sm-3">手机号码</label>
+                        <div class="am-u-sm-9">
+                            <input type="tel" name="mobile" maxlength="11" autocomplete="off" placeholder="请输入收货人手机号码" value="{$address_info['mobile']}">
+                        </div>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-form-label am-u-sm-3">省/直辖市</label>
+                        <div class="am-u-sm-9">
+                            <select id="province" name="province"></select>
+                        </div>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-form-label am-u-sm-3">城市</label>
+                        <div class="am-u-sm-9">
+                            <select id="city" name="city"></select>
+                        </div>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-form-label am-u-sm-3">区/县</label>
+                        <div class="am-u-sm-9">
+                            <select id="area" name="area"></select>
+                        </div>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-form-label am-u-sm-3">街道地址</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" name="address" maxlength="38" autocomplete="off" placeholder="请输入街道地址"  value="{$address_info['address']}">
+                        </div>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-form-label am-u-sm-3">邮政编码</label>
+                        <div class="am-u-sm-9">
+                            <input type="tel" name="zipcode" maxlength="11" autocomplete="off" placeholder="非必填项" value="{$address_info['zipcode']}">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="am-u-sm-12">
+                <button type="submit" class="am-btn am-btn-primary am-btn-block btn-next">
+                    保存
+                </button>
+            </div>
+        </form>
+    </div>
+</block>

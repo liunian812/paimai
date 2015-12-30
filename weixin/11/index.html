@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>子申教育</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../wxbase/css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/page.css" media="all" />
+<script src="../wxbase/js/jquery.js" type="text/javascript"></script>
+<script src="../wxbase/js/idangerous.swiper.js" type="text/javascript"></script>
+<script src="../wxbase/js/audio.js" type="text/javascript"></script>
+<script src="js/page.js" type="text/javascript"></script>
+<script type="text/javascript">
+    window.addEventListener("DOMContentLoaded", function(){
+        playbox.init("playbox");
+    }, false);
+</script>
+</head>
+<body>  
+<div class="mainbg"><img src="img/bg.jpg"></div>
+<span id="playbox" class="btn_music" onclick="playbox.init(this).play();"><audio src="img/music.mp3" loop="" autoplay="autoplay" id="audio"></audio></span>
+<div class="device">
+    <a class="arrow-left" href="#"></a> 
+    <a class="arrow-right" href="#"></a>
+    <div class="swiper-container">
+      	<div class="swiper-wrapper">         
+            <div class="swiper-slide">
+                <div class="content-slide">
+                    <a href="about.html">
+                        <p class="ico"><img src="img/03.png" /></p>
+                        <p class="title">关于我们</p>
+                    </a>
+                    <a href="list.html">
+                        <p class="ico"><img src="img/01.png" /></p>
+                        <p class="title">公司动态</p>
+                    </a>
+                    <a href="activity.html">
+                        <p class="ico"><img src="img/04.png" /></p>
+                        <p class="title">优惠活动</p>
+                    </a>
+                    <a href="zhaopin.html">
+                        <p class="ico"><img src="img/06.png" /></p>
+                        <p class="title">人才招聘</p>
+                    </a>
+                </div>
+            </div>      
+            <div class="swiper-slide">
+                <div class="content-slide">
+                    <a href="http://www.0478.me/weixin/heda/forum.php?mod=forumdisplay&fid=51">
+                        <p class="ico"><img src="img/02.png" /></p>
+                        <p class="title">小圈子</p>
+                    </a>
+                    <a href="message.html">
+                        <p class="ico"><img src="img/05.png" /></p>
+                        <p class="title">留言板</p>
+                    </a>
+                </div>
+            </div>
+  		</div>
+        <div class="pagination"></div>
+	</div>
+</div>
+<script>
+  var mySwiper = new Swiper('.swiper-container',{
+    pagination: '.pagination',
+    loop:true,
+    grabCursor: true,
+    paginationClickable: true
+  })
+  $('.arrow-left').on('click', function(e){
+    e.preventDefault()
+    mySwiper.swipePrev()
+  })
+  $('.arrow-right').on('click', function(e){
+    e.preventDefault()
+    mySwiper.swipeNext()
+  })
+  </script>
+
+</body>
+</html>

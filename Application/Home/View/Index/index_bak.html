@@ -1,0 +1,98 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/home-v1.2.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="js">
+<script type="text/javascript">
+    var _page = 0;
+    var _listApi = '{:U('Index/lists', array('type'=>1))}';
+    function _listMoreHandler(data) {
+        if (!window.$listWrap) {
+            window.$listWrap = $('#item-list');
+        }
+        if (data.htmlString) {
+            var $list = $(data.htmlString);
+            $listWrap.append($list);
+            // 设置倒计时
+            initCountdown($list.find('[data-endtime]'));
+            // 设置图片居中
+            initImageCenter($list.find('.img-center'));
+            // 设置图片懒加载
+            initImageLazy($list.find('.lazy'));
+        }
+    }
+</script>
+<script src="__HOME__js/widget/scrollLoad.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/pages/home.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+</block>
+<block name="main">
+	<div class="am-g">
+	</div>
+	<div class="am-g">
+		<div class="top-banner">
+			<img style="width:100%;max-height:120px;" src="__HOME__images/banner.jpg">
+		</div>
+		<div class="promotion">
+			<div class="pro-main">
+				<a style="padding-top:0px;" href="{:U('Index/lists', array('type'=>3))}"><img style="width:120px;height:120px;" src="__HOME__images/ms01.png"></a>
+			</div>
+			<div class="pro-sub pro-sub-1">
+				<a href="{:U('Index/lists', array('type'=>1))}">普通专区 &gt;&gt;&gt;&gt;</a>
+			</div>
+			<div class="pro-sub pro-sub-2">
+				<a href="{:U('Index/lists', array('type'=>2))}">速胜专区 &gt;&gt;&gt;&gt;</a>
+			</div>
+		</div>
+		<ul class="category">
+        <volist name=":C('PRODUCT_CATE')" id="val">
+			<li><a class="cat1" href="{:U('Index/lists', array('cate'=>$key))}" style="background-size:60px;background-image:url(__HOME__images/{$key}.png);">{$val}</a></li>
+        </volist>
+		</ul>
+	</div>
+	<div class="am-g">
+		<div class="ui-section top-section">
+			<div class="ui-section-hd">
+				<h3><span>精品秒杀</span></h3>
+			</div>
+			<div class="ui-section-bd">
+				<ul class="am-avg-sm-2 am-avg-md-4 ys-grid goods-grid" id="item-list-active">
+                <volist name="miaosha_list" id="val">
+					<li class="ys-grid-item">
+					<div class="ys-grid-item-inner item" id="item-{$val['product_id']}" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+						<a class="am-img-thumbnail img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}" style="height: 228px;">
+						<img alt="{$val['product_name']}" class="lazy" data-height="700" data-original="{$val['product_img']}" data-width="750" src="{$val['product_img']}" style="display: block; max-width: none; width: 244px; height: 228px; margin: 0px -8px;">
+						</a>
+						<dl>
+							<dt><a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a></dt>
+							<dd class="money">
+							<label>当前价:</label><i>¥</i><em>{:max_bid_price($val['product_id'])}</em>
+							</dd>
+							<dd class="type blue">
+							<span>{$product_type[$val['product_type']]}</span>
+							</dd>
+							<dd class="time">
+							<label>剩:</label>
+							<span data-endtime="{$val['end_time']}"><em>00</em></span>
+							</dd>
+						</dl>
+					</div>
+					</li>
+                </volist>
+				</ul>
+
+			</div>
+		</div>
+		<div class="ui-section goods-section">
+			<div class="ui-section-hd">
+				<h3><span>更多拍品</span></h3>
+			</div>
+			<div class="ui-section-bd">
+				<ul class="ui-list goods-list" id="item-list">
+				</ul>
+			</div>
+            <div class="loading" id="loading" style="display:none">
+                <i class="am-icon-spinner am-icon-spin"></i>
+            </div>
+		</div>
+	</div>
+</block>

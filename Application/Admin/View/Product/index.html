@@ -1,0 +1,165 @@
+<div class="hdtop">
+	<a href="javascript:void(0);" class="tja">上架列表</a>
+	<div class="hdtright">
+		<form action="" method="get">
+		<span>名  称：</span><input type="text" name="title" value="{$search['title']|default=''}" class="inputt input1" />
+		<span>所属分类：</span>
+		<select name="cate" class="easyui-combobox" style="width:130px;height:25px">
+			<option value="">全部</option>
+			<volist name=":C('PRODUCT_CATE')" id="val">
+				<option value="{$key}" <eq name="key" value="$search['product_cate']">selected="selected"</eq>>{$val}</option>
+			</volist>
+		</select>
+		<input type="hidden" name="m" value="Admin" />
+		<input type="hidden" name="c" value="{$class_name}" />
+		<input type="hidden" name="a" value="index" />
+		<input type="submit" value="查 询" class="button" />
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div class="hdbot">
+<style media="screen">
+	.head910 td {
+		background-color:#08a3bb;
+		line-height: 33px;
+		color: #fff;
+		font-size: 14px;
+	}
+</style>
+<table width="910" border="0" cellspacing="1" cellpadding="0" class="table1 tab">
+	<tr class="head910">
+		<td align="center"><input type="checkbox" class="allcheck">ID</td>
+		<td align="center">名称</td>
+		<td align="center">图片</td>
+		<td align="center">店铺</td>
+		<td align="center">发布时间</td>
+		<td align="center">推荐位</td>
+		<td align="center">排序</td>
+		<td align="center">操作</td>
+	</tr>
+	<volist name="list" id="v">
+		<tr>
+			<td align="center"><input type="checkbox" name="product_id" value="{$v['id']}">{$v['product_id']}</td>
+			<td align="center">{$v['product_name']}</td>
+			<td align="center"><img src="{$v['product_img']}" width="50" height="50"/></td>
+			<td align="center">{:get_shop_info($v['user_id'])}</td>
+			<td align="center">{:date('Y-m-d H:i:s', $v['update_time'])}</td>
+			<td align="center">
+				<volist name="positions" id="val">
+					<if condition="$v[$key]">
+					<a href="{:U('position',array('product_id'=>$v['product_id'],'position'=>$key,'status'=>0))}" class="xga">{$val}</a>
+					<else />
+					<a href="{:U('position',array('product_id'=>$v['product_id'],'position'=>$key,'status'=>1))}" class="xga2">{$val}</a>
+					</if>
+				</volist>
+			</td>
+			<td align="center"><input style="width:20px;text-align:center;" onchange="Tool.sort({$v['product_id']},this.value)" type="text" name="sort" value="{$v['sort']}"></td>
+			<td align="center">
+				<a href="javascript:if(confirm('确认要执行该操作吗?')){location.href='{:U('del?product_id='. $v['product_id'])}'}" class="xga">下架</a>
+			</td>
+
+
+		</tr>
+	</volist>
+</table>
+<style media="screen">
+	.position {
+		margin-top: 12px;
+		height: 25px;
+		background-color: #FF9A1A;
+		border: 1px solid #E5EB1B;
+		color: #FFF;
+	}
+</style>
+<div class="tableb">
+	<input type="checkbox" class="allcheck">
+	<input type="button" id="del" value="删除" class="scanniu cr">
+	<div class="tablebnr page">
+		{$_page}
+	</div>
+</div>
+</div>
+<script type="text/javascript">
+var Tool = {};
+
+Tool.sort = function(product_id, sort){
+	$.ajax({
+		url: '{:U('sort')}',
+		type: 'post',
+		data: {product_id: product_id, sort: sort},
+		dataType: 'json',
+		success: function(data){
+			if (data.status) {
+				// alert(data.info);
+				location.reload();
+			} else {
+				alert(data.info);
+			}
+		},
+		error: function(){
+			alert('网络异常...');
+		}
+	});
+}
+$(function(){
+	$("#del").click(function(){
+		var xx = confirm('是否确认操作！');
+		if(xx){
+			var ids = [];
+			$("[name=product_id]:checkbox:checked").each(function(){
+				ids.push($(this).val());
+			});
+			if (ids.length == 0) {
+				alert('请选择操作对象');
+				return false;
+			}
+			$.ajax({
+				url: '{:U('del')}',
+				type: 'post',
+				data: {product_id: ids},
+				dataType: 'json',
+				success: function(data){
+					if (data.status) {
+						alert(data.info);
+						location.reload();
+					} else {
+						alert(data.info);
+					}
+				},
+				error: function(){
+					alert('网络异常...');
+				}
+			});
+		}
+	});
+	$(".position").change(function(){
+		var ids = [];
+		$("[name=product_id]:checkbox:checked").each(function(){
+			ids.push($(this).val());
+		});
+		if (ids.length == 0) {
+			alert('请选择操作对象');
+			return false;
+		}
+		$.ajax({
+			url: '{:U('position')}',
+			type: 'post',
+			data: {pid: $(this).val(), product_id: ids},
+			dataType: 'json',
+			success: function(data){
+				if (data.status) {
+					alert(data.info);
+					location.reload();
+				} else {
+					alert(data.info);
+				}
+			},
+			error: function(){
+				alert('网络异常...');
+			}
+		});
+	});
+})
+</script>

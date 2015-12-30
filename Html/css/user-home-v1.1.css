@@ -1,0 +1,221 @@
+.ys-icon-broadcast {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYJJREFUeNrsl9GNwjAMhkvE+zFCN6A3AR2BDY63vpYN2ODy2re7DW6EdIILGzBCmaDYyEFRRds4SaFCWIqKoiR8+WM7zqJt22QOJpKZ2DJkclEUKXwO0HRVVdJhPI7J8DeMz6OAwKIlQXxAQyA5Mv4HPl/RFCEVcNENY04X4hjkI6SCjgCReykCi2Uk/YYJfhcC/KNhK0Iq/E8JcVPE2rGxEiZo6EcJvz38SHIgriDkfIq835giuNIzqDIOhDmatAORWCG5CsxTThDBCW3AtqgKAKiHZNY+IwUUZ85s7prXuPQGwnfFiDiJR7mcCAL9Y+3q2JivXvdoUGbKyM89Git8D+/wfeeRgRBWVL84X3qoyAnaudN/pv4mkGlNJcXoLS6A9kQ1ZG21nPqlJ4DmwizGXnpUKo5VaXX3ncItFYVDTkBVPkkpTi7ZwefXVRnhuKimHe/v+FMUGMHcpXky1qEwwXkEnZirTg9MnIRmqYN/8OcBw4uaCZJdapR9KkifXQQYAGaEvJJBkcTRAAAAAElFTkSuQmCC");
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px
+}
+
+.ys-icon-goods {
+    background-image: url(../images/tb4.png);
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px
+}
+
+.ys-icon-buyer-order {
+    background-image: url(../images/tb2.png);
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px
+}
+
+.ys-icon-saler-order {
+    background-image: url(../images/tb1.png);
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px
+}
+
+.ys-icon-account {
+    background-image: url(../images/tb5.png);
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px
+}
+
+.ys-icon-feedback {
+    background-image: url(../images/tb6.png);
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px
+}
+
+.ys-icon-shop {
+    background-image: url(../images/tb3.png);
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px
+}
+
+.user-header {
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd
+}
+
+.user-header .user-info {
+    height: 100px;
+    padding: 25px 20px
+}
+
+.user-header .user-info .avatar {
+    background-color: #fff;
+    display: block;
+    float: left;
+    overflow: hidden;
+    width: 50px;
+    height: 50px
+}
+
+.user-header .user-info .avatar img {
+    width: 50px;
+    height: 50px
+}
+
+.user-header .user-info dl {
+    padding: 0;
+    margin: 0 0 0 60px
+}
+
+.user-header .user-info dl dt {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 180px;
+    font-weight: normal;
+    font-size: 18px;
+    color: #000
+}
+
+.user-header .user-info dl dd {
+    font-size: 14px;
+    color: #999
+}
+
+.user-header .user-info dl dt+dd {
+    margin-top: 0
+}
+
+.user-header .user-count {
+    list-style: none;
+    height: 95px;
+    margin: 0;
+    padding: 0
+}
+
+.user-header .user-count:before,.user-header .user-count:after {
+    content: " ";
+    display: table
+}
+
+.user-header .user-count:after {
+    clear: both
+}
+
+.user-header .user-count li {
+    float: left;
+    width: 33.33333333%;
+    height: 32px;
+    padding: 0 5px;
+    border-right: 1px solid #ddd;
+    margin: 9px 0;
+    text-align: center
+}
+
+.user-header .user-count li span {
+    display: block;
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    line-height: 16px;
+    color: #000
+}
+
+.user-header .user-count li label {
+    display: block;
+    margin: 0;
+    font-size: 13px;
+    line-height: 13px;
+    color: #999
+}
+
+.user-header .user-count li:last-child {
+    border-right: none
+}
+
+.user-header .user-count .total {
+    display: block;
+    position: relative;
+    float: none;
+    clear: both;
+    width: 100%;
+    height: 45px;
+    padding: 10px 30px 10px 10px;
+    margin: 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-right: none;
+    text-align: left
+}
+
+.user-header .user-count .total span,.user-header .user-count .total label {
+    display: inline;
+    color: #666
+}
+
+.user-header .user-count .total .money i,.user-header .user-count .total .money em {
+    font-size: 17px;
+    color: #000
+}
+
+.user-header .user-count .total .detail {
+    display: inline;
+    float: right;
+    font-size: 14px;
+    color: #999
+}
+
+.user-header .user-count .total:before {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo5RDlDMDk3MzAyMDVFNTExQkVGNjhDMEU0NjAwNThGNSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDRDQ5MzZDNDBCRjgxMUU1QTI4OEZDNDMzMTc1QjhGMiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpDRDQ5MzZDMzBCRjgxMUU1QTI4OEZDNDMzMTc1QjhGMiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjZFNDgwNTIzRUYwQkU1MTE5RjlBQzgyOUZEOEJDRjk5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlEOUMwOTczMDIwNUU1MTFCRUY2OEMwRTQ2MDA1OEY1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+HYya1wAAAZRJREFUeNrUlz8sBEEUh2+FQqWhIhpKOtFQoFAJzRUSQrmoFOJOIzonerKtP4VEQ0ShOEKndHSukFAIjUohsb5JXjGN3NibexOb/DLJy12+L293Zt9GaZrmQl5NucBXc60fJEnSxXJOluM4LofowAnpJ2fIjIUQWCDvpFUkJn0KRC4PIVDTAdP+dvJF8tyOU7WHEFiFxbT/lbSQY6TyqrtAJIbJi0gcITGjug2ReGQZEQnz3z0kZlXPAZEYIlX5/z4Si6oHERJP0omqlHaySmQ+CZF4FokHS2JF9SgWiVFyL6VtJIqq7wIk3mSL3klpE4l1rweRywW0jeWCDEppC7liwztgdeKDZZzcSqmAVCn06zhSE/jlFhRUBIB3sFxb8A2X++80kDjCzZuyT0prwEsq21CmpUsLvvoXeF0dEPgV6ZHSEvBdlZMQeLcPeKYOAO8VeCf5JvPADxo2FdeAzwE/VJkHZC68EbiZC6frhTt3IOhQCnzAgn/6hLt2ILHgE76/jlyegSlSaQTc6zzwb7+OfwQYAJGBnWE1yUo3AAAAAElFTkSuQmCC");
+    background-size: 16px 16px;
+    width: 16px;
+    height: 16px;
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin: -8px 0 0 0
+}
+
+.ui-grid {
+    list-style: none;
+    background-color: #fff;
+    padding: 0;
+    margin: 0 0 10px 0;
+    border-top: solid 1px #ddd
+}
+
+.ui-grid:before,.ui-grid:after {
+    content: " ";
+    display: table
+}
+
+.ui-grid:after {
+    clear: both
+}
+
+.ui-grid-item {
+    float: left;
+    width: 33.33333333%;
+    min-height: 100px;
+    border-right: solid 1px #ddd;
+    border-bottom: solid 1px #ddd
+}
+
+.ui-grid {
+    text-align: center
+}
+
+.ui-grid i {
+    display: block;
+    margin: 25px auto 8px auto
+}

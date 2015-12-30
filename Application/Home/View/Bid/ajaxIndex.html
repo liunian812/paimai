@@ -1,0 +1,47 @@
+<volist name="bid_list" id="val">
+    <li class="ui-list-item">
+        <div class="ui-list-item-inner item" id="item-{$val['product_id']}" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+            <a class="am-img-thumbnail img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}" style="height: 125px;">
+                <img class="lazy" data-height="700" data-original="{:C('WEB_SITE_URL')}/{$val['product_img']}" data-width="750" src="{:C('WEB_SITE_URL')}/{$val['product_img']}" style="display: block; max-width: none; width: 133px; height: 125px; margin: 0px -4px;">
+            </a>
+            <dl class="info">
+                <dt><a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a></dt>
+                <dd class="money">
+                    <label>当前价:</label><i>¥</i><em><em>{$val['bid_price']}</em></em>
+                </dd>
+                <dd class="type blue">
+                    <span>{$product_type[$val['product_type']]}</span>
+                </dd>
+                <if condition="$type eq 'sale'">
+                    <dd class="time-over">
+                            <label>剩:</label>
+                            <span data-endtime="{$val['end_time']}"></span>
+                        <if condition="$val['product_type'] eq 3">
+                            <dd class="status get"><span>得拍</span>
+                        <else />
+                            <if condition="check_bid_lead($val['product_id'], $val['bid_id'])">
+                                <dd class="status lead"><span>领先</span>
+                            <else />
+                                <dd class="status out"><span>被超越</span>
+                            </if>
+                        </if>
+
+                    </dd>
+                <elseif condition="$type eq 'end'" />
+                    <dd class="time-over">
+                        <span>已结束</span></dd>
+                        <if condition="$val['product_type'] eq 3">
+                            <dd class="status get"><span>得拍</span>
+                        <else />
+                            <if condition="$val['status'] == 4">
+                                <dd class="status get"><span>得拍</span>
+                            <else />
+                                <dd class="status lost"><span>未得拍</span>
+                            </if>
+                        </if>
+                    </dd>
+                </if>
+            </dl>
+        </div>
+    </li>
+</volist>

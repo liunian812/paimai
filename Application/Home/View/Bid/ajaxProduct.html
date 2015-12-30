@@ -1,0 +1,44 @@
+<volist name="collect_list" id="val">
+    <li class="ui-list-item" data-page-url="{:U('Shop/index', array('id'=>$val['shop']))}">
+        <div class="ui-list-item-inner shop-info" data-page-url="{:U('Shop/index', array('id'=>$val['shop']))}">
+            <a class="avatar" href="{:U('Shop/index', array('id'=>$val['shop']))}">
+                <img src="{$val['user_info']['user_avatar']}">
+            </a>
+            <a class="nickname" href="{:U('Shop/index', array('id'=>$val['shop']))}">{$val['user_info']['user_name']}</a>
+        </div>
+    </li>
+    <div class="ui-section item">
+        <div class="ui-section-bd">
+            <div class="user-info">
+                <a class="avatar" href="{:U('Shop/user', array('id'=>$val['user_info']['user_id']))}">
+                    <img src="{$val['user_info']['user_avatar']}">
+                </a>
+                <a class="nickname" href="{:U('Shop/user', array('id'=>$val['user_info']['user_id']))}">{$val['user_info']['user_name']}</a>
+            </div>
+            <div class="goods-info" data-page-url="{:U('Product/index', array('id'=>$val['product']))}">
+                <a class="am-img-thumbnail img-center" href="{:U('Product/index', array('id'=>$val['product']))}" style="height: 80px;">
+                    <img alt="{$val['product_info']['product_name']}" class="lazy" data-original="{$val['product_info']['product_name']}" src="{$val['product_info']['product_name']}" style="display: block; max-width: none; width: 80px; height: 80px; margin: 0px;">
+                </a>
+                <div class="info">
+                    <h3><a href="{:U('Product/index', array('id'=>$val['product']))}">{$val['product_info']['product_name']}</a></h3>
+                    <ul>
+                        <li class="type">{$val['product_info']['product_type']}</li>
+                        <li class="money"><label>当前价:</label><i>¥</i><em>{$val['product_info']['product_name']}</em></li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="action">
+                <li>
+                    <a class="view" href="{:U('Product/index', array('id'=>$val['product']))}">
+                        <i class="ys-icon-goods-view"></i><span>查看</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="del" href="javascript:;" data-collect="2400" data-id="3809">
+                        <i class="ys-icon-goods-delete"></i><span>删除</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</volist>

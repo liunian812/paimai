@@ -1,0 +1,761 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <title>{:C('WEB_SITE_TITLE')} - 摇一摇</title>
+    <link rel="stylesheet" href="__HOME__css/pages/faxian.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="__HOME__js/libs/zepto.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
+        var isShake = true;
+        var recommendAudio = null;
+        var SHAKE_THRESHOLD = 1000,
+            LAST_UPDATE_TIME = 0;
+        var x = y = z = last_x = last_y = last_z = 0;
+        var closeShakeTip = getCookie("closeShakeTip");
+        var bodyWidth = 0,
+            bodyHeight = 0;
+        var category = "";
+
+        var wxShare = {
+            title: '精彩{:C('WEB_SITE_TITLE')}，尽在摇一摇',
+            desc: '好货朋友先，有钱朋友赚 - 尽在{:C('WEB_SITE_TITLE')}摇一摇',
+            link: 'http://w.weipaitang.com/my/shake',
+            imgUrl: 'http://w.weipaitang.com/res/img/logo256.jpg',
+            trigger: function (res) {
+            },
+            success: function (res) {
+            },
+            cancel: function (res) {
+            },
+            fail: function (res) {
+            }
+        };
+
+        function setCookie(name, value, expiredays) {
+            var exdate = new Date();
+            exdate.setDate(exdate.getDate() + expiredays);
+            document.cookie = name + "=" + encodeURIComponent(value) +
+            ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
+        }
+
+        function getCookie(name)
+        {
+            if (document.cookie.length > 0)
+            {
+                var start = document.cookie.indexOf(name + "=");
+                if (start != -1)
+                {
+                    start = start + name.length + 1;
+                    end = document.cookie.indexOf(";", start);
+                    if (end == -1) end = document.cookie.length;
+                    return decodeURIComponent(document.cookie.substring(start, end));
+                }
+            }
+            return "";
+        }
+
+        function init() {
+            //音效
+            recommendAudio = document.getElementById("recommendAudio");
+
+            //摇动事件
+            if (window.DeviceMotionEvent) {
+                window.addEventListener('devicemotion', deviceMotionHandler, false);
+            }
+
+            //body高度 和 宽度
+            if ($.os.android) {
+                bodyWidth = document.body.clientWidth;
+                bodyHeight = document.documentElement.clientHeight;
+            } else {
+                bodyWidth = $(window).width();
+                bodyHeight = $(window).height();
+            }
+
+            //初始化推荐产品图片高度
+            $(".shakeRecommend .saleImg").height($(".shakeRecommend").width() * 0.94);
+
+            //小屏幕
+            if ($(".shakeRecommend").height() + 90 > bodyHeight) {
+                $(".shakeRecommend").addClass("smallScreen");
+            }
+
+            //垂直居中推荐产品
+            $(".shakeRecommend").css("top", parseInt((bodyHeight - 80 - $(".shakeRecommend").height()) / 2) + "px");
+
+            //提示
+            setTimeout(function () {
+                if(!closeShakeTip) {
+                    $(".shakeTip").show();
+                }
+            }, 1400);
+
+            setTimeout(function () {
+                if (category == "") {
+                    category = Date.now() % 6;
+                }
+                $(".shakeCategoryMenu .menuItem[category='" + category + "']").addClass("selected")
+                shake();
+            }, 400);
+        }
+
+        function deviceMotionHandler(eventData) {
+            var acceleration = eventData.accelerationIncludingGravity;
+            var curTime = new Date().getTime();
+            if ((curTime - LAST_UPDATE_TIME) > 100) {
+                var diffTime = curTime - LAST_UPDATE_TIME;
+                LAST_UPDATE_TIME = curTime;
+                x = acceleration.x;
+                y = acceleration.y;
+                z = acceleration.z;
+                var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+                if (speed > SHAKE_THRESHOLD && isShake == false) {
+                    $(".shakeTip").hide();
+                    shake();
+                }
+                last_x = x;
+                last_y = y;
+                last_z = z;
+            }
+        }
+
+        function shake() {
+            isShake = true;
+
+            $('.shakeRecommend').css("opacity", 0);
+            $('.shakeRecommend').css("top", parseInt($('.shakeRecommend').css("top").replace("px", "") * 1 - $('.shakeRecommend').height()) + "px");
+            $('.shakeBg').animate(
+                {
+                    "opacity": 1
+                },
+                400,
+                function () {
+                    setTimeout(function () {
+                        $.get('{:U('faxian','','')}/id/' + category, function (html) {
+                            if (html) {
+                                recommendAudio.currentTime && (recommendAudio.currentTime = 0);
+                                recommendAudio.play();
+
+                                $('.shakeRecommend').html(html);
+                                $(".shakeRecommend .saleImg").height($(".shakeRecommend").width() * 0.94);
+
+                                $('.shakeBg').css("opacity", 0);
+
+                                $('.shakeRecommend').animate(
+                                    {
+                                        "opacity": 1,
+                                        "top": parseInt($('.shakeRecommend').css("top").replace("px", "") * 1 + $('.shakeRecommend').height()) + "px"
+                                    },
+                                    400,
+                                    function () {
+                                        setTimeout(function () {
+                                            isShake = false;
+                                        }, 600);
+                                    }
+                                );
+                            }
+                        });
+                    }, 400);
+                }
+            );
+        }
+
+
+        $(function () {
+            $('body').on('touchmove', function (event) {
+                event.preventDefault();
+            });
+
+            window.wx && wx.config({
+                debug: false,
+                appId: "wx2aa1f6beaa714b7c",
+                timestamp: "1446175216",
+                nonceStr: "yealzksrj9v053i2kv1r1qxnf82y44fr",
+                signature: "6058cd9c4e13f3fcafddded732945f3f8019c0c6",
+                jsApiList: [
+                    "onMenuShareTimeline",
+                    "onMenuShareAppMessage",
+                    "hideOptionMenu",
+                    "showOptionMenu",
+                    "closeWindow"
+                ]
+            });
+
+            wx.ready(function () {
+                wx.showOptionMenu();
+                wx.onMenuShareAppMessage(wxShare);
+                wx.onMenuShareTimeline({
+                    title: wxShare.desc,
+                    desc: '',
+                    link: wxShare.link,
+                    imgUrl: wxShare.imgUrl
+                });
+            });
+
+            $(".shakeCategoryMenu .menuItem").on("touchend", function () {
+                var self = $(this);
+                if (!self.hasClass("selected") && isShake == false) {
+                    $(".shakeTip").hide();
+                    $(".shakeCategoryMenu .menuItem").removeClass("selected");
+                    self.addClass("selected");
+                    category = self.attr("category");
+                    shake();
+                }
+            });
+
+            $(".shakeSwitch").on("touchend", function () {
+                var self = $(this);
+                if (isShake == false) {
+                    self.animate(
+                        {
+                            "height": "160px"
+                        },
+                        300,
+                        function () {
+                            self.animate(
+                                {
+                                    "height": "112px"
+                                },
+                                300
+                            );
+                            shake();
+                        }
+                    );
+                }
+            });
+
+            $(".shakeTip").on("click", function () {
+                var self = $(this);
+                self.hide();
+                setCookie("closeShakeTip", Date.now(), 30);
+            });
+
+            init();
+        });
+    </script>
+</head>
+
+<body>
+<div class="shakeMain">
+    <div class="shakeBg"></div>
+    <div class="shakeRecommend">
+        <div class="saleImg"></div>
+        <div class="saleSeller"></div>
+        <div class="saleDesc"></div>
+        <div class="saleBid"></div>
+    </div>
+
+    <div class="shakeCategoryMenu">
+        <div class="line">
+            <span>选择您感兴趣的品类</span>
+        </div>
+        <div class="menu">
+            <volist name=":C('PRODUCT_CATE')" id="val">
+                <div class="menuItem" category="{$key}">
+                    <span></span>{$val}
+                </div>
+            </volist>
+        </div>
+    </div>
+
+    <div class="shakeSwitch"></div>
+    <div class="shakeTip"></div>
+</div>
+
+<audio id="recommendAudio">
+    <source src="http://cdn.weipaitang.com//res/audio/shake_match.mp3"/>
+</audio>
+
+<script type="text/javascript">
+    //关注{:C('WEB_SITE_TITLE')}
+    var isSubscribe = 1;
+    var hasTelephone = 15044858848;
+    if(hasTelephone == 0 && window.location.hash == "#hasTelephone") {
+        hasTelephone = 1;
+    }
+    var sellerLevel = 1;
+    var buyerLevel = 1;
+
+    //每页数量
+    var PAGE_NUM = 5;
+    var maskIsHide = true;
+    var pushState = null;
+
+    //cookie
+    function setCookie(name, value, expiredays) {
+        var exdate = new Date();
+        exdate.setDate(exdate.getDate() + expiredays);
+        document.cookie = name + "=" + encodeURIComponent(value) +
+        ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
+    }
+
+    function getCookie(name) {
+        if (document.cookie.length > 0) {
+            var start = document.cookie.indexOf(name + "=");
+            if (start != -1) {
+                start = start + name.length + 1;
+                end = document.cookie.indexOf(";", start);
+                if (end == -1) end = document.cookie.length;
+                return decodeURIComponent(document.cookie.substring(start, end));
+            }
+        }
+        return "";
+    }
+
+    // 获取手机型号
+    var ignorePhoneModel = ['sm-g9200', 'sm-g9208'];
+    function getPhoneModel() {
+        var UA = navigator.userAgent;
+        var model = '';
+        try {
+            var _model = UA.match(/;\s?([^;]+)\s?Build/i);
+            if(_model) {
+                _model = _model[1];
+                model = _model.trim();
+            }
+        } catch (e) {
+        }
+        return model.toLowerCase();
+    }
+
+    window.onpopstate = function (event) {
+        if ($.os.android && ignorePhoneModel.indexOf(getPhoneModel()) == -1) {
+            if (pushState && pushState.backevent) {
+                $(document.body).trigger(pushState.backevent);
+            }
+            pushState = event.state;
+        }
+    };
+
+    function pushStateEvent(e) {
+        if ($.os.android && ignorePhoneModel.indexOf(getPhoneModel()) == -1) {
+            if (pushState == null) {
+                pushState = {backevent: e};
+                history.pushState(pushState, document.title, "?backevent=" + pushState.backevent.replace(/#/g, ""));
+            }
+        }
+    }
+
+    function replaceStateUrl(url) {
+        history.replaceState({url:url}, document.title, url);
+    }
+
+    //阻止touchmove事件
+    $('body').on('touchmove', function (e) {
+        if (!maskIsHide) e.preventDefault();
+    });
+
+    //微信版本升级提醒
+    function noticeWeChatVer(){
+        var weChatInfo = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i) ;
+
+        if( !weChatInfo || weChatInfo[1] < "6.0.2" ) {
+            wptAlert("您的微信版本太老了，不能发布拍品，请升级至6.1以上版本！");
+            return true;
+        }
+        return false;
+    }
+
+    //微信关注
+    function wptSubscribe(url, msg) {
+        $(document).off('wptConfirm_view:sure').one('wptConfirm_view:sure', function () {
+            location.href = '/wpt/goToSubscribe?url=' + encodeURIComponent(url);
+        });
+        var confirmMsg = "亲，关注我们才能出价！";
+        if(typeof msg != "undefined") {
+            confirmMsg = msg;
+        }
+        wptConfirm(confirmMsg, {text:'关注{:C('WEB_SITE_TITLE')}', msgClass: 'smallFaq'});
+    }
+
+    //电话号码
+    function wptTelephone(msg) {
+        $(document).off('wptConfirm_view:sure').one('wptConfirm_view:sure', function () {
+            wptLoading('填写联系电话', function () {
+                location.href = '/my/edit_userinfo/telephone?refer=' + encodeURIComponent(location.href)
+            });
+        });
+        var confirmMsg = "亲，请填写您的联系电话！";
+        if(typeof msg != "undefined") {
+            confirmMsg = msg;
+        }
+        wptConfirm(confirmMsg, {text: '填写联系电话', msgClass: 'smallFaq'});
+    }
+
+    //微信分享
+    function wptShare() {
+        maskIsHide = false;
+        $(".wptShare").show();
+        $(".wptShare .wptMask").animate({opacity: "0.7"}, 100);
+
+        $(document).off("wptShare_view:hide").one("wptShare_view:hide", function (e) {
+            maskIsHide = true;
+            $('.wptShare').hide();
+            $(".wptShare .wptMask").css("opacity", "0");
+        });
+
+        $('.wptShare').off('touchend').one('touchend', function (e) {
+            e.preventDefault();
+            $(document.body).trigger("wptShare_view:hide");
+        });
+    }
+
+    //alert
+    function wptAlert(msg, callback, onlyBtnClose) {
+        maskIsHide = false;
+
+        $(".wptAlert .tip .msg").html(msg);
+
+        $(".wptAlert").show();
+        $(".wptMask").animate({opacity: "0.4"}, 100);
+        $(".wptAlert .dialog").animate({bottom: "0px"}, 100);
+
+        pushStateEvent('wptAlert_view:hide');
+        $(document).off("wptAlert_view:hide").one("wptAlert_view:hide", function (e) {
+            maskIsHide = true;
+            $(".wptAlert .wptMask").animate({opacity: "0"}, 100);
+            var height = '-' + $(".wptAlert .dialog").height() + 'px';
+            $(".wptAlert .dialog").animate({bottom: height}, 100, function () {
+                $(".wptAlert").hide();
+            });
+            if (typeof(callback) == 'function') setTimeout(callback, 0);
+        });
+
+        var closeObj = $('.wptAlert .wptMask, .wptAlert .btn-confirm');
+        if(typeof onlyBtnClose != "undefined" && onlyBtnClose == true) {
+            closeObj = $('.wptAlert .btn-confirm');
+        }
+        closeObj.off('touchend').one('touchend', function (e) {
+            e.preventDefault();
+            if ($.os.android && pushState && pushState.backevent && pushState.backevent == "wptAlert_view:hide") {
+                history.back();
+            } else {
+                $(document.body).trigger("wptAlert_view:hide");
+            }
+        });
+    }
+
+    //confirm
+    function wptConfirm(msg, sureObj) {
+        maskIsHide = false;
+        $('.wptConfirm .tip .msg').html(msg);
+
+        if(typeof sureObj != "undefined") {
+            //确定按钮上的文字
+            sureObj.text && $('.wptConfirm .btns .sure').text(sureObj.text);
+            //确定按钮的class
+            sureObj.class && $('.wptConfirm .btns .sure').addClass(sureObj.class);
+            //描述文本class
+            sureObj.msgClass && $('.wptConfirm .tip .msg').addClass(sureObj.msgClass);
+        }
+
+        $(".wptConfirm").show();
+        $(".wptConfirm .wptMask").animate({opacity: "0.4"}, 100);
+        $(".wptConfirm .dialog").animate({bottom: "0px"}, 100);
+
+        pushStateEvent("wptConfirm_view:hide");
+        $(document).off("wptConfirm_view:hide").one("wptConfirm_view:hide", function (e) {
+            maskIsHide = true;
+            $(".wptConfirm .wptMask").animate({opacity: "0"}, 100);
+            var height = '-' + $(".wptConfirm .dialog").height() + 'px';
+            $(".wptConfirm .dialog").animate({bottom: height}, 100, function () {
+                $(".wptConfirm").hide();
+            });
+        });
+
+        $('.wptConfirm .wptMask, .wptConfirm .btn-cancel, .wptConfirm .btn-confirm').off('touchend').one('touchend', function (e) {
+            e.preventDefault();
+            if ($(e.target).hasClass('sure')) {
+                $(document.body).trigger('wptConfirm_view:sure');
+            }
+
+            if ($.os.android && pushState && pushState.backevent && pushState.backevent == "wptConfirm_view:hide") {
+                setTimeout(function() {
+                    history.back();
+                }, 0);
+            } else {
+                $(document.body).trigger("wptConfirm_view:hide");
+            }
+        });
+    }
+
+    //multiConfirm
+    function wptMultiConfirm(msg, sureObj, cancelObj) {
+        maskIsHide = false;
+        $('.wptMultiConfirm .tip .msg').html(msg);
+
+        if(typeof cancelObj != "undefined" && typeof cancelObj.text != "undefined") {
+            $(".wptMultiConfirm .btns .btn-cancel").html(cancelObj.text);
+        }
+
+        if(typeof sureObj != "undefined") {
+            $(".wptMultiConfirm .btns .btn-cancel").before(sureObj);
+        }
+
+        $(".wptMultiConfirm").show();
+        $(".wptMultiConfirm .wptMask").animate({opacity: "0.4"}, 100);
+        $(".wptMultiConfirm .dialog").animate({bottom: "0px"}, 100);
+
+        pushStateEvent("wptMultiConfirm_view:hide");
+        $(document).off("wptMultiConfirm_view:hide").one("wptMultiConfirm_view:hide", function (e) {
+            maskIsHide = true;
+            $(".wptMultiConfirm .wptMask").animate({opacity: "0"}, 100);
+            var height = '-' + $(".wptMultiConfirm .dialog").height() + 'px';
+            $(".wptMultiConfirm .dialog").animate({bottom: height}, 100, function () {
+                $(".wptMultiConfirm").hide();
+                $(".wptMultiConfirm").find(sureObj).remove();
+            });
+        });
+
+        $('.wptMultiConfirm').off('touchend').one('touchend', '.wptMask, .btn-cancel, .btn-confirm', function (e) {
+            e.preventDefault();
+            if($(e.target).hasClass('btn-cancel')) {
+                if (typeof cancelObj != "undefined" && typeof cancelObj.cb == "function") {
+                    cancelObj.cb();
+                }
+            }
+            if ($.os.android && pushState && pushState.backevent && pushState.backevent == "wptMultiConfirm_view:hide") {
+                setTimeout(function() {
+                    history.back();
+                }, 0);
+            } else {
+                $(document.body).trigger("wptMultiConfirm_view:hide");
+            }
+        });
+    }
+
+    //trade password
+    function wptPassword(msg, successFn, cancelFn, notCheck) {
+        if(typeof msg != "undefined") {
+            $(".wptPassword .tip").html(msg);
+        }
+        var passwordKeyIndex = 0;
+        $(".wptPassword .password .passwordKey").attr("num", "").html("");
+
+
+        $(".wptPassword .keyboard li").on("touchstart", function () {
+            if ($(this).html() == '00' || $(this).html() == '' || $(this).html() == '.') {
+                $(this).css({"background-color": "#FFF"});
+            } else {
+                $(this).css({"background-color": "#D1D5DA"});
+            }
+        });
+
+        $(".wptPassword .num").off("touchend").on("touchend", function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if(passwordKeyIndex < 6) {
+                $(".wptPassword .password .passwordKey").eq(passwordKeyIndex).attr("num", $(this).html()).html('<div class="point"></div>');
+                passwordKeyIndex++;
+                if(passwordKeyIndex == 6) {
+                    var password = "";
+                    $(".wptPassword .password .passwordKey").each(function(i,n){
+                        password += $(n).attr("num");
+                    });
+
+                    setTimeout(function(){
+                        if(typeof notCheck != "undefined" && notCheck == true) {
+                            successFn(password);
+                        } else {
+                            $.post("/balance/checkPassword", {'password': password}, function (res) {
+                                res = JSON.parse(res);
+                                if (res.errcode == 0) {
+                                    successFn(password);
+                                } else {
+                                    wptAlert(res.errmsg, function () {
+                                        passwordKeyIndex = 0;
+                                        $(".wptPassword .password .passwordKey").attr("num", "").html("");
+                                    }, true);
+                                }
+                            });
+                        }
+                    }, 150);
+                }
+            }
+
+            if ($(this).html().length == 1 && $(this).html() != ".") {
+                $(this).css({"background-color": "#FFF"});
+            } else {
+                $(this).css({"background-color": "#D1D5DA"});
+            }
+        });
+
+        $(".wptPassword .delete").off("touchend").on("touchend", function() {
+            if(passwordKeyIndex > 0) {
+                passwordKeyIndex--;
+                $(".wptPassword .password .passwordKey").eq(passwordKeyIndex).attr("num", "").html("");
+            }
+            $(this).css({"background-color": "#D1D5DA"});
+        });
+
+        $(".wptPassword .blank").off("touchend").one("touchend", function() {
+            if ($.os.android && pushState && pushState.backevent && pushState.backevent == "wptPassword_view:hide") {
+                setTimeout(function() {
+                    history.back();
+                }, 0);
+            } else {
+                $(document.body).trigger("wptPassword_view:hide");
+            }
+        });
+
+        pushStateEvent('wptPassword_view:hide');
+        $(document).off("wptPassword_view:hide").one("wptPassword_view:hide", function (e) {
+            passwordKeyIndex = 0;
+            $(".wptPassword .password .passwordKey").attr("num", "").html("");
+            $(".wptPassword").hide();
+
+            if(typeof cancelFn == 'function') {
+                setTimeout(function(){
+                    cancelFn();
+                }, 600);
+            }
+        });
+
+        $(".wptPassword").show();
+    }
+
+    //notice
+    function wptNotice(msg, btnMsg, callback, time) {
+        time = typeof time == "undefined" ? 8000 : time;
+        $(".wptNotice .msg span").html(msg);
+        $(".wptNotice .btn").html(btnMsg);
+
+        var noticeBottom = "0px";
+        if($(".mainMenu").length) {
+            noticeBottom = $(".mainMenu").height() + "px";
+        }
+        $(".wptNotice").css("bottom", noticeBottom).show();
+
+        $(".wptNotice .btn").off("click").one("click", function(){
+            $(document.body).trigger('wptNotice_view:hide');
+            if (typeof(callback) == 'function') callback();
+        });
+
+        $(document).off("wptNotice_view:hide").one("wptNotice_view:hide", function () {
+            $(".wptNotice").animate({opacity: "0"}, 500);
+            setTimeout(function(){
+                $(".wptNotice").hide();
+                $(".wptNotice").css("opacity", 1);
+            }, 700);
+        });
+
+        $(document).off("wptNotice_view:bottom").on("wptNotice_view:bottom", function (e, bottom) {
+            $(".wptNotice").animate({bottom: bottom}, 60);
+        });
+
+        setTimeout(function() {
+            $(document.body).trigger('wptNotice_view:hide');
+        }, time);
+    }
+
+    //loading
+    function wptLoading(msg, callback, time) {
+        time = typeof time == "undefined" ? 1000 : time;
+        maskIsHide = false;
+        $(".wptLoading .loading").html(msg);
+
+        $(".wptLoading").show();
+        $(".wptLoading .loading").animate({opacity: 1}, time, function(){
+            if (typeof(callback) == 'function') callback();
+        });
+
+        $(document).off("wptLoading_view:hide").one("wptLoading_view:hide", function (e) {
+            maskIsHide = true;
+            $(".wptLoading .loading").css({opacity: 0});
+            $(".wptLoading").hide();
+        });
+
+        $(document).off("wptLoading_view:msg").on("wptLoading_view:msg", function (e, msg) {
+            $(".wptLoading .loading").html(msg);
+        });
+    }
+</script>
+
+<div class="wptShare">
+    <div class="wptMask"></div>
+    <div class="shareTip"></div>
+</div>
+
+<div class="wptAlert">
+    <div class="wptMask"></div>
+    <div class="dialog">
+        <div class="tip">
+            <div class="msg"></div>
+        </div>
+        <div class="btns">
+            <div class="btn-confirm">知道了</div>
+        </div>
+    </div>
+</div>
+
+<div class="wptConfirm">
+    <div class="wptMask"></div>
+    <div class="dialog">
+        <div class="tip">
+            <div class="msg"></div>
+        </div>
+        <div class="btns">
+            <div class="btn-confirm sure">确定</div>
+            <div class="btn-cancel">取消</div>
+        </div>
+    </div>
+</div>
+
+<div class="wptMultiConfirm">
+    <div class="wptMask"></div>
+    <div class="dialog">
+        <div class="tip">
+            <div class="msg"></div>
+        </div>
+        <div class="btns">
+            <div class="btn-cancel">取消</div>
+        </div>
+    </div>
+</div>
+
+<div class="wptPassword">
+    <div class="dialog">
+        <div class="tip">请输入交易密码</div>
+        <div class="password">
+            <div class="passwordKey" num=""></div>
+            <div class="passwordKey" num=""></div>
+            <div class="passwordKey" num=""></div>
+            <div class="passwordKey" num=""></div>
+            <div class="passwordKey" num=""></div>
+            <div class="passwordKey" num=""></div>
+        </div>
+    </div>
+    <div class="keyboard">
+        <ul>
+            <li class="num">1</li>
+            <li class="num">2</li>
+            <li class="num">3</li>
+            <li class="num">4</li>
+            <li class="num">5</li>
+            <li class="num">6</li>
+            <li class="num">7</li>
+            <li class="num">8</li>
+            <li class="num">9</li>
+            <li class="blank">取 消</li>
+            <li class="num">0</li>
+            <li class="delete"></li>
+        </ul>
+    </div>
+</div>
+
+<div class="wptNotice">
+    <div class="msg"><img src="__HOME__img/logo256.jpg"><span></span></div>
+    <div class="btn">关 闭</div>
+</div>
+
+<div class="wptLoading">
+    <div class="wptMask"></div>
+    <div class="loading"></div>
+</div>
+
+<div style="display:none; text-align: center;"><img src="" width="0" height="0" /></div>
+</body>
+</html>

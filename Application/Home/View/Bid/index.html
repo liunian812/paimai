@@ -1,0 +1,50 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/buyer-auction-list-v1.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="js">
+	<script src="__HOME__js/widget/scrollLoad.js"></script>
+	<script src="__HOME__js/pages/seller-goods-list.js"></script>
+    <script>
+		var _onsaleApi = "";
+        var _page = 1;
+        var _listApi = '{:U('Bid/index', array('type'=>$type))}';
+        function _listMoreHandler(data) {
+            if (!window.$listWrap) {
+                window.$listWrap = $('#item-list');
+            }
+            if (data.htmlString) {
+                var $list = $(data.htmlString);
+                $listWrap.append($list);
+				// 设置倒计时
+                initCountdown($list.find('[data-endtime]'));
+                // 设置图片居中
+                initImageCenter($list.find('.img-center'));
+                // 设置图片懒加载
+                initImageLazy($list.find('.lazy'));
+            }
+        }
+    </script>
+</block>
+<block name="main">
+	<div class="am-g">
+		<nav class="ui-page-nav">
+			<ul>
+			    <li <eq name="type" value="sale">class="active"</eq>><a href="{:U('Bid/index/', array('type'=>'sale'))}">拍卖中</a></li>
+			    <li <eq name="type" value="end">class="active"</eq>><a href="{:U('Bid/index/', array('type'=>'end'))}">已结束</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="am-g">
+	    <div class="ui-section">
+	        <div class="ui-section-bd">
+	            <style type="text/css">
+	                .goods-list .action li {
+	                    width: 50%;
+	                }
+	            </style>
+		        <ul class="ui-list goods-list" id="item-list"></ul>
+	        </div>
+	    </div>
+	</div>
+</block>

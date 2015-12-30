@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://pai.ys.com/user/account/paypwd -->
+<html lang="zh-CN" class="js cssanimations"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>手机拍卖用拍卖神器</title>
+    <meta name="keywords">
+    <meta name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+<link rel="stylesheet" href="css/amazeui.min.css">
+<link rel="stylesheet" href="css/common.css">
+
+    
+
+
+<script src="js/hm.js"></script><script>
+    var _shareInfo = {
+        title: '拍卖神器',
+        content: '手机拍卖就用拍卖神器！',
+        pics: 'http://static.ys.com/pai/img/logo_120.jpg',
+        url: 'http://pai.ys.com'
+    };
+</script>
+
+<script src="js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: '',
+        timestamp: '',
+        nonceStr: '',
+        signature: '',
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'openLocation', 'getLocation', 'scanQRCode', 'openProductSpecificView', 'chooseWXPay']
+    });
+</script>
+
+
+</head>
+<body class="">
+    <div class="am-container">
+        <div class="am-g">
+            
+
+
+        </div>
+        
+
+<div class="am-g">
+    <form class="am-form am-form-horizontal mention-form" id="my-form" method="post" action="http://pai.ys.com/api/user/editpaypass">
+    <input type="hidden" name="goUrl" value="/user" disabled="disabled">
+
+    <ul class="ui-list">
+        <li class="ui-list-item">
+            <div class="ui-list-item-inner am-form-group">
+                <label class="am-u-sm-3 am-form-label">验证手机</label>
+                <span class="am-u-sm-9 ys-form-static">18201251519</span>
+                <input type="hidden" name="mobile" value="18201251519">
+            </div>
+        </li>
+
+        <li class="ui-list-item code">
+            <div class="ui-list-item-inner am-form-group">
+                <label class="am-u-sm-3 am-form-label">验证码</label>
+                <span class="am-u-sm-9">
+                    <input type="tel" class="am-input" name="code" value="" maxlength="4" autocomplete="off" placeholder="请输入验证码" data-delay="90" data-type="4">
+                    <a class="am-btn am-btn-secondary am-btn-sm btn-get-code" href="javascript:;" data-clicked="0" data-sendtarget="2200" data-template="Mobile_User_EditPayPassWord" data-method="0" data-delay="60">获取验证码</a>
+                </span>
+            </div>
+        </li>
+
+        <li class="ui-list-item">
+            <div class="ui-list-item-inner am-form-group">
+                <label class="am-u-sm-3 am-form-label">支付密码</label>
+                <span class="am-u-sm-9"><input class="am-input" type="password" name="paypassword" requied="" placeholder="支付密码"></span>
+            </div>
+        </li>
+    </ul><!-- /.ui-list -->
+
+    <div class="am-u-sm-12">
+        <button type="submit" class="am-btn am-btn-primary am-btn-block btn-submit">提交</button>
+    </div>
+    </form>
+</div><!-- /.am-g -->
+
+<script>
+    var _validateCodeApi = '/api/user/sendcode';
+</script>
+
+
+
+        <div class="am-g">
+            
+
+
+<nav class="bottom-bar fixed-bottom" id="bottom-bar">
+    <ul>
+
+        <li class="home ">
+
+            <a href="http://pai.ys.com/" title="首页">
+                <i class="ys-icon-bottom-bar-home"></i><span>首页</span>
+            </a>
+        </li>
+
+        <li class="auction ">
+
+            <a href="http://pai.ys.com/user/auction/item-auction-list" title="我参加的拍卖">
+                <i class="ys-icon-bottom-bar-auction"></i><span>我出价的</span>
+            </a>
+        </li>
+
+        <li class="post ">
+
+            <a class="post" href="javascript:;" title="发布拍品" data-am-modal="{target:&#39;#upload-actions&#39;}">
+                <i class="ys-icon-bottom-bar-post"></i><span>发布</span>
+            </a>
+        </li>
+
+        <li class="goods ">
+
+            <a href="http://pai.ys.com/user/product" title="拍品管理">
+                <i class="ys-icon-bottom-bar-goods"></i><span>我上传的</span>
+            </a>
+        </li>
+
+        <li class="user-home ">
+
+            <a href="http://pai.ys.com/user" title="用户中心">
+                <i class="ys-icon-bottom-bar-user"></i><span>我的</span>
+            </a>
+        </li>
+    </ul>
+</nav><!-- /.bottom-bar -->
+
+<div class="am-g">
+    <div class="am-modal-actions" id="upload-actions">
+        <div class="am-modal-actions-group">
+            <ul class="am-list">
+                <li>
+                    <a href="http://pai.ys.com/user/product/new-zengjia">普通增价拍发布</a>
+                </li>
+                <li>
+                    <a href="http://pai.ys.com/user/product/new-susheng">速胜增价拍发布</a>
+                </li>
+            </ul>
+        </div>
+        <div class="am-modal-actions-group">
+            <button class="am-btn am-btn-default am-btn-block" data-am-modal-close="">取消</button>
+        </div>
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/ejs.min.js"></script>
+<script src="js/amazeui.min.js"></script>
+<script src="js/common.js"></script><script src="js/main.js"></script>
+
+    
+    <script src="js/validateCodeButton.js"></script>
+    <script src="js/account-pay-password.js"></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a61f55850f1bd2f0bb5573a28426d393";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body></html>

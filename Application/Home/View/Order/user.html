@@ -1,0 +1,64 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/order-list.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+
+<block name="js">
+	<script src="__HOME__js/widget/scrollLoad.js"></script>
+	<script src="__HOME__js/pages/order-list.js"></script>
+    <script>
+        var _page = 1;
+        var _listApi = '{:U('user', array('status'=>$status))}';
+        function _listMoreHandler(data) {
+            if (!window.$listWrap) {
+                window.$listWrap = $('#item-list');
+            }
+            if (data.htmlString) {
+                var $list = $(data.htmlString);
+                $listWrap.append($list);
+                // 设置图片居中
+                initImageCenter($list.find('.img-center'));
+                // 设置图片懒加载
+                initImageLazy($list.find('.lazy'));
+            }
+        }
+    </script>
+</block>
+<block name="main">
+	<div class="am-g">
+		<nav class="ui-page-nav">
+			<ul class="order-menu">
+				<li <eq name="status" value="1">class="active"</eq> data-page-url="{:U('user',array('status'=>1))}">
+					<a href="{:U('user',array('status'=>1))}">
+						<span>待付款</span>
+					</a>
+				</li>
+				<li <eq name="status" value="2">class="active"</eq> class="" data-page-url="{:U('user',array('status'=>2))}">
+					<a href="{:U('user',array('status'=>2))}">
+						<span>待发货</span>
+					</a>
+				</li>
+				<li <eq name="status" value="3">class="active"</eq> class="" data-page-url="{:U('user',array('status'=>3))}">
+					<a href="{:U('user',array('status'=>3))}">
+						<span>待收货</span>
+					</a>
+				<li <eq name="status" value="4">class="active"</eq> class="" data-page-url="{:U('user',array('status'=>4))}">
+					<a href="{:U('user',array('status'=>4))}">
+						<span>已成功</span>
+					</a>
+				</li>
+				<li <eq name="status" value="5">class="active"</eq> class="" data-page-url="{:U('user',array('status'=>5))}">
+					<a href="{:U('user',array('status'=>5))}">
+						<span>已关闭</span>
+					</a>
+				</li>
+		</ul>
+		</nav>
+	</div>
+	<div class="am-g">
+		<div id="item-list" class="order-list"></div>
+		<div class="loading" id="loading" style="display:block">
+			<i class="am-icon-spinner am-icon-spin"></i>
+		</div>
+	</div>
+</block>

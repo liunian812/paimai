@@ -1,0 +1,179 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/share.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+
+<block name="js">
+    <script type="text/javascript">
+        var curUrl = '{:U('Share/send')}';
+        var pageloadOver = false;
+        var nowHour = new Date().getHours();
+        var saleIdList = {$share_list};
+        $(function() {
+            //选中/取消 拍品
+            $(".goods-list").on("click", ".saleItem", function(){
+                var self = $(this);
+                if(self.find(".selected").length > 0){
+                    self.find(".selected").remove();
+                    var index = saleIdList.indexOf(self.attr("saleId"));
+                    if(index > -1) {
+                        saleIdList.splice(index,1);
+                    }
+                } else {
+                    if(self.find(".shareMask").length == 0) {
+                        if (saleIdList.length < 9) {
+                            saleIdList.push(self.attr("saleId"));
+                            self.find(".item").append('<div class="selected"></div>');
+                        } else {
+                            alert("最多选择9个拍品");
+                        }
+                    }else{
+                        alert("先分享");
+
+                    }
+                }
+            });
+
+            //群发
+            $(".send").on("click", function(){
+				if(nowHour <= 7){
+					alert("0点到7点不能群发，以免打扰买家休息！怎么这么不懂事呢！");
+					return false;
+				}
+                var self = $(this);
+                if(self.hasClass("doing")) {
+                    return false;
+                }
+                if(saleIdList.length == 0) {
+                    alert("请选择群发的拍品信息");
+                    self.removeClass("doing");
+                    return false;
+                }
+                if(saleIdList.length > 9) {
+                    alert("一次群发最多选择9个拍品");
+                    self.removeClass("doing");
+                    return false;
+                }
+                if(saleIdList.length > 0) {
+                    $.ajax({
+                        url: curUrl,
+                        data: {saleIds: saleIdList},
+                        type: 'post',
+                        dataType: 'json',
+                        success: function(res){
+                            // YS.Utils.showAlert('拍品信息进入群发队列，稍后进行发送');
+                            YS.Utils.showAlert({
+                                content: res.resultMessage,
+                                onButtonClick: function() {
+                                    YS.Utils.goUrl(res.goUrl)
+                                }
+                            });
+                        },
+                        error: function(){
+                            // YS.Utils.showAlert();
+                            alert('网络异常...');
+                        }
+                    });
+
+                    // $.getJSON("&saleIds="+saleIdList.toString(), function (res) {
+                    //     if(res.errcode == 0) {
+                    //         alert("拍品信息进入群发队列，稍后进行发送", function(){
+                    //             window.location.reload();
+                    //         });
+                    //     } else {
+                    //         alert('网络异常...');
+                    //     }
+                    //     self.removeClass("doing");
+                    // });
+                }
+            });
+
+            //去分享
+            $(".goods-list").on("click", ".shareMask", function(){
+                var self = $(this);
+                alert('立即去分享');
+                window.location.href = self.parents(".saleItem").attr("url");
+                return false;
+            });
+            //0点-7点静止
+            if(nowHour <= 7){
+                alert("0点到7点不能群发，以免打扰买家休息！");
+            }
+        });
+    </script>
+</block>
+
+<block name="main">
+<div class="am-g">
+    <div class="am-u-sm-12">
+        <div class="ui-tip">
+            <button type="submit" class="am-btn am-btn-primary am-btn-block send">群发</button>
+    		<h2>今天剩余群发消息：{$yifa_num}</h2>
+            <h3>多品消息一次能发9个拍品（消息样式：单品/多品）</h3>
+        </div>
+    </div>
+</div>
+<div class="am-g">
+    <div class="ui-section goods-section">
+        <div class="ui-section-bd">
+         	<ul class="ui-list goods-list" id="item-list">
+
+                <volist name="product_list" id="val">
+                    <li class="ui-list-item saleItem" saleId="{$val['product_id']}" url="{:U('Index/product', array('id'=>$val['product_id']))}">
+                        <div class="ui-list-item-inner item" id="item-{$val['product_id']}" data-page-url="javascript:void(0);">
+                            <a class="am-img-thumbnail img-center" href="javascript:void(0);" style="height: 125px;">
+                                <img alt="{$val['product_name']}" class="lazy" data-height="852" data-original="{$val['product_img']}" data-width="1280" src="{$val['product_img']}" style="display: block; max-width: none; width: 187px; height: 125px; margin: 0px -31px;">
+                            </a>
+                            <dl class="info">
+                                <dt>{$val['product_name']}</dt>
+                                <switch	name="val['product_type']">
+                                    <case value="1|2">
+                                        <dd class="money bail">
+                                            <label>保证金:</label><i>¥</i><em>{$val['bail_money']}</em>
+                                        </dd>
+                                        <dd class="money step">
+                                            <label>加价幅度:</label><i>¥</i><em><em>{$val['range_price']}</em></em>
+                                        </dd>
+                                        <dd class="money current">
+                                            <label>开始价:</label><i>¥</i><em><em>{$val['start_price']}</em></em>
+                                        </dd>
+                                    </case>
+                                    <case value="3">
+                                        <dd class="money bail">
+                                            <label>保证金:</label><i>¥</i><em>{$val['bail_money']}</em>
+                                        </dd>
+                                        <dd class="money current">
+                                            <label>秒杀价:</label><i>¥</i><em><em>{$val['range_price']}</em></em>
+                                        </dd>
+                                        <dd class="money current">
+                                            <label>秒杀数:</label><i></i><em><em>{$val['reserve_price']}</em></em>
+                                        </dd>
+                                    </case>
+                                </switch>
+                                <dd class="type blue">
+                                    <span>{:get_product_type($val['product_type'])}</span>
+                                </dd>
+                                <dd class="time">
+                                    <label>剩:</label>
+                                    <span data-endtime="{$val['end_time']}"></span>
+                                </dd>
+                            </dl>
+                            <eq name="val['is_share']" value="1">
+                                <div class="selected"></div>
+                            <else />
+                                <div class="shareMask">
+                                    <div class="share">
+                                        <div class="button">立即分享</div>
+                                        <div class="tips">分享拍品后才能群发</div>
+                                    </div>
+                                </div>
+                            </eq>
+                        </div>
+                    </li>
+                </volist>
+
+            </ul>
+        </div>
+    </div>
+</div>
+</block>

@@ -1,0 +1,67 @@
+<div class="hdtop">
+	<a href="javascript:void(0);" class="tja">认证列表</a>
+
+	<div class="clear"></div>
+</div>
+
+<div class="hdbot">
+<style media="screen">
+	.head910 td {
+		background-color:#08a3bb;
+		line-height: 33px;
+		color: #fff;
+		font-size: 14px;
+	}
+</style>
+<table width="910" border="0" cellspacing="1" cellpadding="0" class="table1 tab">
+	<tr class="head910">
+		<td align="center"><input type="checkbox" class="allcheck">ID</td>
+		<td align="center">类型</td>
+		<td align="center">真实姓名</td>
+		<td align="center">申请时间</td>
+		<td align="center">更新时间</td>
+		<td align="center">状态</td>
+		<td align="center">操作</td>
+	</tr>
+	<volist name="list" id="v">
+		<tr>
+			<td align="center"><input type="checkbox" name="id" value="{$v['id']}">{$v['id']}</td>
+			<td align="center">
+				<switch name="v['type']">
+					<case value="1">个人认证</case>
+					<case value="2">企业认证</case>
+				</switch>
+			</td>
+			<td align="center">{$v['extend'][0]}</td>
+			<td align="center">{:date('Y-m-d H:i:s', $v['create_time'])}</td>
+			<td align="center">{:date('Y-m-d H:i:s', $v['update_time'])}</td>
+			<td align="center">
+				<switch name="v['status']">
+					<case value="0">拒绝</case>
+					<case value="1">未认证</case>
+					<case value="2">已认证</case>
+				</switch>
+			</td>
+			<td align="center">
+				<a href="{:U('authShow',array('id'=>$v['id']))}" class="xga">查看</a>
+			</td>
+
+
+		</tr>
+	</volist>
+</table>
+<style media="screen">
+	.position {
+		margin-top: 12px;
+		height: 25px;
+		background-color: #FF9A1A;
+		border: 1px solid #E5EB1B;
+		color: #FFF;
+	}
+</style>
+<div class="tableb">
+	<div class="tablebnr page">
+		{$_page}
+	</div>
+</div>
+</div>

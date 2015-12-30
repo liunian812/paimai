@@ -1,0 +1,6 @@
+/*!
+ * M.YS.COM v0.0.0
+ * Copyright 2015
+ * Author burning <iburning@live.cn>
+ */
+var ValidateCodeButton=function(a){var b=this;b.DEFUATL={button:null,mobile:null,apiUrl:_validateCodeApi,delay:90},a&&b.init(a)};ValidateCodeButton.prototype.init=function(a){var b=this;$.extend(b,b.DEFUATL,a||{}),b.delay=b.button.data("delay")||b.delay,b.button.data("delay",b.delay),b.apiUrl=b.button.data("api")||b.apiUrl,b._bindEvent()},ValidateCodeButton.prototype._bindEvent=function(){var a=this,b=a.button;b.on("click",function(c){c.preventDefault(),0===parseInt(b.data("clicked"))&&(utils.showMask({isShowLoading:!0}),utils.ajax({url:a.apiUrl,data:{method:b.data("method"),sendtarget:b.data("sendtarget"),template:b.data("template"),mobile:a.mobile.val()},success:function(b){utils.hideMask(),utils.showAlert({content:b.resultMessage}),1===b.resultCode&&a.lock()},error:function(a){}}))})},ValidateCodeButton.prototype.lock=function(){var a=this,b=a.button;b.addClass("am-disabled"),b.data("clicked",1);var c=setInterval(function(){var d=b.data("delay");d>0?(d--,b.data("delay",d),b.html(d+"秒后重发")):(b.html("获取语音验证码"),b.removeClass("am-disabled"),b.data("method","1"),b.data("clicked","0"),b.data("delay",a.delay),window.clearInterval(c))},1e3)};

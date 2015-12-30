@@ -1,0 +1,40 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/user-collection-goods.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="js">
+	<script src="__HOME__js/widget/scrollLoad.js"></script>
+	<script src="__HOME__js/pages/user-collection-goods.js"></script>
+    <script>
+        var _page = 1;
+        var _listApi = '{:U('Collect/product')}';
+		var _delApi = '{:U('Collect/unCollect')}';
+        function _listMoreHandler(data) {
+            if (!window.$listWrap) {
+                window.$listWrap = $('#item-list');
+            }
+            if (data.htmlString) {
+                var $list = $(data.htmlString);
+                $listWrap.append($list);
+                // 设置图片居中
+                initImageCenter($list.find('.img-center'));
+                // 设置图片懒加载
+                initImageLazy($list.find('.lazy'));
+            }
+        }
+    </script>
+</block>
+<block name="main">
+	<div class="am-g">
+	    <nav class="ui-page-nav">
+	        <ul>
+	            <li><a href="{:U('Collect/index')}">店铺</a></li>
+	            <li class="active"><a href="{:U('Collect/product')}">拍品</a></li>
+	        </ul>
+	    </nav>
+        <div id="item-list" class="goods-list"></div>
+        <div class="loading" id="loading" style="display: none;">
+            <i class="am-icon-spinner am-icon-spin"></i>
+        </div>
+	</div>
+</block>

@@ -1,0 +1,31 @@
+<volist name="collect_list" id="val">
+    <div class="ui-section item">
+        <div class="ui-section-bd">
+            <div class="user-info">
+                <a class="avatar" href="{:U('Shop/user', array('id'=>$val['user_info']['user_id']))}">
+                    <img src="{$val['user_info']['user_avatar']}">
+                </a>
+                <a class="nickname" href="{:U('Shop/user', array('id'=>$val['user_info']['user_id']))}">{$val['user_info']['user_name']}</a>
+            </div>
+            <div class="goods-info" data-page-url="{:U('Index/product', array('id'=>$val['product']))}">
+                <a class="am-img-thumbnail img-center" href="{:U('Index/product', array('id'=>$val['product']))}" style="height: 80px;">
+                    <img alt="{$val['product_info']['product_name']}" class="lazy" data-original="{:C('WEB_SITE_URL')}/{$val['product_info']['product_img']}" src="{:C('WEB_SITE_URL')}/{$val['product_info']['product_img']}" style="display: block; max-width: none; width: 80px; height: 80px; margin: 0px;">
+                </a>
+                <div class="info">
+                    <h3><a href="{:U('Index/product', array('id'=>$val['product']))}">{$val['product_info']['product_name']}</a></h3>
+                    <ul>
+                        <li class="type">{$product_type[$val[product_info]['product_type']]}</li>
+                        <li class="money"><label>当前价:</label><i>¥</i><em>{:max_bid_price($val['product_info']['product_id'])}</em></li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="action">
+                <li style="width:100%;">
+                    <a class="view" href="{:U('Index/product', array('id'=>$val['product']))}">
+                        <i class="ys-icon-goods-view"></i><span>查看</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</volist>

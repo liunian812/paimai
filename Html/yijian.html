@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://pai.ys.com/user/feedback/Add -->
+<html lang="zh-CN" class="js cssanimations"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>意见反馈</title>
+    <meta name="keywords">
+    <meta name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+<link rel="stylesheet" href="css/amazeui.min.css">
+<link rel="stylesheet" href="css/common.css">
+
+    
+    <link rel="stylesheet" href="css/user-feedback.css">
+
+
+<script src="js/hm.js"></script><script>
+    var _shareInfo = {
+        title: '拍卖神器',
+        content: '手机拍卖就用拍卖神器！',
+        pics: 'http://static.ys.com/pai/img/logo_120.jpg',
+        url: 'http://pai.ys.com'
+    };
+</script>
+
+<script src="js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: 'wxef5047e223dc7570',
+        timestamp: '1444638039',
+        nonceStr: 'Gpx58DWjwD8vjixz',
+        signature: '98a435cc6b9511a19c12ed848e36c2b0abc513e3',
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'openLocation', 'getLocation', 'scanQRCode', 'openProductSpecificView', 'chooseWXPay']
+    });
+</script>
+
+
+</head>
+<body class="">
+    <div class="am-container">
+        <div class="am-g">
+            
+    <script>
+        // var _isDebug = true;
+        var _getImageUrlApi = '/api/wechat/image/sync';
+
+        // 上传配置
+        var _previewExt = '_240.jpg';       // '_120.jpg';  // 预览图片后缀
+        // 藏品图片
+        var _fileNumLimit = 3;
+        var _images = [];
+    </script>
+
+        </div>
+        
+<div class="am-g">
+    <form class="am-form am-form-horizontal" id="my-form" method="post" action="http://pai.ys.com/api/feedback/send">
+        <input type="hidden" name="goUrl" value="user-home.html" disabled="disabled">
+
+        <ul class="ui-list">
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <input type="text" class="am-input" name="email" maxlength="30" placeholder="邮箱（选填）以便我们给你回复">
+                </div>
+            </li>
+        </ul>
+
+        <ul class="ui-list">
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <textarea class="am-input" name="content" rows="5" maxlength="200" placeholder="请输入您的问题或建议（200字以内）"></textarea>
+                </div>
+            </li>
+        </ul>
+
+        <div class="ui-list-item-inner upload-tip" id="upload-tip" style="display:none;">
+            <p>上传中<em class="current">1</em>/<em class="total">1</em></p>
+        </div>
+
+        <ul class="ui-list file-container">
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner file-list" id="file-list">
+                    <div class="file-picker" id="file-picker">+</div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="am-u-sm-12">
+            <button type="submit" class="am-btn am-btn-primary am-btn-block">发送</button>
+        </div>
+
+    </form>
+
+    <div id="log" style="display:none"></div>
+</div><!-- /.am-g -->
+
+
+        <div class="am-g">
+            
+        </div>
+    </div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/ejs.min.js"></script>
+<script src="js/amazeui.min.js"></script>
+<script src="js/common.js"></script><script src="js/main.js"></script>
+
+    
+    <script src="js/fileInput.js"></script>
+    <script src="js/user-feedback.js"></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a61f55850f1bd2f0bb5573a28426d393";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body></html>

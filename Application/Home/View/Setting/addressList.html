@@ -1,0 +1,83 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/address-list.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>" >
+</block>
+
+<block name="js">
+<script src="__HOME__js/pages/address-list.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+</block>
+<block name="main">
+    <div class="am-g">
+        <ul class="ui-list">
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner">
+                    <a class="btn-add-address" href="{:U('addAddress')}">
+                        <i class="ys-icon-add"></i><span>添加收货地址</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <div id="item-list" class="address-list <notempty name="order_id">selector</notempty>">
+        <empty name="consign_list">
+            <div class="ui-section no-item" id="no-item">暂无数据</div>
+        <else />
+        <volist name="consign_list" id="val">
+            <div class="ui-section" id="item-{$val['address_id']}">
+                <empty name="order_id">
+                <div class="ui-section-hd">
+                    <eq name="val['is_default']" value="1">
+                    <h3 style="color:#e43a3d;">默认地址</h3>
+                    <else />
+                    <h3><a class="set-default" href="javascript:;" data-id="{$val['address_id']}">设为默认</a></h3>
+                    </eq>
+                    <a class="edit" href="{:U('editAddress', array('address_id'=>$val['address_id']))}">修改</a>
+                    <a class="del" href="javascript:;" data-id="{$val['address_id']}">删除</a>
+                </div>
+                </empty>
+                <div class="ui-section-bd">
+                    <ul <notempty name="order_id">data-id="{$val['address_id']}"</notempty>>
+                        <li class="name">
+                            <label>收货人:</label>
+                            <span>{$val['consign_name']}</span>
+                        </li>
+                        <li class="mobile">
+                            <label>手机号码:</label>
+                            <span>{$val['mobile']}</span>
+                        </li>
+                        <li class="address">
+                            <label>收货地址:</label>
+                            <span>
+                                <volist name=":json_decode($val['area'], true)" id="area">
+                                    {$area}&nbsp;
+                                </volist>
+                                {$val['address']}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </volist>
+        </empty>
+        </div>
+        <div class="loading" id="loading" style="display:none;">
+            <i class="am-icon-spinner am-icon-spin"></i>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    var _jumpUrl = '<?php echo U('Order/index', array('order_id'=>$order_id, 'address_id'=>"-addressId-")); ?>';
+    var _listApi = '{:U('addressList')}';
+    var _setDefaultApi = '{:U('setDefault')}';
+    var _delApi = '{:U('delAddress')}';
+
+    function _listMoreHandler(data) {
+        if (!window.$listWrap) {
+            window.$listWrap = $('#item-list');
+        }
+        if (data.htmlString) {
+            var $list = $(data.htmlString);
+            $listWrap.append($list);
+        }
+    }
+</script>
+</block>

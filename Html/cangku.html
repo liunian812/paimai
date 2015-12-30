@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://pai.ys.com/user/product/item-inventory-list -->
+<html lang="zh-CN" class="js cssanimations"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>手机拍卖用拍卖神器</title>
+    <meta name="keywords">
+    <meta name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+<link rel="stylesheet" href="css/amazeui.min.css">
+<link rel="stylesheet" href="css/common.css">
+
+    
+    <link rel="stylesheet" href="css/seller-goods-list.css">
+
+
+<script src="js/hm.js"></script><script>
+    var _shareInfo = {
+        title: '拍卖神器',
+        content: '手机拍卖就用拍卖神器！',
+        pics: 'http://static.ys.com/pai/img/logo_120.jpg',
+        url: 'http://pai.ys.com'
+    };
+</script>
+
+<script src="js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: 'wxef5047e223dc7570',
+        timestamp: '1444633425',
+        nonceStr: 'i0G6k3zymIZMH0R8',
+        signature: 'ced41cd74f35190bf1776e720eef166c678ab085',
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'openLocation', 'getLocation', 'scanQRCode', 'openProductSpecificView', 'chooseWXPay']
+    });
+</script>
+
+    <script>
+        var _onsaleApi = "";
+
+    </script>
+
+</head>
+<body class="">
+    <div class="am-container">
+        <div class="am-g">
+            
+
+<nav class="ui-page-nav">
+    <ul>
+        <li class=""><a href="yuzhan.html">预展中</a></li>
+        <li class=""><a href="goods.html">拍卖中</a></li>
+        <li class="active"><a href="cangku.html">仓库中</a></li>
+    </ul>
+</nav>
+
+
+        </div>
+        
+<div class="am-g">
+
+
+
+
+        <div id="item-list" class="goods-list">
+        <div class="ui-section item" id="item-3868">
+            <div class="ui-section-bd">
+                <div class="goods-info" data-page-url="/art/3868">
+                    <a class="am-img-thumbnail img-center" href="http://pai.ys.com/art/3868" style="height: 80px;">
+                        <img class="lazy" data-height="640" data-original="http://img.pai.ys.com/2015/1012/a5/a541d6f5426ee7cb921a76d77e54eeca.jpg_240.jpg" data-width="854" src="./手机拍卖用拍卖神器_files/a541d6f5426ee7cb921a76d77e54eeca.jpg_240.jpg" style="display: block; max-width: none; width: 106px; height: 80px; margin: 0px -13px;">
+                    </a>
+                    <div class="info">
+                        <h3><a href="http://pai.ys.com/art/3868">高档奖状形蛋糕</a></h3>
+                        <ul>
+                            <li class="type">普通增价拍</li>
+                            <li class="money start"><label>起拍价:</label><i>¥</i><em>1,000</em></li>
+                            <li class="money reserve"><label>保留价:</label><i>¥</i><em>0</em></li>
+                            <li class="money range"><label>加价幅度:</label><i>¥</i><em>100</em></li>
+                        </ul>
+                    </div>
+                </div><!-- /.goods-info -->
+                <ul class="action">
+                    <li>
+                        <a class="edit" href="new-zengjia.html">
+                            <i class="ys-icon-goods-edit"></i><span>编辑</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="onsale" href="javascript:;" data-id="3868">
+                            <i class="ys-icon-goods-onsale"></i><span>上架</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="del" href="javascript:;" data-id="3868">
+                            <i class="ys-icon-goods-delete"></i><span>删除</span>
+                        </a>
+                    </li>
+                </ul><!-- /.action -->
+            </div>
+        </div></div>
+        <div class="loading" id="loading" style="display: none;">
+            <i class="am-icon-spinner am-icon-spin"></i>
+        </div>
+
+</div>
+
+<script type="text/javascript">
+    var _page = 1;
+    var _listApi = '/user/shared/AjaxProductListInventory';
+
+    var _offsaleApi = '/api/product/underframe';
+    var _onsaleApi = '/api/product/upframe';
+    var _delApi = '/api/product/delete';
+
+    function _listMoreHandler(data) {
+        if (!window.$listWrap) {
+            window.$listWrap = $('#item-list');
+        }
+
+        if (data.htmlString) {
+            var $list = $(data.htmlString);
+            $listWrap.append($list);
+
+            // 设置倒计时
+            initCountdown($list.find('[data-endtime]'));
+
+            // 设置图片居中
+            initImageCenter($list.find('.img-center'));
+
+            // 设置图片懒加载
+            initImageLazy($list.find('.lazy'));
+        }
+    }
+</script>
+
+        <div class="am-g">
+            
+
+
+<nav class="bottom-bar fixed-bottom" id="bottom-bar">
+    <ul>
+
+        <li class="home ">
+
+            <a href="http://pai.ys.com/" title="首页">
+                <i class="ys-icon-bottom-bar-home"></i><span>首页</span>
+            </a>
+        </li>
+
+        <li class="auction ">
+
+            <a href="http://pai.ys.com/user/auction/item-auction-list" title="我参加的拍卖">
+                <i class="ys-icon-bottom-bar-auction"></i><span>我出价的</span>
+            </a>
+        </li>
+
+        <li class="post ">
+
+            <a class="post" href="javascript:;" title="发布拍品" data-am-modal="{target:&#39;#upload-actions&#39;}">
+                <i class="ys-icon-bottom-bar-post"></i><span>发布</span>
+            </a>
+        </li>
+
+        <li class="goods active">
+
+            <a href="http://pai.ys.com/user/product" title="拍品管理">
+                <i class="ys-icon-bottom-bar-goods"></i><span>我上传的</span>
+            </a>
+        </li>
+
+        <li class="user-home ">
+
+            <a href="http://pai.ys.com/user" title="用户中心">
+                <i class="ys-icon-bottom-bar-user"></i><span>我的</span>
+            </a>
+        </li>
+    </ul>
+</nav><!-- /.bottom-bar -->
+
+<div class="am-g">
+    <div class="am-modal-actions" id="upload-actions">
+        <div class="am-modal-actions-group">
+            <ul class="am-list">
+                <li>
+                    <a href="http://pai.ys.com/user/product/new-zengjia">普通增价拍发布</a>
+                </li>
+                <li>
+                    <a href="http://pai.ys.com/user/product/new-susheng">速胜增价拍发布</a>
+                </li>
+            </ul>
+        </div>
+        <div class="am-modal-actions-group">
+            <button class="am-btn am-btn-default am-btn-block" data-am-modal-close="">取消</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+        </div>
+    </div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/ejs.min.js"></script>
+<script src="js/amazeui.min.js"></script>
+<script src="js/common.js"></script><script src="js/main.js"></script>
+
+    
+    <script src="js/scrollLoad.js"></script>
+    <script src="js/seller-goods-list.js"></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a61f55850f1bd2f0bb5573a28426d393";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<div class="am-modal am-modal-confirm am-modal-out" tabindex="-1" id="my-confirm" style="display: none; margin-top: -52px;">                <div class="am-modal-dialog">                    <div class="am-modal-hd"></div>                    <div class="am-modal-bd">是否删除？</div>                    <div class="am-modal-footer">                        <span class="am-modal-btn btn-cancel" data-am-modal-cancel="">取消</span>                        <span class="am-modal-btn btn-confirm" data-am-modal-confirm="">确定</span>                    </div>                </div>            </div><div class="am-dimmer" data-am-dimmer="" style="display: none;"></div></body></html>

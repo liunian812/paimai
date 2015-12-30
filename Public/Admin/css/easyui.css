@@ -1,0 +1,21 @@
+.panel { overflow: hidden; text-align: left;cursor:pointer}
+.panel-body { border-width: 1px; border-style: solid;border-color:#d2d2d2}
+.panel-header-noborder {border-width: 0 0 1px 0;}
+.panel-loading { padding: 11px 0px 10px 30px;}
+.panel-noscroll { overflow: hidden;}
+.panel-fit,.panel-fit body { height: 100%; margin: 0;padding: 0;border: 0; overflow: hidden;}
+.panel-body {border-color: #d2d2d2; color: #788088;}
+.combo {display: inline-block;white-space: nowrap; margin: 0;  border-width: 1px; border-style: solid; overflow: hidden;vertical-align: middle;}
+.combo .combo-text {font-size: 12px;border: 0px;line-height: 20px;height: 20px;margin: 0;padding: 0px 0px; *margin-top: -1px; *height: 18px; *line-height: 18px; _height: 18px; _line-height: 18px;vertical-align: baseline; color:#788088; padding-left:10px;background:#fafafa;}
+.combo-arrow { width: 19px;  height: 23px; overflow: hidden;display: inline-block;vertical-align: top;cursor: pointer;}
+.combo-panel {overflow: auto;}
+/*.combo-arrow {background: url('../images/combo_arrow.png') no-repeat center center;}*/
+.combo-arrow { background:url(../images/selectjian.png) no-repeat center; background-size:cover}
+.combo,.combo-panel { background-color: #ffffff;}
+.combo {border-color:#d2d2d2;background-color: #ffffff;}  /*边框颜色*/
+.combobox-item,.combobox-group { font-size: 12px; padding: 3px; padding-right: 0px;}
+.combobox-gitem { padding-left: 10px;}
+.combobox-group {font-weight: bold;}
+/*.combobox-item-hover { background-color: #eaf2ff; color: #788088;}   /*下拉经过的字*/
+.combobox-item-selected { background-color: #eaf2ff; color: #788088;}  /*下拉选中的字*/
+

@@ -1,0 +1,20 @@
+<volist name="product_list" id="val">
+    <li class="ui-list-item">
+        <div class="ui-list-item-inner item" id="item-{$val['product_id']}" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+            <a class="am-img-thumbnail img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}">
+                <img alt="{$val['product_name']}" class="lazy" data-original="{$val['product_img']}" src="{$val['product_img']}">
+            </a>
+            <dl class="info">
+                <dt><a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a></dt>
+
+                <dd class="type blue">
+                    <span>{$product_type[$val['product_type']]}</span>
+                </dd>
+                <dd class="time">
+                    <label>剩:</label>
+                    <span data-endtime="{$val['end_time']}"></span>
+                </dd>
+            </dl>
+        </div>
+    </li>
+</volist>

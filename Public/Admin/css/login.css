@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0px; padding:0px;}
+body{ font-size:12px; font-family:"微软雅黑"; background:#fff;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, b, em, span, i, pre, form, fieldset, label, input, textarea, blockquote{
+
+    margin: 0;
+
+    padding: 0;
+
+	list-style:none;
+
+}
+img{ display:block; border:0px;}
+a{ text-decoration:none; color:#000;}
+a:hover{ text-decoration:none;}
+li{ list-style:none;}
+.f{ font-family:"宋体";}
+.clear{ clear:both;}
+
+
+.layout{ position:absolute; top:0px; right:0px; bottom:0px; left:0px; background:url(../images/login_bg.jpg) center no-repeat;}
+table{ width:370px; margin:0 auto;}
+table td{ padding-top:20px;}
+.td_01{ padding:0px;}
+table td img{ float:left;}
+.put_01{ float:left; background:none; border:none; outline:none; width:323px; height:47px; background:#fff; text-indent: 15px;}
+.put_02{ float:left; background:none; border:none; outline:none; width:155px; height:47px; background:#fff; text-indent: 15px;}
+.img{ float:right;}
+.sub{ background:none; border:none; outline:none; width:370px; height:47px; background:#08a4bd; font-size:14px; color:#fff;}

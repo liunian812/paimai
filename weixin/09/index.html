@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>富邦家居</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../wxbase/css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/page.css" media="all" />
+<script src="../wxbase/js/jquery.js" type="text/javascript"></script>
+<script src="../wxbase/js/idangerous.swiper.js" type="text/javascript"></script>
+<script src="js/page.js" type="text/javascript"></script>
+</head>
+<body id="homePage">
+<div id="mcover" onclick="document.getElementById('mcover').style.display='';"><img src="../wxbase/img/guide.png"></div>   
+<div class="banner">
+    <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><a href="content.html"><img src="image/x2.jpg" /><p>标题标题标题1</p></a></div>
+      <div class="swiper-slide"><a href="content.html"><img src="image/x3.jpg" /><p>标题标题标题2</p></a></div>
+      <div class="swiper-slide"><a href="content.html"><img src="image/x1.jpg" /><p>标题标题标题3</p></a></div>
+    </div>
+    <div class="pagination"></div>
+  </div>
+    <script type="text/javascript">
+       var mySwiper = new Swiper('.swiper-container',{
+			pagination: '.pagination',
+			paginationClickable: true,
+			autoplay:4000,
+			loop:true,
+			resizeReInit:true,
+			calculateHeight:true
+		  })
+    </script>
+</div>
+
+<ul class="mainmenu">
+    <li>
+        <a href="about.html">
+            <div class="menubtn">
+                <div class="menumesg">
+                    <div class="menuimg"><div class="menuimg2"><img src="img/004.jpg"></div></div>
+                    <div class="menutitle">公司简介</div>
+                    <div class="menutext"></div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="list.html">
+            <div class="menubtn">
+                <div class="menumesg">
+                    <div class="menuimg"><div class="menuimg2"><img src="img/005.jpg"></div></div>
+                    <div class="menutitle">最新资讯</div>
+                    <div class="menutext"></div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="activity.html">
+            <div class="menubtn">
+                <div class="menumesg">
+                    <div class="menuimg"><div class="menuimg2"><img src="img/002.jpg"></div></div>
+                    <div class="menutitle">优惠活动</div>
+                    <div class="menutext"></div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="zhaopin.html">
+            <div class="menubtn">
+                <div class="menumesg">
+                    <div class="menuimg"><div class="menuimg2"><img src="img/003.jpg"></div></div>
+                    <div class="menutitle">人才招聘</div>
+                    <div class="menutext"></div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="http://www.0478.me/weixin/heda/forum.php?mod=forumdisplay&fid=51">
+            <div class="menubtn">
+                <div class="menumesg">
+                    <div class="menuimg"><div class="menuimg2"><img src="img/001.jpg"></div></div>
+                    <div class="menutitle">小圈子</div>
+                    <div class="menutext"></div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li>
+        <a href="message.html">
+            <div class="menubtn">
+                <div class="menumesg">
+                    <div class="menuimg"><div class="menuimg2"><img src="img/006.jpg"></div></div>
+                    <div class="menutitle">留言板</div>
+                    <div class="menutext"></div>
+                </div>
+            </div>
+        </a>
+    </li>
+	<div class="clr"></div>
+</ul>
+
+<footer class="homeFooter">©2013 微信公众平台-富邦家居</footer>
+</body>
+</html>

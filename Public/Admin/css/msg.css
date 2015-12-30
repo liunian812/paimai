@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0px; padding:0px;}
+body{ font-size:12px; font-family:"微软雅黑"; background:#fff;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, b, em, span, i, pre, form, fieldset, label, input, textarea, blockquote{
+
+    margin: 0;
+
+    padding: 0;
+
+	list-style:none;
+
+}
+img{ display:block; border:0px;}
+a{ text-decoration:none; color:#000;}
+a:hover{ text-decoration:none;}
+li{ list-style:none;}
+.f{ font-family:"宋体";}
+.clear{ clear:both;}
+
+/*成功*/
+.success{ width:398px; height:115px; margin:0 auto; font-size:16px; color:#000000; background:url(../images/msg_03.png) left center no-repeat; padding-left:140px; line-height:32px;}
+.success span{ display:block; font-size:30px; color:#000000; line-height:48px; padding-top:6px;}
+.success a{ display:inline-block; width:75px; height:19px; line-height:19px; text-align:center; background:url(../images/msg_02.png) center center no-repeat; font-size:12px; color:#ffffff; margin-left:19px;}
+
+/*失败*/
+.error{ width:398px; height:115px; margin:0 auto; font-size:16px; color:#000000; background:url(../images/msg_01.png) left center no-repeat; padding-left:140px; line-height:32px;}
+.error span{ display:block; font-size:30px; color:#000000; line-height:48px; padding-top:6px;}
+.error a{ display:inline-block; width:75px; height:19px; line-height:19px; text-align:center; background:url(../images/msg_02.png) center center no-repeat; font-size:12px; color:#ffffff; margin-left:19px;}

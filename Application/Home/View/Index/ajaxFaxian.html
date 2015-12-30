@@ -1,0 +1,19 @@
+<empty name="product_info">
+    <div class="saleImg" style="background-image: url(__HOME__img/shake_nogoods.png);"></div>
+    <div class="noResult">亲，换个品类摇一摇？</div>
+<else />
+    <a href="{:U('Index/product', array('id'=>$product_info['product_id']))}">
+        <div class="saleImg" style="background-image: url({$product_info['product_img']});">
+            <div class="saleStatus">
+                <div class="enableReturn"></div>
+                <div class="freePost"></div>
+                <div class="bzj"></div>
+            </div>
+        </div>
+        <div class="saleSeller"></div>
+        <div class="saleDesc">【名称】： {$product_info['product_name']}</div>
+        <div class="saleBid">
+            当前竞拍价 <span>{:max_bid_price($product_info['product_id'])} 元</span>
+        </div>
+    </a>
+</empty>

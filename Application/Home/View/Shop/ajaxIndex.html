@@ -1,0 +1,15 @@
+<volist name="product_list" id="val">
+    <li class="ui-list-item">
+        <div class="ui-list-item-inner item" id="item-{$val['product_id']}" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+            <a class="am-img-thumbnail img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}" style="height: 125px;">
+                <img alt="{$val['product_name']}" class="lazy" data-height="526" data-original="{:C('WEB_SITE_URL')}/{$val['product_img']}"
+                data-width="790" src="{:C('WEB_SITE_URL')}/{$val['product_img']}" style="display: block; max-width: none; width: 187px; height: 125px; margin: 0px -31px;">
+            </a>
+            <dl class="info">
+                <dt>
+                    <a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a>
+                </dt>
+            </dl>
+        </div>
+    </li>
+</volist>

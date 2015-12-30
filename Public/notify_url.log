@@ -1,0 +1,469 @@
+执行日期：2015-11-19-19：37：17
+【接收到的notify通知】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[y79q58zcqkmx504zsyluim5op5u3rkjs]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511171736208797_292]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[BAEEED7F7108F842FC048B2AE8DD81A2]]></sign>
+<time_end><![CDATA[20151119193716]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191673807481]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-19：37：17
+【支付成功】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[y79q58zcqkmx504zsyluim5op5u3rkjs]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511171736208797_292]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[BAEEED7F7108F842FC048B2AE8DD81A2]]></sign>
+<time_end><![CDATA[20151119193716]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191673807481]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-19：37：17
+【支付成功】:
+NS201511171736208797
+
+
+执行日期：2015-11-19-19：37：17
+【支付成功】:
+array (
+  'order_id' => 'NS201511171736208797',
+  'shop_id' => '1',
+  'user_id' => '1',
+  'product_id' => '1',
+  'address_id' => '1',
+  'price' => '1',
+  'end_time' => '1447952980',
+  'create_time' => '1447752980',
+  'update_time' => '1447933028',
+  'status' => '1',
+  'trans_id' => '',
+  'kuaidi_gs' => '0',
+  'kuaidi_nu' => '',
+)
+
+
+执行日期：2015-11-19-19：40：31
+【接收到的notify通知】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[dd5w0bn44j1yb12bt0lu7cyys77l7tf4]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511171736208797_253]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[F28262AFCA1B457DB0DCF92513B120FA]]></sign>
+<time_end><![CDATA[20151119190623]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191673283813]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-19：40：31
+【支付成功】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[dd5w0bn44j1yb12bt0lu7cyys77l7tf4]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511171736208797_253]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[F28262AFCA1B457DB0DCF92513B120FA]]></sign>
+<time_end><![CDATA[20151119190623]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191673283813]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-19：40：31
+【支付成功】:
+NS201511171736208797
+
+
+执行日期：2015-11-19-19：40：31
+【支付成功】:
+array (
+  'order_id' => 'NS201511171736208797',
+  'shop_id' => '1',
+  'user_id' => '1',
+  'product_id' => '1',
+  'address_id' => '1',
+  'price' => '1',
+  'end_time' => '1448105837',
+  'create_time' => '1447752980',
+  'update_time' => '1447933037',
+  'status' => '2',
+  'trans_id' => '',
+  'kuaidi_gs' => '0',
+  'kuaidi_nu' => '',
+)
+
+
+执行日期：2015-11-19-19：55：50
+【接收到的notify通知】:
+
+
+
+执行日期：2015-11-19-19：55：54
+【接收到的notify通知】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[inr9tpg34oqejrpazi43jrdr6iyuncy0]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511171736208797_304]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[1E0144815BDDE5065B12E03F7670A0DF]]></sign>
+<time_end><![CDATA[20151119195553]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191674117822]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-19：55：54
+【支付成功】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[inr9tpg34oqejrpazi43jrdr6iyuncy0]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511171736208797_304]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[1E0144815BDDE5065B12E03F7670A0DF]]></sign>
+<time_end><![CDATA[20151119195553]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191674117822]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-19：55：54
+【支付成功】:
+NS201511171736208797
+
+
+执行日期：2015-11-19-19：55：54
+【支付成功】:
+array (
+  'order_id' => 'NS201511171736208797',
+  'shop_id' => '1',
+  'user_id' => '1',
+  'product_id' => '1',
+  'address_id' => '1',
+  'price' => '1',
+  'end_time' => '1448106032',
+  'create_time' => '1447752980',
+  'update_time' => '1447934140',
+  'status' => '1',
+  'trans_id' => '',
+  'kuaidi_gs' => '0',
+  'kuaidi_nu' => '',
+)
+
+
+执行日期：2015-11-19-19：56：01
+【接收到的notify通知】:
+
+
+
+执行日期：2015-11-19-19：57：32
+【接收到的notify通知】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[t5rrs8lesvhtty58gen9pompj8muczu1]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511171736208797_935]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[EBFA5A44DCF078D6BE747013F137E469]]></sign>
+<time_end><![CDATA[20151119195731]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191674144664]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-19：57：32
+【支付成功】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[t5rrs8lesvhtty58gen9pompj8muczu1]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511171736208797_935]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[EBFA5A44DCF078D6BE747013F137E469]]></sign>
+<time_end><![CDATA[20151119195731]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191674144664]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-19：57：32
+【支付成功】:
+NS201511171736208797
+
+
+执行日期：2015-11-19-19：57：32
+【支付成功】:
+array (
+  'order_id' => 'NS201511171736208797',
+  'shop_id' => '1',
+  'user_id' => '1',
+  'product_id' => '1',
+  'address_id' => '1',
+  'price' => '1',
+  'end_time' => '1448106954',
+  'create_time' => '1447752980',
+  'update_time' => '1447934243',
+  'status' => '1',
+  'trans_id' => '',
+  'kuaidi_gs' => '0',
+  'kuaidi_nu' => '',
+  'product_name' => '一个人的时候',
+)
+
+
+执行日期：2015-11-19-20：08：59
+【接收到的notify通知】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[fphl5n72hgi0c7r9cxm8mbk8j4kacwte]]></nonce_str>
+<openid><![CDATA[olEDawtGeisOHSSa539SCY68xqNc]]></openid>
+<out_trade_no><![CDATA[NS201511192007261496_985]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[8FD8165B8061296C380A20D862D914C8]]></sign>
+<time_end><![CDATA[20151119200858]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007700133201511191674325135]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-20：08：59
+【支付成功】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[fphl5n72hgi0c7r9cxm8mbk8j4kacwte]]></nonce_str>
+<openid><![CDATA[olEDawtGeisOHSSa539SCY68xqNc]]></openid>
+<out_trade_no><![CDATA[NS201511192007261496_985]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[8FD8165B8061296C380A20D862D914C8]]></sign>
+<time_end><![CDATA[20151119200858]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007700133201511191674325135]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-20：29：40
+【接收到的notify通知】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[neto1u3l41s9xlbmkkl3nsa54qbz15ho]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511192025416708_825]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[531A0979183E63072B227A233CC8DAE0]]></sign>
+<time_end><![CDATA[20151119202939]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191674657202]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-20：29：40
+【支付成功】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[neto1u3l41s9xlbmkkl3nsa54qbz15ho]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511192025416708_825]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[531A0979183E63072B227A233CC8DAE0]]></sign>
+<time_end><![CDATA[20151119202939]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191674657202]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-20：32：40
+【接收到的notify通知】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[9gkfbx0gcxfyzpsvz54gukv2cmxtst8o]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511192025416708_765]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[68AE839B0C1CF664DAD303D2A2A1FB21]]></sign>
+<time_end><![CDATA[20151119203240]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191674693532]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-20：32：40
+【支付成功】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[9gkfbx0gcxfyzpsvz54gukv2cmxtst8o]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511192025416708_765]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[68AE839B0C1CF664DAD303D2A2A1FB21]]></sign>
+<time_end><![CDATA[20151119203240]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191674693532]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-20：37：10
+【接收到的notify通知】:
+
+
+
+执行日期：2015-11-19-20：46：34
+【接收到的notify通知】:
+
+
+
+执行日期：2015-11-19-20：47：07
+【接收到的notify通知】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[7w5iewn31afhk2yg2o0iyxjsnmxt9877]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511192025416708_708]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[D47CAED019B0128B5BE9DCE1058DE872]]></sign>
+<time_end><![CDATA[20151119204705]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191674917847]]></transaction_id>
+</xml>
+
+
+执行日期：2015-11-19-20：47：07
+【支付成功】:
+<xml><appid><![CDATA[wxfca8c16109ea6170]]></appid>
+<attach><![CDATA[附加数据]]></attach>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[1]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[Y]]></is_subscribe>
+<mch_id><![CDATA[1286756501]]></mch_id>
+<nonce_str><![CDATA[7w5iewn31afhk2yg2o0iyxjsnmxt9877]]></nonce_str>
+<openid><![CDATA[olEDawig2ZbRO2v2zBNoyxXB32SE]]></openid>
+<out_trade_no><![CDATA[NS201511192025416708_708]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[D47CAED019B0128B5BE9DCE1058DE872]]></sign>
+<time_end><![CDATA[20151119204705]]></time_end>
+<total_fee>1</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[1007600133201511191674917847]]></transaction_id>
+</xml>
+
+

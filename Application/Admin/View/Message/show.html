@@ -1,0 +1,50 @@
+<style media="screen">
+    .ms select {
+        padding:0px 10px;height:24px;border:solid 1px #d2d2d2;margin-right:10px; background:#fafafa
+    }
+    .select {width:400px;}
+    .text1{height:100px;}
+</style>
+
+<table width="900" border="0" cellspacing="0" cellpadding="0" class="table">
+
+    <tr>
+        <td class="td1" align="right">用户名：</td>
+        <td class="ms">
+            <input type="text" name="title" value="{:get_shop_info($info['user_id'])}" class="inputt input" />
+            （用户名）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">邮箱：</td>
+        <td class="ms">
+            <input type="text" name="email" value="{$info['email']|default=''}" class="inputt input" />
+            （邮箱）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">内容：</td>
+        <td class="ms">
+            <textarea class="text1" name="content">{$info['content']|default=''}</textarea>
+            （内容）
+        </td>
+    </tr>
+</table>
+<table width="900" border="0" cellspacing="0" cellpadding="0" class="table">
+    <form class="" action="{:U('sendMessage')}" method="post">
+        <tr>
+            <td class="td1" align="right">回复：</td>
+            <td class="ms">
+                <textarea class="text1" name="extend[reply]">{$info['extend']['reply']|default=''}</textarea>
+                （回复）
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                 <input type="hidden" name="id" value="{$info.id|default=0}">
+                 <input type="submit" class="tjanniu cr" value="提 交" />
+                 <input type="reset" class="czanniu cr" value="重 置" />
+            </td>
+        </tr>
+    </form>
+</table>

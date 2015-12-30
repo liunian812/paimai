@@ -1,0 +1,405 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/seller-order-detail.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="js">
+	<switch name="order_info['status']">
+		<case value="1">
+
+		</case>
+		<case value="2">
+			<script type="text/javascript">
+			$(function() {
+				var a = $("#my-form");
+				new YS.Form({
+					form: a,
+					beforeSubmit: function(a) {
+						var b = [];
+						return b.length ? (utils.showAlert({content: b.join("<br />")}), !1) : !0
+					},
+					successHandler: function(a, b) {
+						1 === a.resultCode ? utils.goUrl(a.goUrl || b) : utils.showAlert({content: a.resultMessage})
+					}
+				})
+			});
+			</script>
+		</case>
+	</switch>
+</block>
+<block name="main">
+	<switch name="order_info['status']">
+		<case value="1">
+			<div class="am-g">
+		        <div class="am-alert am-alert-warning">
+		            <label>违约倒计时:</label>
+		            <strong class="time">
+		                <span data-endtime="{$order_info['end_time']}"><em>0</em></span>
+		            </strong>
+		        </div>
+			    <div class="ui-section order-info">
+			        <div class="ui-section-bd">
+		                <dl>
+		                    <dt><i class="ys-icon-order-pay"></i>拍卖已成交，买家未付款</dt>
+		                    <dd>
+		                        <label>拍卖订单号:</label>
+		                        <em>{$order_info['order_id']}</em>
+		                    </dd>
+		                    <dd>
+		                        <label>成交时间</label>
+		                        <span class="time">{:date('Y-m-d H:i:d', $order_info['create_time'])}</span>
+		                    </dd>
+		                    <dd>
+		                        <label>自动违约时间</label>
+		                        <span>{:date('Y-m-d H:i:d', $order_info['end_time'])}</span>
+		                    </dd>
+		                    <dd>
+		                        <label>买家电话</label>
+		                        <a href="tel://{$order_info['user_info']['mobile']}">{$order_info['user_info']['mobile']}</a>
+		                    </dd>
+		                </dl>
+			    	</div>
+			    </div>
+			    <div class="ui-section order-detail">
+				    <div class="ui-section-bd">
+						<div class="user-info" data-page-url="{:U('Shop/user',array('id'=>$order_info['shop_id']))}">
+				            <a class="avatar" href="{:U('Shop/user',array('id'=>$order_info['shop_id']))}"><img alt="laite" src="{$order_info['shop_info']['user_avatar']}"></a>
+				            <a class="nickname" href="{:U('Shop/user',array('id'=>$order_info['shop_id']))}">{$order_info['shop_info']['user_name']}</a>
+				        </div>
+				        <div class="goods-info" data-page-url="{:U('Index/product',array('id'=>$order_info['product_id']))}">
+				            <div class="am-img-thumbnail img-center" style="height: 80px;">
+								<img src="{$order_info['product_info']['product_img']}" />
+							</div>
+							<div class="info">
+			                    <h3>{$order_info['product_info']['product_name']}</h3>
+			                    <ul>
+			                        <li class="money">
+			                            <label>保证金:</label><i>¥</i><em>{$order_info['product_info']['bail_money']}</em>
+			                        </li>
+			                        <li class="money">
+			                            <label>成交价:</label><i>¥</i><em>{$order_info['price']}</em>
+			                        </li>
+			                        <li class="money">
+			                            <label>运费:</label><i>¥</i><em>{$order_info['product_info']['postage']}</em>
+			                        </li>
+			                    </ul>
+			                </div>
+				        </div>
+				    </div>
+			    </div>
+			</div>
+		</case>
+		<case value="2">
+			<div class="am-g">
+				<div class="am-alert am-alert-warning">
+					<label>违约倒计时:</label>
+					<strong class="time">
+						<span data-endtime="{$order_info['end_time']}"><em>0</em></span>
+					</strong>
+				</div>
+				<div class="ui-section order-info">
+					<div class="ui-section-bd">
+						<dl>
+							<dt><i class="ys-icon-order-delivery"></i>买家已付款，等待我发货</dt>
+							<dd>
+								<label>拍卖订单号:</label>
+								<em>{$order_info['order_id']}</em>
+							</dd>
+							<dd>
+								<label>付款时间</label>
+								<span class="time">{:date('Y-m-d H:i:d', $order_info['update_time'])}</span>
+							</dd>
+							<dd>
+								<label>自动违约时间</label>
+								<span>{:date('Y-m-d H:i:d', $order_info['end_time'])}</span>
+							</dd>
+							<dd>
+								<label>买家电话</label>
+								<a href="tel://{$order_info['user_info']['mobile']}">{$order_info['user_info']['mobile']}</a>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="ui-section buyer-info">
+					<div class="ui-section-hd">
+						<h3>收货地址</h3>
+					</div>
+					<div class="ui-section-bd">
+						<ul>
+							<li class="name"><label>收货人:</label><span>{$consign_info['consign_name']}</span></li>
+							<li class="mobile"><label>手机号码:</label><a href="tel://{$consign_info['mobile']}">{$consign_info['mobile']}</a></li>
+							<li class="address"><label>收货地址:</label><span> {$consign_info['area']['province']} {$consign_info['area']['city']} {$consign_info['area']['area']} {$consign_info['address']}</span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="ui-section order-detail">
+					<div class="ui-section-bd">
+						<div class="user-info" data-page-url="{:U('Shop/user',array('id'=>$order_info['shop_id']))}">
+				            <a class="avatar" href="{:U('Shop/user',array('id'=>$order_info['shop_id']))}"><img alt="laite" src="{$order_info['shop_info']['user_avatar']}"></a>
+				            <a class="nickname" href="{:U('Shop/user',array('id'=>$order_info['shop_id']))}">{$order_info['shop_info']['user_name']}</a>
+				        </div>
+						<div class="goods-info" data-page-url="{:U('Index/product',array('id'=>$order_info['product_id']))}">
+							<div class="am-img-thumbnail img-center" style="height: 80px;">
+								<img src="{$order_info['product_info']['product_img']}" />
+							</div>
+							<div class="info">
+								<h3>{$order_info['product_info']['product_name']}</h3>
+								<ul>
+									<li class="money">
+										<label>保证金:</label><i>¥</i><em>{$order_info['product_info']['bail_money']}</em>
+									</li>
+									<li class="money">
+										<label>成交价:</label><i>¥</i><em>{$order_info['price']}</em>
+									</li>
+									<li class="money">
+										<label>运费:</label><i>¥</i><em>{$order_info['product_info']['postage']}</em>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<form class="am-form am-form-horizontal" id="my-form" method="post" action="{:U('Order/faHuo')}">
+			        <input type="hidden" name="order_id" value="{$order_info['order_id']}">
+			        <ul class="ui-list">
+			            <li class="ui-list-item">
+			                <div class="ui-list-item-inner am-form-group">
+			                    <label class="am-form-label am-u-sm-3">快递公司</label>
+			                    <div class="am-u-sm-6 am-u-end">
+			                        <select id="kuaidi_gs" name="kuaidi_gs">
+			                            <option value="0">请选择快递公司</option>
+										<volist name=":C('KUAIDI_GS')" id="val">
+	                                    <option value="{$key}">{$val}</option>
+										</volist>
+			                        </select>
+			                    </div>
+			                </div>
+			            </li>
+			            <li class="ui-list-item">
+			                <div class="ui-list-item-inner am-form-group">
+			                    <label class="am-form-label am-u-sm-3">运单号</label>
+			                    <div class="am-u-sm-8 am-u-end">
+			                        <input type="text" name="kuaidi_nu" value="">
+			                    </div>
+			                </div>
+			            </li>
+			        </ul>
+			        <div class="am-u-sm-12">
+			            <button type="submit" class="am-btn am-btn-primary am-btn-block">确认发货</button>
+			        </div>
+			    </form>
+
+			</div>
+		</case>
+		<case value="3">
+			<div class="am-g">
+				<div class="am-alert am-alert-warning">
+					<label>签收倒计时:</label>
+					<strong class="time">
+						<span data-endtime="{$order_info['end_time']}"><em>0</em></span>
+					</strong>
+				</div>
+				<div class="ui-section order-info">
+					<div class="ui-section-bd">
+						<dl>
+							<dt><i class="ys-icon-order-sign"></i>我已发货，等买家收货</dt>
+							<dd>
+								<label>拍卖订单号:</label>
+								<em>{$order_info['order_id']}</em>
+							</dd>
+							<dd>
+								<label>快递公司:</label>
+								<em>{:get_kuaidi_gs($order_info['kuaidi_gs'])}</em>
+							</dd>
+							<dd>
+								<label>快递单号:</label>
+								<em>{$order_info['kuaidi_nu']}</em>
+							</dd>
+							<dd>
+								<label>发货时间</label>
+								<span class="time">{:date('Y-m-d H:i:d', $order_info['update_time'])}</span>
+							</dd>
+							<dd>
+								<label>自动签收时间</label>
+								<span>{:date('Y-m-d H:i:d', $order_info['end_time'])}</span>
+							</dd>
+							<dd>
+								<label>买家电话</label>
+								<a href="tel://{$order_info['user_info']['mobile']}">{$order_info['user_info']['mobile']}</a>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="ui-section buyer-info">
+					<div class="ui-section-hd">
+						<h3>收货地址</h3>
+					</div>
+					<div class="ui-section-bd">
+						<ul>
+							<li class="name"><label>收货人:</label><span>{$consign_info['consign_name']}</span></li>
+							<li class="mobile"><label>手机号码:</label><a href="tel://{$consign_info['mobile']}">{$consign_info['mobile']}</a></li>
+							<li class="address"><label>收货地址:</label><span> {$consign_info['area']['province']} {$consign_info['area']['city']} {$consign_info['area']['area']} {$consign_info['address']}</span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="ui-section order-detail">
+					<div class="ui-section-bd">
+						<div class="user-info" data-page-url="{:U('Shop/user',array('id'=>$order_info['shop_id']))}">
+				            <a class="avatar" href="{:U('Shop/user',array('id'=>$order_info['shop_id']))}"><img alt="laite" src="{$order_info['shop_info']['user_avatar']}"></a>
+				            <a class="nickname" href="{:U('Shop/user',array('id'=>$order_info['shop_id']))}">{$order_info['shop_info']['user_name']}</a>
+				        </div>
+						<div class="goods-info" data-page-url="{:U('Index/product',array('id'=>$order_info['product_id']))}">
+							<div class="am-img-thumbnail img-center" style="height: 80px;">
+								<img src="{$order_info['product_info']['product_img']}" />
+							</div>
+							<div class="info">
+								<h3>{$order_info['product_info']['product_name']}</h3>
+								<ul>
+									<li class="money">
+										<label>保证金:</label><i>¥</i><em>{$order_info['product_info']['bail_money']}</em>
+									</li>
+									<li class="money">
+										<label>成交价:</label><i>¥</i><em>{$order_info['price']}</em>
+									</li>
+									<li class="money">
+										<label>运费:</label><i>¥</i><em>{$order_info['product_info']['postage']}</em>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</case>
+		<case value="4">
+			<div class="am-g">
+				<div class="ui-section order-info">
+					<div class="ui-section-bd">
+						<dl>
+							<dt><i class="ys-icon-order-success"></i>订单已成功</dt>
+							<dd>
+								<label>拍卖订单号:</label>
+								<em>{$order_info['order_id']}</em>
+							</dd>
+							<dd>
+								<label>快递公司:</label>
+								<em>{:get_kuaidi_gs($order_info['kuaidi_gs'])}</em>
+							</dd>
+							<dd>
+								<label>快递单号:</label>
+								<em>{$order_info['kuaidi_nu']}</em>
+							</dd>
+							<dd>
+								<label>确认收货时间</label>
+								<span class="time">{:date('Y-m-d H:i:d', $order_info['update_time'])}</span>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="ui-section buyer-info">
+					<div class="ui-section-hd">
+						<h3>收货地址</h3>
+					</div>
+					<div class="ui-section-bd">
+						<ul>
+							<li class="name"><label>收货人:</label><span>{$consign_info['consign_name']}</span></li>
+							<li class="mobile"><label>手机号码:</label><a href="tel://{$consign_info['mobile']}">{$consign_info['mobile']}</a></li>
+							<li class="address"><label>收货地址:</label><span> {$consign_info['area']['province']} {$consign_info['area']['city']} {$consign_info['area']['area']} {$consign_info['address']}</span></li>
+						</ul>
+					</div>
+				</div>
+				<div class="ui-section order-detail">
+					<div class="ui-section-bd">
+						<div class="user-info" data-page-url="{:U('Shop/user',array('id'=>$order_info['shop_id']))}">
+				            <a class="avatar" href="{:U('Shop/user',array('id'=>$order_info['shop_id']))}"><img alt="laite" src="{$order_info['shop_info']['user_avatar']}"></a>
+				            <a class="nickname" href="{:U('Shop/user',array('id'=>$order_info['shop_id']))}">{$order_info['shop_info']['user_name']}</a>
+				        </div>
+						<div class="goods-info" data-page-url="{:U('Index/product',array('id'=>$order_info['product_id']))}">
+							<div class="am-img-thumbnail img-center" style="height: 80px;">
+								<img src="{$order_info['product_info']['product_img']}" />
+							</div>
+							<div class="info">
+								<h3>{$order_info['product_info']['product_name']}</h3>
+								<ul>
+									<li class="money">
+										<label>保证金:</label><i>¥</i><em>{$order_info['product_info']['bail_money']}</em>
+									</li>
+									<li class="money">
+										<label>成交价:</label><i>¥</i><em>{$order_info['price']}</em>
+									</li>
+									<li class="money">
+										<label>运费:</label><i>¥</i><em>{$order_info['product_info']['postage']}</em>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</case>
+		<case value="5">
+			<div class="am-g">
+				<div class="ui-section order-info" style="background-color:#657896;">
+					<div class="ui-section-bd">
+						<dl>
+							<dt><i class="ys-icon-order-closed"></i>订单已关闭</dt>
+							<dd>
+								<label>关闭原因:</label>
+								<em>TODO:{$order_info['desc']}</em>
+							</dd>
+							<dd>
+								<label>拍卖订单号:</label>
+								<em>{$order_info['order_id']}</em>
+							</dd>
+							<dd>
+								<label>订单关闭时间:</label>
+								<span class="time">{:date('Y-m-d H:i:d', $order_info['end_time'])}</span>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<notempty name="consign_info">
+				<div class="ui-section buyer-info">
+					<div class="ui-section-hd">
+						<h3>收货地址</h3>
+					</div>
+					<div class="ui-section-bd">
+						<ul>
+							<li class="name"><label>收货人:</label><span>{$consign_info['consign_name']}</span></li>
+							<li class="mobile"><label>手机号码:</label><a href="tel://{$consign_info['mobile']}">{$consign_info['mobile']}</a></li>
+							<li class="address"><label>收货地址:</label><span> {$consign_info['area']['province']} {$consign_info['area']['city']} {$consign_info['area']['area']} {$consign_info['address']}</span></li>
+						</ul>
+					</div>
+				</div>
+				</notempty>
+				<div class="ui-section order-detail">
+					<div class="ui-section-bd">
+						<div class="user-info" data-page-url="{:U('Shop/user',array('id'=>$order_info['shop_id']))}">
+				            <a class="avatar" href="{:U('Shop/user',array('id'=>$order_info['shop_id']))}"><img alt="laite" src="{$order_info['shop_info']['user_avatar']}"></a>
+				            <a class="nickname" href="{:U('Shop/user',array('id'=>$order_info['shop_id']))}">{$order_info['shop_info']['user_name']}</a>
+				        </div>
+						<div class="goods-info" data-page-url="{:U('Index/product',array('id'=>$order_info['product_id']))}">
+							<div class="am-img-thumbnail img-center" style="height: 80px;">
+								<img src="{$order_info['product_info']['product_img']}" />
+							</div>
+							<div class="info">
+								<h3>{$order_info['product_info']['product_name']}</h3>
+								<ul>
+									<li class="money">
+										<label>保证金:</label><i>¥</i><em>{$order_info['product_info']['bail_money']}</em>
+									</li>
+									<li class="money">
+										<label>成交价:</label><i>¥</i><em>{$order_info['price']}</em>
+									</li>
+									<li class="money">
+										<label>运费:</label><i>¥</i><em>{$order_info['product_info']['postage']}</em>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</case>
+	</switch>
+
+</block>

@@ -1,0 +1,59 @@
+<volist name="product_list" id="val">
+    <!-- <div class="ui-list-item-inner item">
+        <a  href="{:U('Index/product', array('id'=>$val['product_id']))}" class="morepai am-img-thumbnail img-center">
+            <img src="{$val['product_img']}">
+        </a>
+        <div class="mpnr">
+            <header class="mpbt">{$val['product_name']}</header>
+            保证金：￥{$val['bail_money']}     保留价：{$val['reserve_price']?'有':'无'}<br>
+            加价幅度：￥{$val['range_price']}<br>
+            当前价：<span class="font-red">￥{:max_bid_price($val['product_id'])}</span>
+        </div>
+        <div class="clear"></div>
+    </div> -->
+    <li class="ui-list-item">
+        <div class="ui-list-item-inner item" id="item-{$val['product_id']}" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+            <a class="am-img-thumbnail img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}" style="height: 125px;">
+                <img alt="{$val['product_name']}" class="lazy" data-height="852" data-original="{$val['product_img']}" data-width="1280" src="{$val['product_img']}" style="display: block; max-width: none; width: 187px; height: 125px; margin: 0px -31px;">
+            </a>
+            <dl class="info">
+                <dt><a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a></dt>
+                <switch	name="val['product_type']">
+                    <case value="1|2">
+                        <dd class="money bail">
+                            <!-- <label>保证金:</label><i>¥</i><em>{$val['bail_money']}</em> -->
+                        </dd>
+                        <dd class="money reserve">
+                            <label>保留价:</label><span>{$val['reserve_price']?'有':'无'}</span>
+                        </dd>
+                        <dd class="money step">
+                            <label>加价幅度:</label><i>¥</i><em><em>{$val['range_price']}</em></em>
+                        </dd>
+                        <dd class="money current">
+                            <label>开始价:</label><i>¥</i><em><em>{$val['start_price']}</em></em>
+                        </dd>
+                    </case>
+                    <case value="3">
+                        <dd class="money bail">
+                            <!-- <label>保证金:</label><i>¥</i><em>{$val['bail_money']}</em> -->
+                        </dd>
+                        <dd class="money current">
+                            <label>秒杀价:</label><i>¥</i><em><em>{$val['range_price']}</em></em>
+                        </dd>
+                        <dd class="money current">
+                            <label>秒杀数:</label><i></i><em><em>{$val['reserve_price']}</em></em>
+                        </dd>
+                    </case>
+                </switch>
+
+                <dd class="type blue">
+                    <span>{$product_type[$val['product_type']]}</span>
+                </dd>
+                <dd class="time">
+                    <label>剩:</label>
+                    <span data-endtime="{$val['end_time']}"></span>
+                </dd>
+            </dl>
+        </div>
+    </li>
+</volist>

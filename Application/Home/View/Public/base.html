@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="js cssanimations">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<block name="seo">
+<title>{:C('WEB_SITE_TITLE')}</title>
+<meta name="keywords">
+<meta name="description">
+</block>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+<link rel="stylesheet" href="__HOME__css/libs/amazeui.min.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+<link rel="stylesheet" href="__HOME__css/common.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+<block name="css"></block>
+<block name="share">
+<script>
+	var _shareInfo = {
+	    title: '{:C('WEB_SITE_TITLE')}',
+	    desc: '{:C('WEB_SITE_DESCRIPTION')}',
+	    imgUrl: 'http://static.ys.com/pai/img/logo_120.jpg',
+	    link: '{:C('WEB_SITE_URL')}'
+	};
+</script>
+</block>
+</head>
+<body class="">
+<div class="am-container">
+	<block name="main">EMPTY</block>
+	<!-- /.am-g -->
+	<div class="am-g">
+		<nav class="bottom-bar fixed-bottom" id="bottom-bar">
+		<ul>
+			<li class="home ">
+			<a href="{:U('Index/index')}" title="首页">
+			<i class="ys-icon-bottom-bar-home"></i><span>首页</span>
+			</a>
+			</li>
+			<li class="auction ">
+			<a href="{:U('Bid/index')}" title="我参加的拍卖">
+			<i class="ys-icon-bottom-bar-auction"></i><span>我出价的</span>
+			</a>
+			</li>
+			<li class="post active">
+			<a class="post" href="javascript:;" title="发布拍品" data-am-modal="{target:&#39;#upload-actions&#39;}">
+			<i class="ys-icon-bottom-bar-post"></i><span>发布</span>
+			</a>
+			</li>
+			<li class="goods ">
+			<a href="{:U('Product/index')}" title="拍品管理">
+			<i class="ys-icon-bottom-bar-goods"></i><span>我上传的</span>
+			</a>
+			</li>
+			<li class="user-home ">
+			<a href="{:U('User/index')}" title="用户中心">
+			<i class="ys-icon-bottom-bar-user"></i><span>我的</span>
+			</a>
+			</li>
+		</ul>
+		</nav>
+		<div class="am-g">
+			<div class="am-modal-actions" id="upload-actions">
+				<div class="am-modal-actions-group">
+					<ul class="am-list">
+					<volist name=":C('PRODUCT_TYPE')" id="val">
+						<li><a href="{:U('Product/add', array('type'=>$key))}">{$val}发布</a></li>
+					</volist>
+
+					</ul>
+				</div>
+				<div class="am-modal-actions-group">
+					<button class="am-btn am-btn-default am-btn-block" data-am-modal-close="">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+<script>
+    wx.config({
+        debug: <if condition="C('DEVELOP_MODE') == 1">true<else />false</if>,
+        appId: '{$wx_config['appId']}',
+        nonceStr: '{$wx_config['nonceStr']}',
+        timestamp: '{$wx_config['timestamp']}',
+        signature: '{$wx_config['signature']}',
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'openLocation', 'getLocation', 'scanQRCode', 'openProductSpecificView', 'chooseWXPay']
+    });
+</script>
+<script src="__HOME__js/libs/jquery.min.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/libs/jquery.cookie.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/libs/jquery.lazyload.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/libs/ejs.min.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/libs/amazeui.min.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/common.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/main.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<block name="js"></block>
+<block name="ready">
+<script>
+	wx.ready(function(){
+		wx.onMenuShareTimeline({
+		    title: _shareInfo.title, // 分享标题
+		    link: _shareInfo.link, // 分享链接
+		    imgUrl: _shareInfo.imgUrl, // 分享图标
+		    success: function () {
+		        // 用户确认分享后执行的回调函数
+		    },
+		    cancel: function () {
+		        // 用户取消分享后执行的回调函数
+		    }
+		});
+		wx.onMenuShareAppMessage({
+		    title: _shareInfo.title, // 分享标题
+		    desc: _shareInfo.desc, // 分享描述
+		    link: _shareInfo.link, // 分享链接
+		    imgUrl: _shareInfo.imgUrl, // 分享图标
+		    type: '', // 分享类型,music、video或link，不填默认为link
+		    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		    success: function () {
+		        // 用户确认分享后执行的回调函数
+		    },
+		    cancel: function () {
+		        // 用户取消分享后执行的回调函数
+		    }
+		});
+
+	});
+</script>
+</block>
+</body>
+</html>

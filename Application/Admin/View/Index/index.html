@@ -1,0 +1,64 @@
+<div style="min-height:500px;">
+    <style media="screen">
+        .table {line-height: 30px; font-size: 16px; margin: 20px; border:none;}
+        .table th {font-weight: bold;  border-bottom: 1px solid #eee;}
+        .table td {padding-left:30px; border-bottom: 1px solid #eee;}
+    </style>
+    <table class="table">
+        <tr>
+            <th>服务器操作系统</th>
+            <td>{$Think.const.PHP_OS}</td>
+        </tr>
+        <tr>
+            <th>ThinkPHP版本</th>
+            <td>{$Think.VERSION}</td>
+        </tr>
+        <tr>
+            <th>CMS版本</th>
+            <if condition="$new_version['status']">
+            <td>{$Think.const.CMS_VERSION} <a style="font-size:18px; color:#F00;font-weight:bold;" href="javascript:alert('请到金方时代官方网站下载...');">有新版本{$new_version['version']}</a></td>
+            <else />
+            <td>{$Think.const.CMS_VERSION}</td>
+            </if>
+        </tr>
+        <tr>
+            <th>运行环境</th>
+            <td>{$_SERVER['SERVER_SOFTWARE']}</td>
+        </tr>
+        <tr>
+            <th>MYSQL版本</th>
+            <php>
+                $system_info_mysql = M()->query("select version() as v;");
+            </php>
+            <td>{$system_info_mysql.0.v}</td>
+        </tr>
+        <tr>
+            <th>上传限制</th>
+            <td>{:ini_get('upload_max_filesize')}</td>
+        </tr>
+        <tr>
+            <th>定时任务</th>
+            <td>
+                <?php
+                if(file_exists(WEB_ROOT .'/cron-run')){
+                    echo '运行中<button id="end">关闭</button>';
+                } else {
+                    echo '关闭中<button id="start">开启</button>';
+                }
+                ?>
+            </td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+    $("#start").click(function(){
+        $.get('{:U('Home/Cron/start')}',function(){
+            location.reload()
+        });
+    })
+    $("#end").click(function(){
+        $.get('{:U('Home/Cron/end')}',function(){
+            location.reload()
+        });
+    })
+</script>

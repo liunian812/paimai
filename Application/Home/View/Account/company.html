@@ -1,0 +1,82 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/account-company.css<if condition="C('DEVELOP_MODE') == 1 || 1">?t={:time()}</if>">
+</block>
+<block name="js">
+<script src="__HOME__js/pages/account-company.js<if condition=" C( 'DEVELOP_MODE')==1 || 1">?t={:time()}</if>"></script>
+</block>
+<block name="main">
+    <div class="am-g">
+	    <script>
+	        var _getImageUrlApi = '{:U('Account/sync')}';
+	    </script>
+	</div>
+    <div class="am-g">
+        <form class="am-form am-form-horizontal mention-form" id="my-form" method="post" action="">
+            <ul class="ui-list">
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-u-sm-3 am-form-label">真实姓名</label>
+                        <span class="am-u-sm-9">
+                            <input type="text" class="am-input" name="extend[0]" value="{$extend[0]}" placeholder="真实姓名" maxlength="4" autocomplete="on">
+                        </span>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="ui-list file-container">
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-u-sm-3 am-form-label va">身份证正面</label>
+                        <span class="am-u-sm-9">
+                            <div class="file-list">
+                                <div class="file-picker uploadImage"><img src="{:C('WEB_SITE_URL')}{$extend[1]}" /><input type="hidden" name="extend[1]" value="{$extend[1]}"></div>
+                            </div>
+                        </span>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-u-sm-3 am-form-label va">身份证反面</label>
+                        <span class="am-u-sm-9">
+                            <div class="file-list">
+                                <div class="file-picker uploadImage"><img src="{:C('WEB_SITE_URL')}{$extend[2]}" /><input type="hidden" name="extend[2]" value="{$extend[2]}"></div>
+                            </div>
+                        </span>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-u-sm-3 am-form-label va">营业执照</label>
+                        <span class="am-u-sm-9">
+                            <div class="file-list">
+                                <div class="file-picker uploadImage"><img src="{:C('WEB_SITE_URL')}{$extend[3]}" /><input type="hidden" name="extend[3]" value="{$extend[3]}"></div>
+                            </div>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+            <ul class="ui-list">
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-u-sm-3 am-form-label">开户银行</label>
+                        <span class="am-u-sm-9">
+                            <input type="text" class="am-input" name="extend[4]" value="{$extend[4]}" placeholder="开户银行" maxlength="9" autocomplete="on">
+                        </span>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-u-sm-3 am-form-label">银行卡号</label>
+                        <span class="am-u-sm-9">
+                            <input type="text" class="am-input" name="extend[5]" value="{$extend[5]}" placeholder="银行卡号" maxlength="30" autocomplete="on">
+                        </span>
+                    </div>
+                </li>
+            </ul>
+            <div class="am-u-sm-12">
+                <button type="submit" class="am-btn am-btn-primary am-btn-block btn-submit">提交认证</button>
+            </div>
+        </form>
+    </div>
+</block>

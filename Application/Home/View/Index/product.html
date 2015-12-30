@@ -1,0 +1,314 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/auction.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+<link rel="stylesheet" href="__HOME__css/pages/vip.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="share">
+<script>
+    var _autoRefreshDuration = 1500*10;;   // 1000 * 10;         // 自动刷新间隔时间，0表示不自动刷新
+    var _isAutoShowShareTip = false;
+    var _productId = '{$product_info['product_id']}';
+    var _artCode = '{$product_info['product_id']}';     // 藏品code
+    var _auctionListApi = '{:U('Bid/lists')}';   // 出价记录列表
+    var _auctionApi = '{:U('Bid/add')}';            // 出价接口
+    var _auctionStep = {$product_info['range_price']};                               // 加价幅度
+    var _currentPrice = {$product_info['start_price']};                              // 当前出价
+    var _bidCount = 0;
+	var _collectApi = '{:U('Collect/enCollect')}';          // 收藏接口
+	var _uncollectApi = '{:U('Collect/unCollect')}';  		// 取消收藏接口
+	var _checkCollectApi = '{:U('Collect/isCollect')}';   	// 收藏状态监测接口
+	var _shareInfo = {
+	    title: '【{:C('WEB_SITE_TITLE')}】 {$product_info['user_info']['user_name']} 开拍喽！',
+	    desc: '{$product_info['product_name']}',
+	    imgUrl: '{:C('WEB_SITE_URL')}/{$product_info['product_images'][0]}',
+	    link: location.href
+	};
+</script>
+</block>
+<block name="ready">
+<script>
+	wx.ready(function(){
+		wx.onMenuShareTimeline({
+		    title: _shareInfo.title, // 分享标题
+		    link: _shareInfo.link, // 分享链接
+		    imgUrl: _shareInfo.imgUrl, // 分享图标
+		    success: function () {
+                $.get("{:U('Share/fenXiang', array('id'=>$product_info['product_id']))}");
+		    },
+		    cancel: function () {
+		        // 用户取消分享后执行的回调函数
+		    }
+		});
+		wx.onMenuShareAppMessage({
+		    title: _shareInfo.title, // 分享标题
+		    desc: _shareInfo.desc, // 分享描述
+		    link: _shareInfo.link, // 分享链接
+		    imgUrl: _shareInfo.imgUrl, // 分享图标
+		    type: '', // 分享类型,music、video或link，不填默认为link
+		    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		    success: function () {
+                $.get("{:U('Share/fenXiang', array('id'=>$product_info['product_id']))}");
+		    },
+		    cancel: function () {
+		        // 用户取消分享后执行的回调函数
+		    }
+		});
+
+	});
+</script>
+</block>
+<block name="js">
+<script>
+    function _onAuctionHandler (res) {
+        initAuctionList(0);
+        if (res.resultCode === 1) {
+            utils.showAlert({
+                content: res.resultMessage
+            });
+        } else {
+            if(res.resultCode == '-1002' || res.resultCode == '-1000' || res.resultCode=='-1001'){
+                utils.goUrl(res.goUrl);
+            }else{
+                utils.showAlert({
+                    content: res.resultMessage,
+                    onButtonClick: function() {
+                        if (res.goUrl != '') {
+                            utils.goUrl(res.goUrl)
+                        }
+                    }
+                });
+            }
+            //if(res.resultCode != -1){
+            //    utils.showAlert({
+            //        title: '',
+            //        content: res.resultMessage,
+            //        btnText: '确定',
+            //        onButtonClick: function () {
+            //            utils.goUrl(res.goUrl);
+            //        }
+            //    });
+            //}
+        }
+    }
+    var hongBao = function(shopid){
+        YS.Utils.ajax({
+            type: "post",
+            url: '{:U('User/hongBao')}',
+            data: {shop_id: shopid},
+            success: function(res) {
+				if (res.resultCode === 1) {
+					utils.showAlert({
+						content: res.resultMessage
+					});
+				} else {
+					if(res.resultCode == '-1002' || res.resultCode == '-1000' || res.resultCode=='-1001'){
+						utils.goUrl(res.goUrl);
+					}else{
+						utils.showAlert({
+							content: res.resultMessage,
+							onButtonClick: function() {
+								if (res.goUrl != '') {
+									utils.goUrl(res.goUrl)
+								}
+							}
+						});
+					}
+				}
+            },
+        });
+		
+
+    }
+</script>
+<script src="__HOME__js/widget/auction.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/pages/auction.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+</block>
+<block name="main">
+<div class="am-g">
+    <div class="art-header">
+        <a class="to-home" href="{:C('WEB_SITE_URL')}">
+            <i class="ys-icon-home"></i><span>返回首页</span>
+        </a>
+        <a class="btn-collect" href="javascript:;" data-collect="2400" data-id="{$product_info['product_id']}"><span>收藏拍品</span></a>
+        <if condition="C('HONG_BAO_ALLOW') == 1">
+        <a class="btn-collect" style="margin-right: 2%;" href="javascript:hongBao({$product_info['user_id']});" data-id="{$product_info['user_id']}"><span>抢红包</span></a>
+        </if>
+    </div>
+</div>
+
+
+<div class="am-g">
+    <div class="auction-status">
+    <if condition="$product_info['status'] eq 0">
+        <strong> 未上架 </strong>
+        <div class="time">
+            <label>未上架</label>
+        </div>
+    <elseif condition="$product_info['begin_time'] gt time()" />
+        <strong> 未开始 </strong>
+        <div class="time">
+            <label>距开始:</label>
+            <span data-endtime="{$product_info['begin_time']}"><em>00</em></span>
+        </div>
+    <elseif condition="$product_info['begin_time'] lt time() && $product_info['end_time'] gt time()" />
+        <strong> 出售中 </strong>
+        <div class="time">
+            <label>距结束:</label>
+            <span data-endtime="{$product_info['end_time']}"><em>00</em></span>
+        </div>
+    <elseif condition="$product_info['end_time'] lt time()" />
+        <strong> 已结束 </strong>
+        <div class="time">
+            <label>距结束:</label>
+            <span data-endtime="{$product_info['end_time']}"><em>00</em></span>
+        </div>
+    <else />
+        <strong> 未知 </strong>
+        <div class="time">
+            <label>未知</label>
+        </div>
+    </if>
+    </div>
+
+    <div class="ui-section goods-info">
+        <div class="ui-section-bd">
+            <div class="shop-info">
+                <a class="avatar" href="{:U('Shop/user/', array('id'=>$product_info['user_id']))}">
+                    <img alt="{$product_info['user_info']['user_name']}" src="{$product_info['user_info']['user_avatar']}">
+                </a>
+                <dl>
+                    <dt>
+                        <a class="nickname" href="{:U('Shop/user/', array('id'=>$product_info['user_id']))}">
+                            <span class="sellerLevel lv{$product_info['user_info']['shop_group']}">{$product_info['user_info']['user_name']}</span>
+                            <small><a class="btn-collect" href="javascript:;" data-collect="2401" data-id="{$product_info['user_id']}">[关注店铺]</a></small>
+                        </a>
+                    </dt>
+                    <dd class="signanture">{$product_info['product_name']}</dd>
+                </dl>
+            </div>
+            <div class="decription">{:nl2br($product_info['product_desc'])}</div>
+            <ul class="images">
+            <volist name="product_info['product_images']" id="val">
+                <li>
+                    <div class="am-img-thumbnail img-center" style="height: 96px;">
+                        <img class="lazy img-preview" src="{:C('WEB_SITE_URL')}/{$val}" alt="{$product_info['product_name']}" data-original="{:C('WEB_SITE_URL')}/{$val}" data-original-big="{:C('WEB_SITE_URL')}{$val}" data-width="768" data-height="1133" style="display: block; max-width: none; width: 96px; height: 141px; margin: -22px 0px;">
+                    </div>
+                </li>
+            </volist>
+            </ul>
+            <p class="meta">
+                <span class="time">{:time_tran($product_info['update_time'])}</span>
+                <span class="collect">收藏<em>{:collect_product_num($product_info['product_id'])}</em></span>
+                <span class="visit">围观<em>{$product_info['view']}</em></span>
+            </p>
+            <eq name="user_info['user_id']" value="$product_info['user_id']">
+                <a class="am-btn am-btn-default am-u-sm-6 btn-share" href="javascript:;">点击分享</a>
+                <a class="am-btn am-btn-default am-u-sm-6 btn-share" href="{:U('Share/index')}">群发消息</a>
+            <else />
+                <a class="am-btn am-btn-default am-btn-block btn-share" href="javascript:;">点击右上角分享至朋友圈或微信群，让更多人参与</a>
+            </eq>
+        </div>
+    </div>
+<switch name="product_info['product_type']">
+    <case value="1|2">
+    <div class="ui-section price-info">
+        <div class="ui-section-hd">
+            <h3>当前价<span class="money"><i>¥</i><em id="current-price">{:max_bid_price($product_info['product_id'])}</em></span></h3>
+            <span class="type">{$product_type[$product_info['product_type']]}</span>
+        </div>
+        <div class="ui-section-bd">
+            <div class="delivery">
+            <eq name="product_info['postage']" value="0">
+                <i class="ys-icon-free"></i>
+                <label>卖家包邮</label>
+                <span></span>
+            </eq>
+            <noempty name="product_info['baotui']">
+                <i class="ys-icon-tui"></i>
+                <label>{:get_baotui_list($product_info['baotui'])}</label>
+                <span></span>
+            </noempty>
+            <noempty name="product_info['baohuan']">
+                <i class="ys-icon-huan"></i>
+                <label>{:get_baohuan_list($product_info['baohuan'])}</label>
+                <span></span>
+            </noempty>
+            </div>
+            <ul class="prices">
+                <!-- <li><label>保证金:</label><span class="money"><i>¥</i><em>{$product_info['bail_money']}</em></span></li> -->
+                <li><label>起拍价:</label><span class="money"><i>¥</i><em>{$product_info['start_price']}</em></span></li>
+                <li><label>保留价:</label><span>{$product_info['reserve_price']?'有':'无'}</span></li>
+                <li><label>最低加价幅度:</label><span class="money"><i>¥</i><em>{$product_info['range_price']}</em></span></li>
+            </ul>
+            <if condition="$product_info['status'] eq 0">
+                <div class="auction disable" id="auction">
+            <elseif condition="$product_info['begin_time'] gt time()" />
+                <div class="auction disable" id="auction">
+            <elseif condition="$product_info['begin_time'] lt time() && $product_info['end_time'] gt time()" />
+                <div class="auction" id="auction">
+            <elseif condition="$product_info['end_time'] lt time()" />
+                <div class="auction disable" id="auction">
+            <else />
+                <div class="auction disable" id="auction">
+            </if>
+                <div class="input-group">
+                    <a class="am-btn btn-decrease" href="javascript:;" title="减价">-</a>
+                    <div class="price-wrap">
+
+                        <input class="price" type="tel" id="currentPrice" value="0" >
+                    </div>
+                    <a class="am-btn btn-increase" href="javascript:;" title="加价">+</a>
+                    </div>
+                <a class="am-btn btn-submit" href="javascript:;">立即出价</a>
+            </div>
+        </div>
+    </div>
+    </case>
+    <case value="3">
+    <div class="ui-section price-info">
+        <div class="ui-section-hd">
+            <h3>秒杀价<span class="money"><i>¥</i><em id="current-price">{$product_info['range_price']}</em></span></h3>
+            <span class="type">{$product_type[$product_info['product_type']]}</span>
+        </div>
+        <div class="ui-section-bd">
+            <div class="delivery">
+                <eq name="product_info['postage']" value="0">
+                    <i class="ys-icon-free"></i>
+                    <label>卖家包邮</label>
+                    <span></span>
+                </eq>
+                <noempty name="product_info['baotui']">
+                    <i class="ys-icon-tui"></i>
+                    <label>{:get_baotui_list($product_info['baotui'])}</label>
+                    <span></span>
+                </noempty>
+                <noempty name="product_info['baohuan']">
+                    <i class="ys-icon-huan"></i>
+                    <label>{:get_baohuan_list($product_info['baohuan'])}</label>
+                    <span></span>
+                </noempty>
+            </div>
+            <ul class="prices">
+                <li><label>秒杀价:</label><span class="money"><i>¥</i><em>{$product_info['range_price']}</em></span></li>
+                <li><label>秒杀数:</label><span>{$product_info['reserve_price']}</span></li>
+            </ul>
+            <div class="auction" id="auction">
+                <a class="am-btn btn-submit" style="width:100%;border-radius:5px;" href="javascript:;">秒杀抢购</a>
+            </div>
+        </div>
+    </div>
+    </case>
+</switch>
+    <div class="ui-section auction-list">
+        <div class="ui-section-hd">
+            <h3>出价记录(<em id="auction-count">0</em>)</h3>
+            <a id="btn-refresh-auction" href="javascript:;">刷新</a>
+        </div>
+        <div class="ui-section-bd">
+            <ul class="ui-list" id="auction-list">
+
+            </ul>
+        </div>
+    </div>
+</div>
+</block>

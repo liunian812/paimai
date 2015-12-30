@@ -1,0 +1,32 @@
+.file-container .file-picker, .file-container .file {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    width: 90px;
+    height: 90px;
+    margin: 4px;
+    border: 1px solid #ddd;
+    border-radius: 5px
+}
+.file-container .va {
+    height: 90px;
+    line-height: 90px;
+}
+.file-container .file-picker {
+    /*text-indent: -500px;*/
+    background-color: #fff;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpEODc3Q0VGNjkzMDlFNTExQTBBREE1NTlGNEUzQUQxMCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4OEYwMTQyRTEzRjgxMUU1OTAzRkZFQzkxQzIyNDEyMiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4OEYwMTQyRDEzRjgxMUU1OTAzRkZFQzkxQzIyNDEyMiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkM5QTcyNzkwMUMwRkU1MTFCQzVEQzUyQUNGREU3MjBFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQ4NzdDRUY2OTMwOUU1MTFBMEFEQTU1OUY0RTNBRDEwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+xNw0QgAAAKtJREFUeNrs3LENACAIAEEw7r8hs2ivAxjMfWdHLsZOsqqiUes4Z5fBRwg0aIEGDVqgQQs0aNACDVqgQYMWaNACDRq0QIMWaNCgBRq0QIMGLdCgBRo0aIEGLdCgQQv0D824v/12arnRAg368zc6G81rjYRAgwYt0KAFGjRogQYt0KBBCzRogQYNWqBBCzRo0AINWqBBgxZo0AINGrRAgxZo0KAFGrRAP20LMACeGwdOtjy+CQAAAABJRU5ErkJggg==");
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    background-position: 50% 50%
+}
+.file-container .preview {
+    overflow: hidden;
+    width: 88px;
+    height: 88px;
+    text-align: center;
+    vertical-align: middle
+}
+.file-container .preview img {
+    width: 100%
+}

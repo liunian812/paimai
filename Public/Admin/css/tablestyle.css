@@ -1,0 +1,141 @@
+/*01页面的table部分*/
+.inputt{padding:0px 10px;height:24px;line-height:24px; border:solid 1px #d2d2d2;margin-right:10px; background:#fafafa}
+.input{width:400px;}
+.text1{width:526px;height:143px; border:solid 1px #d2d2d2;padding:5px;line-height:24px;margin-right:10px; background:#fafafa}
+.table td{padding:10px 0px;color:#1d2027;}
+.table td.td1{padding-right:10px;}
+.table td.ms{color:#555555}
+.table td.radio *{float:left}
+.table td.radio span{padding:0px 10px 0px 5px}
+
+
+/*02页面的table部分*/
+.table1{ background:#d3d3d3;}
+.table1 td{padding:5px 0px; background:#f5f5f5;color:#1d2027}
+.table1 td.ts{padding:0px 20px}
+.table1 a.xga{color:#fff;line-height:22px;display:inline-block;margin:0px 5px;padding: 0 5px;background-color: #FF9B1A;border-radius: 3px;}
+
+.table1 a.xga2{width:47px;height:22px; background:url(../images/tjbj2.png) no-repeat;color:#fff;display:block;line-height:22px;display:inline-block;margin:0px 5px}
+
+.tablett{background:#018296;width:908px;border:solid 1px #00d2da;height:35px;overflow:hidden; position:relative;}
+.tablet span{ background:#08a3bb;float:left;height:33px;border:solid 1px #0ab7ca; text-align:center;line-height:33px;color:#fff; font-size:14px;margin-left:1px}
+.tablet span.sp1{margin-left:0px;width:36px;padding-top:9px;height:34px}
+.tablet span.sp2{width:356px}
+.tablet span.sp3{width:335px}
+.tablet span.sp4{width:84px}
+.tablet span.sp5{width:83px; position:absolute;top:0px;right:0px}
+
+.tableb{height:50px;background:#018296;width:908px;border:solid 1px #00d2da;}
+.tableb *{float:left;}
+.tableb input{margin-top:18px;margin-left:15px;margin-right:20px}
+.tableb input.scanniu{margin-top:12px;width:69px;height:25px; background:url(../images/shanchubj.png) no-repeat;border:0px;color:#ffffff; font-size:14px;margin-left:10px}
+
+
+/*03页面的table部分*/
+
+.tablet1 span.sp1{margin-left:0px;width:36px;padding-top:9px;height:34px}
+.tablet1 span.sp2{width:244px}
+.tablet1 span.sp3{width:213px}
+.tablet1 span.sp4{width:232px}
+.tablet1 span.sp5{width:83px}
+.tablet1 span.sp6{width:83px; position:absolute;top:0px;right:0px}
+
+
+
+/*04页面的table部分*/
+.hdtright{ position:absolute;top:7px;right:0px}
+.hdtright *{float:left}
+.hdtright input.input1{width:220px;}
+.hdtright span{line-height:26px;}
+.hdtright .button{width:70px;height:25px; background:url(../images/cxbj.png) no-repeat;border:0px;color:#fff; font-size:14px;margin-left:10px}
+
+
+
+.tablet2 span.sp1{margin-left:0px;width:36px;padding-top:9px;height:34px}
+.tablet2 span.sp2{width:451px}
+.tablet2 span.sp3{width:100px}
+.tablet2 span.sp4{width:63px}
+.tablet2 span.sp5{width:158px}
+.tablet2 span.sp6{width:83px; position:absolute;top:0px;right:0px}
+.tablebnr{line-height:20px;float:right;padding-top:15px;padding-right:20px;color:#ffffff}
+.tablebnr *{float:none}
+.tablebnr a{color:#ffffff}
+.tablebnr font{color:#ff9b1a; font-weight:bold}
+
+
+/*05页面的table部分*/
+.tablett span{ background:#08a3bb;float:left;height:33px;border:solid 1px #0ab7ca; text-align:center;line-height:33px;color:#fff; font-size:14px;margin-left:1px}
+.tablet3 span.sp1{margin-left:0px;width:36px;padding-top:9px;height:34px}
+.tablet3 span.sp2{width:520px}
+.tablet3 span.sp3{width:148px}
+.tablet3 span.sp4{width:193px; position:absolute;top:0px;right:0px}
+.ts font{color:#f6001d}
+td.ts2 font{margin-left:35px;color:#08a3bb}
+
+.table2 td{padding:10px 5px}
+.input2{width:530px;}
+.input33{width:40px;}
+.input3{width:270px;}
+.button1{width:50px;height:26px;color:#fff; background:#343843;border:0px;margin-right:10px;}
+.input4{width:330px;}
+
+.fxl1{position:relative;cursor:pointer;width:115px;height:23px;float:left;border:solid 1px #c8c8c8; background:#fafafa}
+.fxlk{ position:absolute;top:23px;left:0px;width:100%;border:solid 1px #cccccc; background:#ffffff;display:none}
+.fxlk a{display:block;height:20px;line-height:20px;padding:0px 5px;color:#511515}
+.fxlk a:hover{color:#ffffff; background:#316ac5; text-decoration:none}
+.wbjs{ position:absolute;top:0px;left:0px;display:block;width:105px;height:24px; background:url(../images/selectjian.png) no-repeat right top;padding:0px 5px 0px 5px; line-height:24px;color:#511515}
+
+.youhuats1{color:#555555;height:28px;line-height:28px;margin-top:-16px}
+.yhts{width:88px;height:30px;line-height:30px; text-align:center;color:#ffffff; font-weight:bold; background:#45484f;float:left}
+.yhnr{width:700px;float:left;height:30px;line-height:30px; background:#f5f5f5;color:#ff0000;padding-left:10px;}
+.fontt{padding-left:10px}
+
+
+/*08,09,10页面的table部分*/
+.table3 td{padding:10px 0px;}
+.tabm{ background:#f5f5f5;width:793px;margin-top:5px;}
+.tabbt{width:90px;height:30px;line-height:30px; text-align: center;color:#ffffff;font-weight:bold; background: #45484f}
+.tabnr{width:690px;height:30px;line-height:30px;color:#1d2027;}
+.hongzi{color:#ff0000;}
+.input5{width:418px;}
+.input6{width:75px;}
+.tsy{margin-top:-13px;color:#555555;}
+.input61{width:130px;font-family:"宋体";}
+.input62{width:270px;float:left;}
+.scanniu2{cursor:pointer;width:50px;height:26px; background: #343843;border:0px; text-align: center;color:#fff;float:left;}
+.spp1{float:left;padding-top:6px;margin-left:10px;}
+
+/*11页面的table部分*/
+.input7{width:210px;}
+.input71{width:130px;}
+.table7{margin-left:18px;}
+.table7 td{padding:0px 3px;}
+
+.pad{margin-bottom:20px;}
+.tablet4 span.sp1{margin-left:0px;width:190px;}
+.tablet4 span.sp2{width:270px}
+.tablet4 span.sp3{width:160px}
+.tablet4 span.sp4{width:160px}
+.tablet4 span.sp5{width:114px; position:absolute;top:0px;right:0px}
+.pad td{padding:15px 0px;}
+.pad a{color:#1f1f27;}
+
+/*12页面的table部分*/
+.table77 td{padding:10px 0px;}
+.input8{width:330px;}
+.input9{width:358px;}
+
+/*14页面的table部分*/
+.tablet span.sp22{margin-left:0px;width:380px;}
+.tablet span.sp33{width:350px}
+.tablet span.sp55{width:170px; position:absolute;top:0px;right:0px}
+.zxzx_bt{padding-left:40px;}
+
+
+
+
+/*17页面table部分*/
+.tablet1 span.sp11{margin-left:0px;width:36px;padding-top:9px;height:34px}
+.tablet1 span.sp22{width:340px}
+.tablet1 span.sp44{width:340px}
+.tablet1 span.sp66{width:181px; position:absolute;top:0px;right:0px}

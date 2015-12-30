@@ -1,0 +1,52 @@
+.sellerLevel {
+    line-height: 12px;
+    text-indent: 30px;
+    float: left;
+    width: 28px;
+    height: 15px;
+    margin-top: 2px;
+    margin-right: 4px;
+    background-image: url(../../images/sellerLevels.png);
+    background-size: 28px auto;
+    background-repeat: no-repeat;
+}
+
+.sellerLevel.lv1 {
+    background-position: 0px 0px;
+}
+
+.sellerLevel.lv2 {
+    background-position: 0px -15px;
+}
+
+.sellerLevel.lv3 {
+    background-position: 0px -30px;
+}
+
+.sellerLevel.lv4 {
+    background-position: 0px -45px;
+}
+
+.sellerLevel.lv5 {
+    background-position: 0px -60px;
+}
+
+.sellerLevel.lv6 {
+    background-position: 0px -75px;
+}
+
+.sellerLevel.lv7 {
+    background-position: 0px -90px;
+}
+
+.sellerLevel.lv8 {
+    background-position: 0px -105px;
+}
+
+.sellerLevel.lv9 {
+    background-position: 0px -130px;
+}
+
+.sellerLevel.lv10 {
+    background-position: 0px -145px;
+}

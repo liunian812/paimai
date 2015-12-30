@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://pai.ys.com/user/product/new-zengjia2/3869#flag -->
+<html lang="zh-CN" class="js cssanimations"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>手机拍卖用拍卖神器</title>
+    <meta name="keywords">
+    <meta name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+<link rel="stylesheet" href="css/amazeui.min.css">
+<link rel="stylesheet" href="css/common.css">
+
+    
+
+
+<script src="js/hm.js"></script><script>
+    var _shareInfo = {
+        title: '拍卖神器',
+        content: '手机拍卖就用拍卖神器！',
+        pics: 'http://static.ys.com/pai/img/logo_120.jpg',
+        url: 'http://pai.ys.com'
+    };
+</script>
+
+<script src="js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: 'wxef5047e223dc7570',
+        timestamp: '1444620299',
+        nonceStr: 'ZU0wt4AWMPXohf2n',
+        signature: 'f55a7a75d5c69b1e91f751fef735f4cd8bec7fc7',
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'openLocation', 'getLocation', 'scanQRCode', 'openProductSpecificView', 'chooseWXPay']
+    });
+</script>
+
+    <script>
+        var _backUrl = '/user/product/edit-product/3869';
+    </script>
+
+</head>
+<body class="">
+    <div class="am-container">
+        <div class="am-g">
+            
+
+        </div>
+        
+
+
+
+
+<div class="am-g">
+    <form class="am-form am-form-horizontal" id="my-form" method="post" action="http://pai.ys.com/api/product/addproduct2">
+        <input type="hidden" name="goUrl" value="" disabled="disabled">
+        <input type="hidden" name="productId" value="3869">
+        <input type="hidden" name="productCode" value="760893048">
+        <input type="hidden" name="AuctionType" value="1400">
+        <input type="hidden" name="onsale" value="1">
+
+        <ul class="ui-list">
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <label class="am-form-label am-u-sm-4">开拍时间</label>
+                    <div class="am-u-sm-5">
+                        <select id="beginDay" name="beginDay">
+                                    <option value="2015-10-12">2015-10-12</option>
+                                    <option value="2015-10-13">2015-10-13</option>
+                                    <option value="2015-10-14">2015-10-14</option>
+                                    <option value="2015-10-15">2015-10-15</option>
+                                    <option value="2015-10-16">2015-10-16</option>
+                                    <option value="2015-10-17">2015-10-17</option>
+                                    <option value="2015-10-18">2015-10-18</option>
+                                    <option value="2015-10-19">2015-10-19</option>
+                                    <option value="2015-10-20">2015-10-20</option>
+                                    <option value="2015-10-21">2015-10-21</option>
+                                    <option value="2015-10-22">2015-10-22</option>
+
+                        </select>
+                    </div>
+
+                    <div class="am-u-sm-3 am-u-end">
+                        <select class="am-input" id="beginHour" name="beginHour">
+                                    <option value="00:00">00:00</option>
+                                    <option value="01:00">01:00</option>
+                                    <option value="02:00">02:00</option>
+                                    <option value="03:00">03:00</option>
+                                    <option value="04:00">04:00</option>
+                                    <option value="05:00">05:00</option>
+                                    <option value="06:00">06:00</option>
+                                    <option value="07:00">07:00</option>
+                                    <option value="08:00">08:00</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="23:00">23:00</option>
+
+                        </select>
+                    </div>
+                </div>
+            </li>
+
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <label class="am-form-label am-u-sm-4">结拍时间</label>
+                    <div class="am-u-sm-5">
+                        <select id="endDay" name="endDay" onchange="checkEndTime()">
+                                    <option value="2015-10-12">2015-10-12</option>
+                                    <option value="2015-10-13">2015-10-13</option>
+                                    <option value="2015-10-14">2015-10-14</option>
+                                    <option value="2015-10-15">2015-10-15</option>
+                                    <option value="2015-10-16">2015-10-16</option>
+                                    <option value="2015-10-17">2015-10-17</option>
+                                    <option value="2015-10-18">2015-10-18</option>
+                                    <option value="2015-10-19">2015-10-19</option>
+                                    <option value="2015-10-20">2015-10-20</option>
+                                    <option value="2015-10-21">2015-10-21</option>
+                                    <option value="2015-10-22">2015-10-22</option>
+                                    <option value="2015-10-23">2015-10-23</option>
+                                    <option value="2015-10-24">2015-10-24</option>
+                                    <option value="2015-10-25">2015-10-25</option>
+                                    <option value="2015-10-26">2015-10-26</option>
+                                    <option value="2015-10-27">2015-10-27</option>
+
+                        </select>
+                    </div>
+
+                    <div class="am-u-sm-3 am-u-end">
+                        <select class="am-input" id="endHour" onchange="checkEndTime()" name="endHour">
+                                    <option value="00:00">00:00</option>
+                                    <option value="01:00">01:00</option>
+                                    <option value="02:00">02:00</option>
+                                    <option value="03:00">03:00</option>
+                                    <option value="04:00">04:00</option>
+                                    <option value="05:00">05:00</option>
+                                    <option value="06:00">06:00</option>
+                                    <option value="07:00">07:00</option>
+                                    <option value="08:00">08:00</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="23:00">23:00</option>
+
+                        </select>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="ui-list">
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <label class="am-form-label am-u-sm-4">起拍价</label>
+                    <div class="am-u-sm-8">
+                        <input type="tel" name="startPrice" value="" placeholder="0">
+                    </div>
+                </div>
+            </li>
+
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <label class="am-form-label am-u-sm-4">最低加价幅度</label>
+                    <div class="am-u-sm-8">
+                        <input type="tel" name="priceRange" value="" placeholder="0">
+                    </div>
+                </div>
+            </li>
+
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <label class="am-form-label am-u-sm-4">保留价</label>
+                    <div class="am-u-sm-8">
+                        <input type="tel" name="reservePrice" value="" placeholder="0">
+                    </div>
+                </div>
+            </li>
+
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <label class="am-form-label am-u-sm-4">保证金</label>
+                    <div class="am-u-sm-8">
+                        <input type="tel" name="bailMoney" value="" placeholder="0">
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="ui-list">
+            <li class="ui-list-item">
+                <div class="ui-list-item-inner am-form-group">
+                    <label class="am-form-label am-u-sm-4">运费</label>
+                    <div class="am-u-sm-5 am-u-end">
+                        <select id="postage" name="postage">
+                            <option value="0">卖家包邮</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="am-u-sm-12">
+            <div class="ui-tip">
+                <h3>保证金规则</h3>
+                <p>如果设置了保证金，买卖双方都需要缴纳等额的保证金。一旦一方违约，保证金将自动赔付给另一方。</p>
+            </div>
+        </div>
+
+        <div class="am-u-sm-12">
+            <button type="submit" class="am-btn am-btn-primary am-btn-block btn-post">立即发布</button>
+            <button type="button" class="am-btn am-btn-secondary am-btn-block btn-save">保存至仓库</button>
+        </div>
+
+    </form>
+</div>
+
+        <div class="am-g">
+            
+
+
+<nav class="bottom-bar fixed-bottom" id="bottom-bar">
+    <ul>
+
+        <li class="home ">
+
+            <a href="http://pai.ys.com/" title="首页">
+                <i class="ys-icon-bottom-bar-home"></i><span>首页</span>
+            </a>
+        </li>
+
+        <li class="auction ">
+
+            <a href="http://pai.ys.com/user/auction/item-auction-list" title="我参加的拍卖">
+                <i class="ys-icon-bottom-bar-auction"></i><span>我出价的</span>
+            </a>
+        </li>
+
+        <li class="post ">
+
+            <a class="post" href="javascript:;" title="发布拍品" data-am-modal="{target:&#39;#upload-actions&#39;}">
+                <i class="ys-icon-bottom-bar-post"></i><span>发布</span>
+            </a>
+        </li>
+
+        <li class="goods ">
+
+            <a href="http://pai.ys.com/user/product" title="拍品管理">
+                <i class="ys-icon-bottom-bar-goods"></i><span>我上传的</span>
+            </a>
+        </li>
+
+        <li class="user-home ">
+
+            <a href="http://pai.ys.com/user" title="用户中心">
+                <i class="ys-icon-bottom-bar-user"></i><span>我的</span>
+            </a>
+        </li>
+    </ul>
+</nav><!-- /.bottom-bar -->
+
+<div class="am-g">
+    <div class="am-modal-actions" id="upload-actions">
+        <div class="am-modal-actions-group">
+            <ul class="am-list">
+                <li>
+                    <a href="http://pai.ys.com/user/product/new-zengjia">普通增价拍发布</a>
+                </li>
+                <li>
+                    <a href="http://pai.ys.com/user/product/new-susheng">速胜增价拍发布</a>
+                </li>
+            </ul>
+        </div>
+        <div class="am-modal-actions-group">
+            <button class="am-btn am-btn-default am-btn-block" data-am-modal-close="">取消</button>
+        </div>
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/ejs.min.js"></script>
+<script src="js/amazeui.min.js"></script>
+<script src="js/common.js"></script><script src="js/main.js"></script>
+
+    
+    <script src="js/seller-goods-edit-2.js"></script>
+<script>
+    function checkEndTime() {
+        var beginTime = $("#beginDay").val() + " " + $("#beginHour").val();
+        var endTime = $("#endDay").val() + " " + $("#endHour").val();
+        var sDate = new Date(beginTime);
+        var eDate = new Date(endTime);
+        if (sDate >= eDate) {
+            utils.showAlert({
+                content: "结拍时间不能小于开拍时间"
+            });
+            return false;
+        }
+    }
+    $("#beginDay").val("2015-10-12");
+    $("#beginHour").val("10:00");
+    $("#endDay").val("2015-10-15");
+    $("#endHour").val("11:00");
+</script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a61f55850f1bd2f0bb5573a28426d393";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,48 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/seller-goods-list.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="js">
+	<script src="__HOME__js/widget/scrollLoad.js"></script>
+	<script src="__HOME__js/pages/seller-goods-list.js"></script>
+    <script>
+		var _onsaleApi = "";
+		var _page = 1;
+		var _listApi = '{:U('Index', array('action'=>$action))}';
+		var _offsaleApi = '{:U('Product/sale', array('status'=>0))}';
+		var _onsaleApi = '{:U('Product/sale', array('status'=>1))}';
+		var _delApi = '{:U('Product/del')}';
+		function _listMoreHandler(data) {
+			if (!window.$listWrap) {
+				window.$listWrap = $('#item-list');
+			}
+			if (data.htmlString) {
+				var $list = $(data.htmlString);
+				$listWrap.append($list);
+				// 设置倒计时
+				initCountdown($list.find('[data-endtime]'));
+				// 设置图片居中
+				initImageCenter($list.find('.img-center'));
+				// 设置图片懒加载
+				initImageLazy($list.find('.lazy'));
+			}
+		}
+    </script>
+</block>
+<block name="main">
+	<div class="am-g">
+		<nav class="ui-page-nav">
+		    <ul>
+		        <li <eq name="action" value="view">class="active"</eq>><a href="{:U('Product/index', array('action'=>'view'))}">预展中</a></li>
+		        <li <eq name="action" value="sale">class="active"</eq>><a href="{:U('Product/index', array('action'=>'sale'))}">拍卖中</a></li>
+		        <li <eq name="action" value="ware">class="active"</eq>><a href="{:U('Product/index', array('action'=>'ware'))}">仓库中</a></li>
+		    </ul>
+		</nav>
+	</div>
+	<div class="am-g">
+	    <div id="item-list" class="goods-list"></div>
+        <div class="loading" id="loading" style="display: none;">
+            <i class="am-icon-spinner am-icon-spin"></i>
+        </div>
+	</div>
+</block>

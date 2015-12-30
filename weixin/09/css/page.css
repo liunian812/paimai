@@ -1,0 +1,36 @@
+body{background-color:#F9F9F9;overflow-x: hidden;}
+#homePage{background:#eee;}
+footer{margin-top:15px;}
+.plug-menu,
+.plug-btn{background-color:#6B4A3A;}
+.ui-btn-right_home{float:0; right:auto;}
+
+.mainmenu {display: block;margin:3px auto 4px;width: 100%;}
+.mainmenu li {width:50%;float:left;display: block;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;}
+.menubtn {display: block;text-decoration:none;color:#000;background-color: #ffffff;padding:8px 10px;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.15);-moz-box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.15);-webkit-box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.15);-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+.mainmenu li:nth-child(odd) .menubtn{margin: 2px 2px 1px 5px;}
+.mainmenu li:nth-child(even) .menubtn{margin: 2px 5px 1px 2px;}
+.menubtn .menumesg {padding:0px;}
+.menubtn .menuimg {margin:0 auto;height:100px;padding: 6px;width: 100px;display:block;overflow:hidden;-webkit-border-radius:100px;-moz-border-radius:100px;border-radius:100px;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.11) inset;-moz-box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.11) inset;-webkit-box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.11) inset;}
+.menubtn .menuimg2 {height:100px;width:100px;display:block;overflow:hidden;-webkit-border-radius:100px;-moz-border-radius:100px;border-radius:100px;}
+.mainmenu li div img {border:0;height:100px;width:100px;}
+.mainmenu li .menutitle {padding:6px 0 3px;text-decoration: none;color:#000;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;text-align:center;}
+.mainmenu li .menutext {color: #bbbbbb;display: none;font-size: 12px;line-height: 16px;height: 32px;overflow: hidden;text-align:center;}
+
+
+.list li {display: block;color: #222222;border-bottom:1px solid #dadada;font-weight: bold;/*text-shadow: 0 1px 0 #FFFFFF;*/text-decoration: none;background:#F3EAFF;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;position: relative;/*padding:10px 8px;*/overflow:hidden;box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5) inset;-moz-box-shadow:0 1px 0 0 rgba(255, 255, 255, 0.5) inset;-webkit-box-shadow:0 1px 0 0 rgba(255, 255, 255, 0.5) inset; background:#F9F9F9 url(../../wxbase/img/ico-next.png) no-repeat 97% 50%; background-size:7px auto;}
+.list li a{padding:10px 40px 9px 8px; display: block;}
+.list li:active,
+.list li:hover{background-color:#eeeeee;font-weight:bold;cursor:pointer;text-decoration:none;}
+.list li .img {width:75px;height:42px;float:left;margin:0 10px 0 0; display:inline;overflow:hidden;border-radius: 3px;}
+.list li img {width:75px;float:left;}
+.list li h2 {font-size: 16px;color:#2f2f2f;font-weight:normal;height:20px;font-weight:normal;line-height:16px;padding:0;max-width:100%;text-overflow:ellipsis;white-space:nowrap !important;white-space:normal;overflow:hidden;}
+.list li p {display: block;font-size: 12px;color:#9C9C9C;line-height: 16px;font-weight: normal;margin-top: 3px;overflow: hidden;text-overflow: ellipsis;/*white-space: nowrap;*/padding-right:2px;}
+.list li p.onlyheight {height:16px; /*margin-bottom:5px*/}
+
+.swiper-container{min-height:170px;}
+
+
+/*content*/
+#activity-detail {padding:15px 10px;max-width: 620px;min-width: 300px; margin:0 auto;}
+

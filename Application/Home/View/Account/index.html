@@ -1,0 +1,64 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/finance.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="main">
+	<div class="am-g finance-header">
+	    <ul class="user-money">
+	        <li class="total">
+	            <label>账户总额</label>
+	            <span class="money"><i>¥</i><em>{$user_info['fund']|default=0}</em></span>
+	        </li>
+	        <!-- <li class="bankcard">
+	            <label>银行卡</label>
+	            <span class="num">0</span>
+	        </li>
+	        <li class="balance">
+	            <label>可用余额</label>
+	            <span class="money"><i>¥</i><em>0</em></span>
+	        </li>
+	        <li class="freeze">
+	            <label>冻结金额</label>
+	            <span class="money"><i>¥</i><em>4</em></span>
+	        </li> -->
+	    </ul>
+	</div>
+	<div class="am-g">
+	    <ul class="ui-list ui-list-inset">
+	        <!-- <li class="ui-list-item" data-page-url="chongzhi.html">
+	            <div class="ui-list-item-inner">
+	                <a class="title" href="chongzhi.html"><i class="ys-icon-finance-recharge"></i>充值</a>
+	            </div>
+	        </li> -->
+	        <li class="ui-list-item" data-page-url="{:U('Account/tiXian')}">
+	            <div class="ui-list-item-inner">
+	                <a class="title" href="{:U('Account/tiXian')}"><i class="ys-icon-finance-withdraw"></i>提现</a>
+	            </div>
+	        </li>
+	        <!-- <li class="ui-list-item" data-page-url="bankcard.html">
+	            <div class="ui-list-item-inner">
+	                <a class="title" href="bankcard.html"><i class="ys-icon-finance-card"></i>我的银行卡</a>
+	            </div>
+	        </li> -->
+	    </ul>
+	    <ul class="ui-list ui-list-inset">
+	        <!-- <li class="ui-list-item" data-page-url="xiugaimima.html">
+	            <div class="ui-list-item-inner">
+	                <a class="title" href="xiugaimima.html"><i class="ys-icon-account-pay-password"></i>修改支付密码</a>
+	            </div>
+	        </li> -->
+            <li class="ui-list-item" data-page-url="{:U('Account/preson')}">
+                <div class="ui-list-item-inner">
+                    <a class="title" href="{:U('Account/preson')}"><i class="ys-icon-account-auth"></i>个人身份认证</a>
+                    <span class="sub-title">{$user_info['user_auth']?'已认证':'未认证'}</span>
+                </div>
+            </li>
+            <li class="ui-list-item" data-page-url="{:U('Account/company')}">
+                <div class="ui-list-item-inner">
+                    <a class="title" href="{:U('Account/company')}"><i class="ys-icon-account-auth"></i>企业身份认证</a>
+                    <span class="sub-title">{$user_info['shop_auth']?'已认证':'未认证'}</span>
+                </div>
+            </li>
+	    </ul>
+	</div>
+</block>

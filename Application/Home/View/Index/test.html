@@ -1,0 +1,257 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/index_style.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+<link rel="stylesheet" href="__HOME__css/pages/swiper.min.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="js">
+<script type="text/javascript">
+    var _page = 0;
+    var _listApi = '{:U('Index/lists')}';
+    function _listMoreHandler(data) {
+        if (!window.$listWrap) {
+            window.$listWrap = $('#item-list');
+        }
+        if (data.htmlString) {
+            var $list = $(data.htmlString);
+            $listWrap.append($list);
+            // 设置倒计时
+            initCountdown($list.find('[data-endtime]'));
+            // 设置图片居中
+            initImageCenter($list.find('.img-center'));
+            // 设置图片懒加载
+            initImageLazy($list.find('.lazy'));
+        }
+    }
+</script>
+<script src="__HOME__js/widget/scrollLoad.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/pages/index_js.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+</block>
+<block name="main">
+    <div class="am-g">
+        <div class="top-banner top-banner1">
+            <div class="swiper-container banner">
+                <div class="swiper-wrapper">
+                    <volist name=":get_banner(1)" id="val">
+                    <div class="swiper-slide" style="background-image:url({:thumb($val['image'])});" onclick="location.href='{$val['url']}'"></div>
+                    </volist>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination bnav"></div>
+            </div>
+            <!-- Swiper JS -->
+            <script src="__HOME__js/widget/swiper.min.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+            <!-- Initialize Swiper -->
+            <script>
+                var swiper = new Swiper('.banner', {
+                    pagination: '.bnav',
+                    paginationClickable: true,
+                    autoplay:5000,
+                    loop:true,
+                    autoplayDisableOnInteraction:false
+                });
+            </script>
+        </div>
+    </div>
+    <div class="am-g bg-white">
+        <header class="hdbt">
+            活动专区
+        </header>
+        <section class="hdnr">
+            <volist name=":get_banner(2, 1)" id="val">
+            <empty name="val['video']">
+                <a href="{$val['url']}"><img src="{:thumb($val['image'])}">{$val['title']}</a>
+            <else />
+                <video width="100%" controls="controls" preload="auto" webkit-playsinline>
+                    <source type="video/mp4" src="{:video($val['video'])}"></source>Your browser does not support the video tag.
+                </video>
+            </empty>
+            </volist>
+        </section>
+    </div>
+    <div class="am-g bg-white light-nav fix">
+        <a href="{:U('Index/lists', array('type'=>3))}" class="bg-red font-white"><img src="__HOME__images/cate_1.png" height="66" width="101">{:get_product_type(3)}专区</a>
+        <a href="{:U('Index/lists', array('type'=>1))}" class="bg-yellow font-white"><img src="__HOME__images/cate_2.png" height="66" width="101">{:get_product_type(1)}专区</a>
+        <a href="{:U('Index/lists', array('type'=>2))}" class="bg-green font-white"><img src="__HOME__images/cate_3.png" height="66" width="101">{:get_product_type(2)}专区</a>
+        <volist name=":C('PRODUCT_CATE')" id="val">
+            <a href="{:U('Index/lists', array('cate'=>$key))}" class="bg-gray"><img src="__HOME__images/cate_<?php echo $key+3;?>.png" height="66" width="101">{$val}</a>
+        </volist>
+    </div>
+    <div class="am-g bg-white" style="font-size:12px;">
+        <header class="hdbt">
+            精品秒杀
+        </header>
+        <section class="hdnr1">
+            <ul class="am-avg-sm-4 am-avg-md-4 ys-grid goods-grid" id="item-list-active">
+            <volist name="miaosha_list" id="val">
+                <li class="ys-grid-item">
+                    <div class="ys-grid-item-inner item" id="item-{$val['product_id']}" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+                        <a class="img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}">
+                            <img alt="{$val['product_name']}" class="lazy" data-height="" data-original="{$val['product_img']}" data-width="" src="{$val['product_img']}">
+                        </a>
+                        <img src="__HOME__images/miaoshabiaozhi.png" height="40" width="40" style="width:40px;" class="miaoshabiaozhi">
+                        <dl style="">
+                            <dt><a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a></dt>
+                            <dd class="money" style="white-space: nowrap;">
+                                <label>秒杀价:</label><i style="font-size:12px;">¥</i><em style="font-size:12px;">{$val['range_price']}</em>
+                            </dd>
+                            <div>
+                                <span class="light-time" style="color:#000;" data-endtime="{$val['end_time']}"><em>00</em></span>
+                            </div>
+                        </dl>
+                    </div>
+                </li>
+            </volist>
+            </ul>
+        </section>
+    </div>
+
+    <div class="am-g bg-white">
+        <header class="hdbt">
+            特价活动
+        </header>
+        <section class="hdnr font-red">
+            <volist name=":get_banner(3, 1)" id="val">
+            <a href="{$val['url']}"><img src="{:thumb($val['image'])}">{$val['title']}</a>
+            </volist>
+        </section>
+    </div>
+    <div class="am-g bg-white" style="font-size:12px;">
+        <header class="hdbt">
+            推荐产品
+        </header>
+        <section class="hdnr1">
+            <ul class="am-avg-sm-4 am-avg-md-4 ys-grid goods-grid" id="item-list-active">
+            <volist name="position_list" id="val">
+                <li class="ys-grid-item">
+                    <div class="ys-grid-item-inner item" id="item-{$val['product_id']}" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+                        <a class="img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}">
+                            <img alt="{$val['product_name']}" class="lazy" data-height="" data-original="{$val['product_img']}" data-width="" src="{$val['product_img']}">
+                        </a>
+                        <img src="__HOME__images/tuijianbiaozhi.png" height="40" width="40" style="width:40px;" class="miaoshabiaozhi">
+                        <dl style="">
+                            <dt><a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a></dt>
+                            <dd class="money" style="white-space: nowrap;">
+                                <label>当前价:</label><i style="font-size:12px;">¥</i><em style="font-size:12px;">{:max_bid_price($val['product_id'])}</em>
+                            </dd>
+                            <div>
+                                <span class="light-time" style="color:#000;" data-endtime="{$val['end_time']}"><em>00</em></span>
+                            </div>
+                        </dl>
+                    </div>
+                </li>
+            </volist>
+            </ul>
+        </section>
+    </div>
+    <div class="am-g bg-white" style="font-size:12px;">
+        <header class="hdbt">
+            好店推荐
+        </header>
+        <style media="screen">
+        .hdnr6{padding: 0 0 0 2px;}
+        .hdnr6>a{float:left;width:16%;margin:1px;text-align: center;margin-top:15px;font-size: 0.5pc;line-height: 14px;white-space: nowrap;overflow: hidden;}
+        .hdnr6 a img{display: block;width:100%;}
+        .hdnr6 a span{display: block;width:100%;overflow:hidden;margin-bottom:3px;}
+        </style>
+        <section class="hdnr6">
+            <volist name="shop_list" id="val">
+                <a href="{:U('Shop/index',array('id'=>$val['user_id']))}"><img src="{$val['user_avatar']}">{:msubstr($val['user_name'],0,5,'utf-8','')}</a>
+            </volist>
+            <div class="clear"></div>
+        </section>
+    </div>
+    <div class="am-g bg-white">
+        <header class="hdbt">
+            活动专区
+        </header>
+        <section class="hdnr">
+            <div class="top-banner top-banner2">
+                <div class="swiper-container banner1">
+                    <div class="swiper-wrapper">
+                        <volist name=":get_banner(4)" id="val">
+                        <div class="swiper-slide" style="background-image:url({:thumb($val['image'])});" onclick="location.href='{$val['url']}'"></div>
+                        </volist>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination bnav1"></div>
+                </div>
+                <!-- Swiper JS -->
+                <!-- Initialize Swiper -->
+                 <script>
+                var swiper1 = new Swiper('.banner1', {
+                    pagination: '.bnav1',
+                    paginationClickable: true,
+                    autoplay:5000,
+                    loop:true,
+                    autoplayDisableOnInteraction:false
+                });
+                </script>
+            </div>
+        </section>
+
+    </div>
+    <div class="am-g bg-white">
+        <header class="hdbt">
+            新闻知识
+        </header>
+        <section class="hdnr3">
+            <volist name=":get_banner(5)" id="val">
+                <eq name="i" value="1">
+                    <a href="{$val['url']}" class="newsnr"><img src="{:thumb($val['image'])}" width="100%"><span>{:msubstr($val['title'],0,15)}</span></a>
+                <else />
+                    <a href="{$val['url']}" class="newsk">
+                        <img src="{:thumb($val['image'])}">
+                        <div class="newsknr">
+                            <span>{:msubstr($val['title'],0,15)}</span>{:msubstr($val['description'],0,60)}
+                        </div>
+                        <div class="clear"></div>
+                    </a>
+                </eq>
+            </volist>
+        </section>
+    </div>
+    <style media="screen">
+    	.ui-list{
+    		widht:98%;
+    		margin: 10px auto;
+    	}
+    	.ui-list-item{
+    		padding: 0 5px;
+    	}
+    	.goods-list .item {
+    		height: auto;
+    	}
+    	.goods-list .item .am-img-thumbnail{
+    		float: none;
+    		width: auto;
+    	}
+    	.goods-list .item .info {
+    		margin: 0;
+    		padding: 0;
+    		white-space: nowrap;
+    		height: auto;
+    	}
+    	.goods-list .item .info .type{
+    		top: 74%;
+    	}
+    	.goods-list .item .info .time{
+    		top: 74%;
+    		width: 83%;
+    	}
+    	.goods-list .item .info dt{
+    		height: auto;
+    		margin: 5px;
+    	}
+    </style>
+    <div class="am-g bg-white">
+        <header class="hdbt">
+            更多拍品
+        </header>
+        <div class="ui-section-bd">
+			<ul class="am-avg-sm-2 ui-list goods-list" id="item-list" style="margin-top:5px; padding:0 5px;"></ul>
+		</div>
+        <div class="loading" id="loading" style="display:none">
+            <i class="am-icon-spinner am-icon-spin"></i>
+        </div>
+    </div>
+</block>

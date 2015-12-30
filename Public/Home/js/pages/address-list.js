@@ -1,0 +1,6 @@
+/*!
+ * M.YS.COM v0.0.0
+ * Copyright 2015
+ * Author burning <iburning@live.cn>
+ */
+function setDefault(a,b){utils.ajax({url:window._setDefaultApi,data:{addressId:a},success:function(a){1===a.resultCode?utils.showAlert({content:a.resultMessage,onButtonClick:function(){"function"==typeof b&&b(a)}}):utils.showAlert({content:a.resultMessage})}})}function del(a,b){utils.showConfirm({content:"是否确定删除该收货地址？",onConfirm:function(){utils.ajax({url:window._delApi,data:{addressId:a},success:function(a){1===a.resultCode?"function"==typeof b&&b(a):utils.showAlert({content:a.resultMessage})}})}})}$(function(){var a=$("#loading");utils.ajax({url:_listApi,type:"post",success:function(b){b.error?utils.showAlert({title:"提示",content:b.message}):(a.fadeOut(),_listMoreHandler(b.value))}});var b=$("#item-list");b.delegate(".set-default","click",function(a){a.preventDefault(),setDefault($(this).data("id"),function(a){location.reload()})}),b.delegate(".del","click",function(a){a.preventDefault();var b=$(this).data("id");del(b,function(a){var c=$("#item-"+b);c.length&&c.fadeOut(function(){c.remove()})})}),b.hasClass("selector")&&b.delegate("ul","click",function(a){if(b.find("ul").removeClass("active"),$(this).addClass("active"),window._jumpUrl){var c=_jumpUrl.replace("-addressId-",$(this).data("id"));window.location.href=c}})});

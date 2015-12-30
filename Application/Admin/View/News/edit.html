@@ -1,0 +1,120 @@
+<style media="screen">
+    .ms select {
+        padding:0px 10px;height:24px;border:solid 1px #d2d2d2;margin-right:10px; background:#fafafa
+    }
+    .select {width:400px;}
+    .text1{height:100px;}
+</style>
+
+<form action="" method="post">
+<table width="900" border="0" cellspacing="0" cellpadding="0" class="table">
+    <tr>
+        <td class="td1" align="right">所属栏目：</td>
+        <td class="ms">
+            <select class="select" name="catid">
+                <option value="">≡ 选择栏目 ≡</option>
+        <volist name="cate_list" id="v">
+            <if condition="$v['type'] != $type || $v['cat']">
+                <option value="{$v['id']}" disabled="disabled" <eq name="v['id']" value="$cate_info['id']">selected="selected"</eq>>{$v['title']}</option>
+            <else />
+                <option value="{$v['id']}" <eq name="v['id']" value="$cate_info['id']">selected="selected"</eq>>{$v['title']}</option>
+            </if>
+        </volist>
+            </select>
+            （所属栏目）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">标题：</td>
+        <td class="ms">
+            <input type="text" name="title" value="{$info['title']|default=''}" class="inputt input" />
+            （标题）
+        </td>
+    </tr>
+    <tr>
+        <td align="right">图片：</td>
+        <td class="upload-row">
+            <input type="text" name="thumb" value="{$info['thumb']|default=''}" readonly="readonly" class="inputt input3">
+            <input type="button" class="button1 cr" value="上 传"><notempty name="cate_info['setting']['img_width']">建议图片尺寸：{$cate_info['setting']['img_width']}*{$cate_info['setting']['img_height']}px;</notempty>
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">描述：</td>
+        <td class="ms">
+            <textarea class="text1" name="description">{$info['description']|default=''}</textarea>
+            （描述）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">扩展1：</td>
+        <td class="ms">
+                <textarea class="text1" name="extends[1]">{$info['extends']['1']|default=''}</textarea>
+            （扩展1）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">扩展2：</td>
+        <td class="ms">
+            <textarea class="text1" name="extends[2]">{$info['extends']['2']|default=''}</textarea>
+            （扩展2）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">内容：</td>
+        <td class="ms">
+            <script id="container" name="content" type="text/plain">{$info['content']|default=''|html_entity_decode}</script>
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">排序：</td>
+        <td class="ms">
+            <input type="text" name="sort" value="{$info['sort']|default=0}" class="inputt input" />
+            （排序sort desc, id desc）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">发布时间：</td>
+        <td class="ms">
+            <input type="text" name="create_time" value="<empty name="info['create_time']">{:date('Y-m-d H:i:s')}<else/>{:date('Y-m-d H:i:s',$info['create_time'])}</empty>" class="inputt input" />
+            （发布时间）
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+             <input type="hidden" name="id" value="{$info.id|default=''}">
+             <input type="submit" class="tjanniu cr" value="提 交" /><input type="reset" class="czanniu cr" value="重 置" />
+        </td>
+    </tr>
+</table>
+</form>
+
+<!-- 图片上传 -->
+<script type="text/javascript">
+    var Tool = {};
+    $(function(){
+        // 上传处理
+        Tool.uploadSend = function(){
+            $(".upload-row").each(function(i){
+                $(this).find(".button1").click(function(){
+                    window.open('{:U('Tool/uploadImage', '', '')}&id='+ i, '文件上传', 'height=100, width=400, top='+(screen.availHeight-100)/2+', left='+(screen.availWidth-400)/2+', toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+                })
+            })
+        }
+        // 绑定
+        Tool.uploadSend();
+    })
+</script>
+
+<!-- 百度编辑器 -->
+<js href="__COMMON__js/jquery-2.0.2.js" />
+<js href="__COMMON__ueditor/ueditor.config.js" />
+<js href="__COMMON__ueditor/ueditor.all.min.js" />
+<script>
+    $(function(){
+        var ue = UE.getEditor('container',{
+            serverUrl :'{:U('Admin/Tool/ueditor')}',
+            initialFrameWidth : 800,
+            initialFrameHeight : 450
+        });
+    })
+</script>

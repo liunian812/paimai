@@ -1,0 +1,158 @@
+.ui-section {
+background-color:transparent;
+border:none;
+padding:0;
+}
+
+.ui-section-hd {
+border:none;
+margin:0;
+padding:0 5px;
+}
+
+.ui-section-hd h3 {
+position:relative;
+float:none;
+font-size:17px;
+text-align:center;
+}
+
+.goods-list {
+background-color:transparent;
+border-width:0;
+padding:0 5px 20px;
+}
+
+.goods-list .item {
+background-color:#fff;
+position:relative;
+height:125px;
+margin-bottom:5px;
+border-width:0;
+padding:0;
+}
+
+.goods-list .item:before,.goods-list .item:after {
+content:" ";
+display:table;
+}
+
+.goods-list .item:after {
+clear:both;
+}
+
+.goods-list .item .am-img-thumbnail {
+float:left;
+width:125px;
+height:125px;
+}
+
+.goods-list .item .img-center {
+border:0;
+padding:0;
+}
+
+.goods-list .item .info {
+height:125px;
+margin:0 0 0 125px;
+padding:5px 10px;
+}
+
+.goods-list .item .info dt {
+overflow:hidden;
+height:40px;
+margin-bottom:10px;
+font-weight:400;
+line-height:20px;
+}
+
+.goods-list .item .info dt a,.goods-list .item .info dt a:active {
+color:#222;
+}
+
+.goods-list .item .info dd {
+line-height:20px;
+}
+
+.goods-list .item .info dt+dd {
+margin-top:0;
+}
+
+.goods-list .item .info .money label,.goods-list .item .info .money i,.goods-list .item .info .money em {
+font-size:12px;
+color:#666;
+}
+
+.goods-list .item .info .money label {
+margin-right:3px;
+}
+
+.goods-list .item .info .reserve {
+position:absolute;
+right:10px;
+top:55px;
+}
+
+.goods-list .item .info .reserve span {
+font-size:12px;
+}
+
+.goods-list .item .info .current i,.goods-list .item .info .current em {
+font-size:17px;
+color:#e43a3d;
+}
+
+.goods-list .item .info .type {
+background-color:#e43a3d;
+position:absolute;
+left:0;
+bottom:0;
+overflow:hidden;
+width:30px;
+height:22px;
+line-height:22px;
+font-size:12px;
+text-align:center;
+color:#fff;
+}
+
+.goods-list .item .info .type.blue {
+background-color:#2e93e0;
+}
+
+.goods-list .item .info .time,.goods-list .item .info .time-over {
+opacity:0.75;
+background-color:#000;
+position:absolute;
+left:30px;
+bottom:0;
+height:22px;
+width:95px;
+line-height:22px;
+font-size:12px;
+text-align:right;
+color:#fff;
+padding:0 5px;
+}
+
+.goods-list .item .info .time label,.goods-list .item .info .time-over label {
+background-image:url(../images/biao.png);
+background-size:12px 12px;
+width:12px;
+height:12px;
+overflow:hidden;
+display:inline-block;
+text-indent:500px;
+vertical-align:-1px;
+margin:0;
+}
+
+.goods-list .item .info .time span,.goods-list .item .info .time-over span {
+z-index:10;
+position:relative;
+color:#fff;
+}
+
+.goods-list .item .info .time em,.goods-list .item .info .time-over em {
+color:#fff;
+}

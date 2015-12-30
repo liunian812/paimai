@@ -1,0 +1,10 @@
+<volist name="collect_list" id="val">
+    <li class="ui-list-item" data-page-url="{:U('Shop/index', array('id'=>$val['shop']))}">
+        <div class="ui-list-item-inner shop-info" data-page-url="{:U('Shop/index', array('id'=>$val['shop']))}">
+            <a class="avatar" href="{:U('Shop/index', array('id'=>$val['shop']))}">
+                <img src="{$val['user_info']['user_avatar']}">
+            </a>
+            <a class="nickname" href="{:U('Shop/index', array('id'=>$val['shop']))}">{$val['user_info']['user_name']}</a>
+        </div>
+    </li>
+</volist>

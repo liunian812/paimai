@@ -1,0 +1,36 @@
+<volist name="product_list" id="val">
+    <li class="ui-list-item">
+        <div class="ui-list-item-inner item" id="item-{$val['product_id']}" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+            <a class="am-img-thumbnail img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}" style="height: 125px;">
+                <img alt="{$val['product_name']}" class="lazy" data-height="526" data-original="{:C('WEB_SITE_URL')}/{$val['product_img']}"
+                data-width="790" src="{:C('WEB_SITE_URL')}/{$val['product_img']}" style="display: block; max-width: none; width: 187px; height: 125px; margin: 0px -31px;">
+            </a>
+            <dl class="info">
+                <dt>
+                    <a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a>
+                </dt>
+
+			<if condition="$val['status'] eq 2">
+                <dd class="money current">
+                    <label>成交价:</label><i>¥</i><em><em>{:max_bid_price($val['product_id'])}</em></em>
+                </dd>
+                <dd class="type blue">
+                    <span>{$product_type[$val['product_type']]}</span>
+                </dd>
+                <dd class="status status-finish-success">
+                    <span>已成交</span>
+                </dd>
+			<else />
+				<dd class="money current">
+				</dd>
+				<dd class="type blue">
+					<span>{$product_type[$val['product_type']]}</span>
+				</dd>
+				<dd class="status status-finish-fail">
+					<span>失败</span>
+				</dd>
+			</if>
+            </dl>
+        </div>
+    </li>
+</volist>

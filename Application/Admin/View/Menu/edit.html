@@ -1,0 +1,70 @@
+<style media="screen">
+    .ms select {
+        padding:0px 10px;height:24px;border:solid 1px #d2d2d2;margin-right:10px; background:#fafafa
+    }
+    .select {width:400px;}
+    .text1{height:100px;}
+</style>
+
+<form action="" method="post">
+<table width="900" border="0" cellspacing="0" cellpadding="0" class="table">
+	<tr>
+        <td class="td1" align="right">上级分类：</td>
+        <td class="ms">
+            <select class="select" name="pid">
+                <option value="0">≡ 作为一级栏目 ≡</option>
+
+                <volist name="tree" id="val">
+                    <option value="{$val['id']}" <eq name="val['id']" value="$info['pid']">selected="selected"</eq> >{$val['title']}</option>
+                </volist>
+
+            </select>
+            （上级分类）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">规则名称：</td>
+        <td class="ms">
+            <input type="text" name="title" value="{$info['title']|default=''}" class="inputt input" />
+            （规则名称:后台首页）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">规则标识：</td>
+        <td class="ms">
+            <input type="text" name="name" value="{$info['name']|default=''}" class="inputt input" />
+            （规则标识：Admin/Index/index）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">参数条件：</td>
+        <td class="ms">
+            <input type="text" name="condition" value="{$info['condition']|default=''}" class="inputt input" />
+            （规则标识：?type=news&id=11）
+        </td>
+    </tr>
+	<tr>
+        <td class="td1" align="right">隐藏：</td>
+        <td class="ms">
+            <select class="select" name="hide">
+                    <option value="0" <eq name="info['hide']" value="0">selected="selected"</eq>>显示</option>
+                    <option value="1" <eq name="info['hide']" value="1">selected="selected"</eq>>隐藏</option>
+            </select>
+            （栏目隐藏）
+        </td>
+    </tr>
+    <tr>
+        <td class="td1" align="right">排序：</td>
+        <td class="ms">
+            <input type="text" name="sort" value="{$info['sort']|default=0}" class="inputt input" />
+            （排序sort desc, id desc）
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+             <input type="hidden" name="id" value="{$info['id']|default=''}">
+             <input type="submit" class="tjanniu cr" value="提 交" /><input type="reset" class="czanniu cr" value="重 置" />
+        </td>
+    </tr>
+</table>
+</form>

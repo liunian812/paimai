@@ -1,0 +1,39 @@
+body{background-color:#eee;overflow-x: hidden;}
+.homeFooter{position:fixed; bottom:5px; color:#fff; z-index:100; width:100%;}
+.plug-menu,
+.plug-btn{background-color:#5848a9;}
+.ui-btn-right_home{float:0; right:auto;}
+.mainbg{ width:100%;position:fixed;z-index:1}
+.mainbg img{width:100%;}
+.mainmenu {width:100%;height:190px;margin:0 auto;position:fixed;left:0;right:0;bottom:0;z-index:99;background-image:-webkit-linear-gradient( rgba(0, 0, 0, 0) 0%,#000 100%);}
+.mainmenu ul {width:100%;overflow: hidden;}
+.mainmenu li {width:33.333%;float:left;text-align:center;color:#FFF;overflow:hidden;margin-bottom:10px;}
+.mainmenu a{display: block; text-align:center;font-size: 14px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; color:#fff;}
+.mainmenu a img{width:50px; height:50px; display:block; margin:0 auto 5px; border-radius:7px;}
+
+
+#ui-header .fixed{border-bottom:1px solid #3a2d79;background-image:-webkit-gradient(linear, left top, left bottom, from(#9e8eef), to(#6457a5));background-image:-webkit-linear-gradient(#9e8eef, #6457a5);background-image:-moz-linear-gradient(#9e8eef, #6457a5);background-image:-ms-linear-gradient(#9e8eef, #6457a5);background-image:-o-linear-gradient(#9e8eef, #6457a5);background-image:linear-gradient(#9e8eef, #6457a5);opacity: 0.95;}
+.ui-title{color:#fff;}
+.ui-btn-left{background-image:url(../../wxbase/img/menu.png);}
+.ui-btn-left_pre{background-image:url(../../wxbase/img/pre2.png);}
+.ui-btn-right{background-image:url(../../wxbase/img/Refresh2.png);}
+.ui-btn-right_menu{background-image:url(../../wxbase/img/menu2.png);}
+.ui-btn-right_home{background-image:url(../../wxbase/img/home2.png); right:auto; left:0;}
+#popmenu:after{border-color:#fff transparent}
+
+.list li {display: block;color: #222222;border-bottom:1px solid #d4cfed;font-weight: bold;/*text-shadow: 0 1px 0 #FFFFFF;*/text-decoration: none;background:#F3EAFF;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;position: relative;/*padding:10px 8px;*/overflow:hidden;box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5) inset;-moz-box-shadow:0 1px 0 0 rgba(255, 255, 255, 0.5) inset;-webkit-box-shadow:0 1px 0 0 rgba(255, 255, 255, 0.5) inset; background:url(../../wxbase/img/ico-next.png) no-repeat 97% 50%; background-size:7px auto;}
+.list li a{padding:10px 40px 9px 8px; display: block;}
+.list li .img {width:75px;height:42px;float:left;margin:0 10px 0 0; display:inline;overflow:hidden;border-radius: 3px;}
+.list li img {width:75px;float:left;}
+.list li h2 {font-size: 16px;color:#2f2f2f;font-weight:normal;height:20px;font-weight:normal;line-height:16px;padding:0;max-width:100%;text-overflow:ellipsis;white-space:nowrap !important;white-space:normal;overflow:hidden;}
+.list li p {display: block;font-size: 12px;color:#9C9C9C;line-height: 16px;font-weight: normal;margin-top: 3px;overflow: hidden;text-overflow: ellipsis;/*white-space: nowrap;*/padding-right:2px;}
+.list li p.onlyheight {height:16px; /*margin-bottom:5px*/}
+
+.swiper-container{min-height:170px;}
+
+
+/*content*/
+#activity-detail {padding:15px 10px;max-width: 620px;min-width: 300px; margin:0 auto;}
+.page-bizinfo .activity-meta{color:#5848a9;}
+#listbody{}
+

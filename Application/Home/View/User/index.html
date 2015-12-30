@@ -1,0 +1,75 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/user-home-v1.1.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+<link rel="stylesheet" href="__HOME__css/pages/vip.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="main">
+	<div class="am-g">
+	</div>
+	<div class="am-g">
+		<div class="user-header">
+			<div class="user-info">
+				<div class="avatar">
+					<a href="{:U('Shop/user', array('id'=>$user_info['user_id']))}"><img alt="{$user_info['user_name']}" src="{$user_info['user_avatar']}"></a>
+				</div>
+				<dl>
+					<dt><span class="sellerLevel lv{$user_info['shop_group']}">{$user_info['user_name']}<a href="{:U('User/sync')}" style="color:#f0f;font-size:14px;">(更新)</a></span></dt>
+					<dd>{$user_info['signature']}</dd>
+				</dl>
+			</div>
+			<ul class="user-count">
+				<li class="total">
+				<label>账户总额:</label>
+				<span class="money"><i>¥</i><em>{$user_info['fund']|default=0}</em></span>
+				<a class="detail" href="{:U('Account/index')}">账户详情</a>
+				</li>
+				<li>
+				<span>{:my_collect_shop_num($user_info['user_id'])}</span>
+				<label><a href="{:U('Collect/index')}">收藏的店铺</a></label>
+				</li>
+				<li>
+				<span>{:my_collect_product_num($user_info['user_id'])}</span>
+				<label><a href="{:U('Collect/product')}">收藏的宝贝</a></label>
+				</li>
+				<li>
+				<span>{:collect_shop_num($user_info['user_id'])}</span>
+				<label>我的粉丝</label>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="am-g">
+		<ul class="ui-grid">
+			<li class="ui-grid-item" data-page-url="{:U('Order/shop')}">
+			<div class="ui-grid-item-inner">
+				<a class="title" href="{:U('Order/shop')}"><i class="ys-icon-saler-order"></i>卖出订单</a>
+			</div>
+			</li>
+			<li class="ui-grid-item" data-page-url="{:U('Order/user')}">
+			<div class="ui-grid-item-inner">
+				<a class="title" href="{:U('Order/user')}"><i class="ys-icon-buyer-order"></i>买入订单</a>
+			</div>
+			</li>
+			<li class="ui-grid-item" data-page-url="{:U('Shop/index', array('id'=>$user_info['user_id']))}">
+			<div class="ui-grid-item-inner">
+				<a class="title" href="{:U('Shop/index', array('id'=>$user_info['user_id']))}"><i class="ys-icon-shop"></i>我的店铺</a>
+			</div>
+			</li>
+			<li class="ui-grid-item" data-page-url="{:U('Product/index')}">
+			<div class="ui-grid-item-inner">
+				<a class="title" href="{:U('Product/index')}"><i class="ys-icon-goods"></i>拍品管理</a>
+			</div>
+			</li>
+			<li class="ui-grid-item" data-page-url="{:U('Setting/index')}">
+			<div class="ui-grid-item-inner">
+				<a class="title" href="{:U('Setting/index')}"><i class="ys-icon-account"></i>账号管理</a>
+			</div>
+			</li>
+			<li class="ui-grid-item" data-page-url="{:U('User/message')}">
+			<div class="ui-grid-item-inner">
+				<a class="title" href="{:U('User/message')}"><i class="ys-icon-feedback"></i>问题反馈</a>
+			</div>
+			</li>
+		</ul>
+	</div>
+</block>

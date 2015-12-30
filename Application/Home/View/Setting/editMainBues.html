@@ -1,0 +1,22 @@
+<extend name="Public/base" />
+<block name="js">
+<script src="__HOME__js/pages/account-main-business.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+</block>
+<block name="main">
+    <div class="am-g">
+        <form class="am-form am-form-horizontal" id="my-form" method="post" action="">
+            <div class="ui-list last">
+                <div class="ui-list-item">
+                    <div class="ui-list-item-inner">
+                        <div class="am-form-group">
+                            <textarea class="am-input" name="mainBusiness" autocomplete="off" rows="3" maxlength="20" placeholder="请输入您的主营项目（20字以内）">{$user_info['main_business']}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="am-u-sm-12">
+                <button type="submit" class="am-btn am-btn-primary am-btn-block btn-next">保存</button>
+            </div>
+        </form>
+    </div>
+</block>

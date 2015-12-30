@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>T台亮点时尚会所</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../wxbase/css/common.css" media="all" />
+<link href="../wxbase/css/photoswipe.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/page.css" media="all" />
+<script src="../wxbase/js/jquery.js" type="text/javascript"></script>
+<script src="../wxbase/js/klass.min.js" type="text/javascript"></script>
+<script src="../wxbase/js/code.photoswipe-3.0.5.min.js" type="text/javascript"></script>
+<script src="js/page.js" type="text/javascript"></script>
+<script type="text/javascript">
+(function(window, $, PhotoSwipe){
+	$(document).ready(function(){
+		var options = {};
+		$("#Gallery a").photoSwipe(options);
+	});	
+}(window, window.jQuery, window.Code.PhotoSwipe));
+</script>
+</head>
+<body>
+<div id="mcover" onclick="document.getElementById('mcover').style.display='';"><img src="../wxbase/img/guide.png"></div>   
+<div id="ui-header">
+    <div class="fixed">
+        <a class="ui-title" id="popmenu">快捷导航</a>
+        <a class="ui-btn-left_pre" href="javascript:history.go(-1);"></a>
+        <a class="ui-btn-right" href=""></a>
+    </div>
+</div>
+<div id="overlay"></div>
+<div id="win">
+    <ul class="dropdown">
+        <li><a href="about.html"><span>公司简介</span></a></li>
+        <li><a href="picview.html"><span>作品展示</span></a></li>
+        <li><a href="activity.html"><span>最新活动</span></a></li>
+        <li><a href="zhaopin.html"><span>人才招聘</span></a></li>
+        <li><a href="http://www.0478.me/weixin/heda/forum.php?mod=forumdisplay&fid=51"><span>小圈子</span></a></li>
+        <li><a href="message.html"><span>留言板</span></a></li>
+        <div class="clr"></div>
+    </ul>
+</div>
+<div class="top46"></div>
+<div class="Listpage" id="picMain">
+    <ul id="Gallery" class="gallery">
+		<li><a href="image/full/001.jpg"><img src="image/thumb/001.jpg" alt="标题 001"></a></li>
+		<li><a href="image/full/002.jpg"><img src="image/thumb/002.jpg" alt="标题 002"></a></li>
+		<li><a href="image/full/003.jpg"><img src="image/thumb/003.jpg" alt="标题 003"></a></li>
+		<li><a href="image/full/004.jpg"><img src="image/thumb/004.jpg" alt="标题 004"></a></li>
+		<li><a href="image/full/005.jpg"><img src="image/thumb/005.jpg" alt="标题 005"></a></li>
+		<li><a href="image/full/006.jpg"><img src="image/thumb/006.jpg" alt="标题 006"></a></li>
+		<li><a href="image/full/022.jpg"><img src="image/thumb/022.jpg" alt="标题 018"></a></li>
+		<li><a href="image/full/007.jpg"><img src="image/thumb/007.jpg" alt="标题 007"></a></li>
+		<li><a href="image/full/008.jpg"><img src="image/thumb/008.jpg" alt="标题 008"></a></li>
+		<li><a href="image/full/009.jpg"><img src="image/thumb/009.jpg" alt="标题 009"></a></li>
+		<li><a href="image/full/010.jpg"><img src="image/thumb/010.jpg" alt="标题 010"></a></li>
+		<li><a href="image/full/011.jpg"><img src="image/thumb/011.jpg" alt="标题 011"></a></li>
+		<li><a href="image/full/012.jpg"><img src="image/thumb/012.jpg" alt="标题 012"></a></li>
+		<li><a href="image/full/013.jpg"><img src="image/thumb/013.jpg" alt="标题 013"></a></li>
+		<li><a href="image/full/014.jpg"><img src="image/thumb/014.jpg" alt="标题 014"></a></li>
+		<li><a href="image/full/015.jpg"><img src="image/thumb/015.jpg" alt="标题 015"></a></li>
+		<li><a href="image/full/016.jpg"><img src="image/thumb/016.jpg" alt="标题 016"></a></li>
+		<li><a href="image/full/017.jpg"><img src="image/thumb/017.jpg" alt="标题 017"></a></li>
+		<li><a href="image/full/018.jpg"><img src="image/thumb/018.jpg" alt="标题 018"></a></li>
+        <li><a href="image/full/021.jpg"><img src="image/thumb/021.jpg" alt="标题 017"></a></li>
+	</ul>
+</div>
+<script src="../wxbase/js/jquery.imagesloaded.js" type="text/javascript"></script>
+<script src="../wxbase/js/jquery.wookmark.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    (function ($){
+      $('#Gallery').imagesLoaded(function() {
+        var options = {
+          autoResize: true, // This will auto-update the layout when the browser window is resized.
+          container: $('#picMain'), // Optional, used for some extra CSS styling
+          offset: 4, // Optional, the distance between grid items
+          itemWidth: 150 // Optional, the width of a grid item
+        };
+
+        // Get a reference to your grid items.
+        var handler = $('#Gallery li');
+
+        // Call the layout function.
+        handler.wookmark(options);
+      });
+    })(jQuery);
+</script>
+
+<div class="plug-div">
+    <div class="plug-phone">
+        <div class="plug-menu themeStyle"><span class="close"></span></div> 
+        <div class="themeStyle plug-btn plug-btn1 close"><a  href="index.html"><span style="background-image: url(../wxbase/img/plugmenu6.png);" ></span></a></div>
+  
+        <div class="themeStyle plug-btn plug-btn2 close"><a  href="tel:15727021092"><span style="background-image: url(../wxbase/img/plugmenu1.png);" ></span></a></div>
+  
+        <div class="themeStyle plug-btn plug-btn3 close"><a  href="message.html"><span style="background-image: url(../wxbase/img/plugmenu4.png);" ></span></a></div>
+  
+        <div class="themeStyle plug-btn plug-btn4 close"><a  href="javascript:document.getElementById('mcover').style.display='block';"><span style="background-image: url(../wxbase/img/plugmenu5.png);" ></span></a></div>
+         
+        <div class="plug-btn plug-btn5 close"></div>
+    </div>
+</div>
+<footer>©2013 微信公众平台-T台亮点时尚会所</footer>
+</body>
+</html>

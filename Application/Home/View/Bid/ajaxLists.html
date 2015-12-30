@@ -1,0 +1,34 @@
+<volist name="bid_list" id="val">
+    <li class="ui-list-item">
+        <div class="ui-list-item-inner">
+            <a class="avatar" href="<eq name="product_info['user_id']" value="$user_info['user_id']">{:U('Shop/user', array('id'=>$val['user_id']))}<else />javascript:void(0);</eq>">
+                <img src="{$val['user_info']['user_avatar']}" alt="{$val['user_info']['user_name']}">
+            </a>
+            <dl>
+                <dt>
+                    <a class="nickname" href="<eq name="product_info['user_id']" value="$user_info['user_id']">{:U('Shop/user', array('id'=>$val['user_id']))}<else />javascript:void(0);</eq>">{$val['user_info']['user_name']}</a>
+                </dt>
+                <switch name="product_info['product_type']">
+                    <case value="1|2">
+                        <dd class="status">
+                                <eq name="key" value="0">
+                                    <span class="leader">领先</span>
+                                    <else />
+                                    <span>出价被超越</span>
+                                </eq>
+                        </dd>
+                    </case>
+                    <case value="3">
+                        <dd class="status">
+                            <span class="leader">成交</span>
+                        </dd>
+                    </case>
+                </switch>
+                <dd class="money">
+                    <label>出价:</label>
+                    <i>¥</i><em>{$val['bid_price']}</em>
+                </dd>
+                <dd class="time">{:date('m-d H:i:s', $val['create_time'])}</dd>
+            </dl>
+        </div>
+</volist>

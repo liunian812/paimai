@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>泰汇现代城</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../wxbase/css/common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/page.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../wxbase/css/message.css" media="all" />
+<script src="../wxbase/js/jquery.js" type="text/javascript"></script>
+<script src="js/page.js" type="text/javascript"></script>
+</head>
+<body id="message">
+<div id="mcover" onclick="document.getElementById('mcover').style.display='';"><img src="../wxbase/img/guide.png"></div>   
+<div id="ui-header">
+    <div class="fixed">
+        <a class="ui-title" id="popmenu">快捷导航</a>
+        <a class="ui-btn-left_pre" href="javascript:history.go(-1);"></a>
+        <a class="ui-btn-right" href=""></a>
+    </div>
+</div>
+<div id="overlay"></div>
+<div id="win">
+    <ul class="dropdown">
+        <li><a href="about.html"><span>公司简介</span></a></li>
+        <li><a href="picview.html"><span>户型展示</span></a></li>
+        <li><a href="activity.html"><span>最新活动</span></a></li>
+        <li><a href="zhaopin.html"><span>人才招聘</span></a></li>
+        <li><a href="http://www.0478.me/weixin/heda/forum.php?mod=forumdisplay&fid=51"><span>小圈子</span></a></li>
+        <li><a href="message.html"><span>留言板</span></a></li>
+        <div class="clr"></div>
+    </ul>
+</div>
+<div class="cardexplain">
+	<div class="top46"></div>
+	<div class="window" id="windowcenter">
+		<div id="title" class="wtitle">操作提示<span class="close" id="alertclose"></span></div>
+		<div class="content">
+			<div id="txt"></div>
+		</div>
+	</div>
+<script type="text/javascript"> 
+$(document).ready(function () { 
+	$("#showcard1").click(function () { 
+		var btn = $(this);
+		var wxname = $("#wxname1").val();
+		if (wxname  == '') {
+			alert("请输入昵称");
+			return
+		}
+		var info = $("#info1").val();
+		if (info == '') {
+			alert("请输入内容");
+			return
+		}
+		var submitData = {
+			nickname:wxname,
+			info: info,
+			action: "setly"
+		};
+		$.post('{$posturl}', submitData,
+		function(data) {
+			if (data.success == true) {
+				alert(data.msg);
+			  setTimeout('window.location.href=location.href',1000);
+				return
+			} else {
+				alert(data.msg);
+				return
+			}
+		},
+		"json")
+	 }); 
+	 
+	$("#showcard2").click(function () { 
+		var btn = $(this);
+		var wxname = $("#wxname2").val();
+		if (wxname  == '') {
+			alert("请输入昵称");
+			return
+		}
+		var info = $("#info2").val();
+		if (info == '') {
+			alert("请输入内容");
+			return
+		}
+		var submitData = {
+			nickname:wxname,
+			info: info,
+			action: "setly"
+		};
+		$.post('{$posturl}', submitData,
+		function(data) {
+			if (data.success == true) {
+				alert(data.msg);
+			  setTimeout('window.location.href=location.href',1000);
+				return
+			} else {
+				alert(data.msg);
+				return
+			}
+		},
+		"json")
+	 });  
+	 
+	$(".hhsubmit").click(function () { 
+		var objid = $(this).attr("date");
+		var info = $(".hly_"+objid).val();
+		if (info == '') {
+			alert("请输入内容");
+			return
+		}
+		var submitData = {
+			nickname:'',
+			fid:objid,
+			info: info,
+			action: "setly"
+		};
+		$.post('{$posturl}', submitData,
+		function(data) {
+			if (data.success == true) {
+				alert(data.msg);
+			  setTimeout('window.location.href=location.href',1000);
+				return
+			} else {
+				alert(data.msg);
+				return
+			}
+		},
+		"json")
+	});  
+	   
+	$(".hfinfo").click(function () { 
+		 var objid = $(this).attr("date");
+		 $(".hhly_"+objid).slideToggle();
+	});  
+	$(".hhbt").click(function () { 
+		 var objid = $(this).attr("date");
+		 $(".hhly_"+objid).slideToggle();
+	});
+});
+ 
+$("#windowclosebutton").click(function(){ 
+	$("#windowcenter").slideUp(500);
+}); 
+$("#alertclose").click(function(){ 
+	$("#windowcenter").slideUp(500);
+}); 
+
+function alert(title){ 
+	$("#windowcenter").slideToggle("slow"); 
+	$("#txt").html(title);
+	setTimeout('$("#windowcenter").slideUp(500)',4000);
+} 
+$(document).ready(function(){
+	$(".first1").click(function(){
+		$(".ly1").slideToggle();
+	});
+});
+$(document).ready(function(){
+	$(".first2").click(function(){
+		$(".ly2").slideToggle();
+	});
+});
+</script> 
+ 
+<div class="history">
+    <div class="history-date">
+      <ul>
+      	<a><h2 class="first first1" style="position: relative;">请点击留言</h2></a>
+		<li class="green bounceInDown nob ly1" style="display:none" >
+			<dl>
+		     <dt><input name="wxname"  type="text" class="px" id="wxname1" value="" placeholder="请输入您的昵称"></dt>
+			 <dt><textarea name="info" class="pxtextarea" style=" height:60px;"  id="info1"  placeholder="请输入留言"></textarea></dt>
+			<dt><a id="showcard1"  class="submit" href="javascript:void(0)">提交留言</a></dt>
+          </dl>
+		</li>
+         <li class="green bounceInDown">
+          <h3>老胡子<span>2013-11-8 14:20:41</span><div class="clr"></div></h3>
+          <dl>
+            <dt class="hfinfo" date="" >留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言</dt>
+          </dl>
+          <dl class="huifu">
+              <dt><span><a  class="hhbt czan"  date="id1" href="javascript:void(0)">回复</a><p style="display:none;" class="hhly_id1" ><textarea name="info" class="pxtextarea hly_id1" ></textarea><a class="hhsubmit submit" date="id1" href="javascript:void(0)">确定</a> </p></span></dt>
+          </dl>
+		  <dl class="huifu"><dt><span>回复：回复回复回复回复回复回复回复回复回复回复回复回复 </span></dt></dl>
+        </li>
+        <li class="green bounceInDown">
+          <h3>老胡子<span>2013-11-8 14:20:41</span><div class="clr"></div></h3>
+          <dl>
+            <dt class="hfinfo" date="" >留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言留言</dt>
+          </dl>
+          <dl class="huifu">
+              <dt><span><a  class="hhbt czan"  date="id2" href="javascript:void(0)">回复</a><p style="display:none;" class="hhly_id2" ><textarea name="info" class="pxtextarea hly_id2" ></textarea><a class="hhsubmit submit" date="id2" href="javascript:void(0)">确定</a> </p></span></dt>
+          </dl>
+		  <dl class="huifu"><dt><span>回复：回复回复回复回复回复回复回复回复回复回复回复回复 </span></dt></dl>
+        </li>     
+ 		<li class="bounceInDown">
+			<!--页码开始-->
+			<div class="pagination">
+              <div class="left"><a href="">上一页</a></div>
+			<div class="allpage">
+              <div class="currentpage"> 1 / 5</div>
+				 
+			</div>
+              <div class="right " > <a href="">下一页</a></div>
+			<div class="clr"></div>
+			</div>	
+			<!--页码结束-->
+        </li>
+        <li class="green bounceInDown nob ly2" style="display:none" >
+			<dl>
+		     <dt><input name="wxname"  type="text" class="px" id="wxname2" value="" placeholder="请输入您的昵称"></dt>
+			 <dt><textarea name="info" class="pxtextarea" style=" height:60px;" id="info2"  placeholder="请输入留言"></textarea></dt>
+			<dt><a id="showcard2"  class="submit" href="javascript:void(0)">提交留言</a> </dt>
+          </dl>
+		</li>
+		<a><h2 class="first first2" style="position: relative;">请点击留言</h2></a>
+      </ul>
+    </div>
+  </div>
+</div>
+<footer>©2013 微信公众平台-泰汇现代城</footer>
+</body>
+</html>

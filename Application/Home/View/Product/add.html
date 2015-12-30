@@ -1,0 +1,101 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/seller-goods-edit-1.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="js">
+<script src="__HOME__js/pages/fileInput.js"></script>
+<script src="__HOME__js/pages/seller-goods-edit-1.js"></script>
+</block>
+<block name="main">
+	<div class="am-g">
+	    <script>
+	        var _getImageUrlApi = '{:U('Product/sync')}';
+	        var _code = '';
+	        var _goodsListUrl = 'index.html'; //取消跳转地址
+	        // 上传配置
+	        var _previewExt = '';       // '_120.jpg';  // 预览图片后缀
+	        // 藏品图片
+	        var _fileNumLimit = {:C('PRODUCT_IMG_MAX')};
+	        var _images = <empty name="product_info['product_images']">[]<else />{$product_info['product_images']}</empty>;
+			var _websiteurl = '{:C('WEB_SITE_URL')}';
+	    </script>
+	</div>
+	<div class="am-g">
+	    <form class="am-form am-form-horizontal" id="my-form" method="post" action="{:U('add')}">
+	        <input type="hidden" name="goUrl" value="" disabled="disabled">
+	        <input type="hidden" name="id" value="{$product_info['product_id']}">
+	        <input type="hidden" name="type" value="{$type}">
+
+	        <ul class="ui-list">
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <input type="text" class="am-input" name="productName" value="{$product_info['product_name']}" maxlength="25" placeholder="拍品名称（25字以内）">
+	                </div>
+	            </li>
+	        </ul>
+
+	        <ul class="ui-list">
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <textarea class="am-input" name="productDescription" rows="5" maxlength="200" placeholder="藏品描述（200字以内）">{$product_info['product_desc']}</textarea>
+	                </div>
+	            </li>
+	        </ul>
+
+	        <div class="am-u-sm-12">
+	            <div class="ui-tip">
+	                <p>最多上传{:C('PRODUCT_IMG_MAX')}张图片</p>
+	            </div>
+	        </div>
+
+	        <div class="ui-list-item-inner upload-tip" id="upload-tip" style="display:none;">
+	            <p>上传中<em class="current">1</em>/<em class="total">1</em></p>
+	        </div>
+
+	        <ul class="ui-list file-container">
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner file-list" id="file-list">
+	                    <div class="file-picker" id="file-picker">+</div>
+
+	                </div>
+	            </li>
+	        </ul>
+
+	        <div class="am-u-sm-12">
+	            <button type="submit" class="am-btn am-btn-primary am-btn-block btn-next">下一步</button>
+	            <button type="button" class="am-btn am-btn-default am-btn-block btn-cancel">取消</button>
+	        </div>
+
+	        <div class="am-u-sm-12">
+	            <div class="ui-tip">
+					<switch name="type">
+						<case value="1">
+			                <h3>{:get_product_type($type)}规则</h3>
+			                <ol>
+			                    <li>以起拍价开始竞拍，由低到高出价，出价金额不小于当前价与加价幅度之和</li>
+			                    <li>结拍后，出价最高者得拍；若最高出价低于保留价，则拍品流拍</li>
+			                </ol>
+						</case>
+						<case value="2">
+			                <h3>{:get_product_type($type)}规则</h3>
+			                <ol>
+								<li>以起拍价开始竞拍，由低到高出价，出价金额不小于当前价与加价幅度之和</li>
+			                    <li>第一位出价达到或超过保留价者得拍，拍卖立即结束</li>
+			                    <li>到结拍时，仍无人出价达到或超过保留价，则拍品流拍</li>
+			                </ol>
+						</case>
+						<case value="3">
+			                <h3>{:get_product_type($type)}规则</h3>
+			                <ol>
+			                    <li>以秒杀价开始出价</li>
+			                    <li>在数量大于等于1时，出价者得拍</li>
+			                    <li>到结拍时，秒杀活动结束</li>
+			                </ol>
+						</case>
+					</switch>
+	            </div>
+	        </div>
+
+	    </form>
+	</div>
+</block>

@@ -1,0 +1,76 @@
+<volist name="order_list" id="val">
+
+    <div class="ui-section item">
+        <div class="ui-section-bd">
+            <div class="user-info" data-page-url="{:U('Shop/user',array('id'=>$val['shop_id']))}">
+                <a class="avatar" href="{:U('Shop/user',array('id'=>$val['shop_id']))}"><img alt="{$val['shop_info']['user_name']}" src="{$val['shop_info']['user_avatar']}"></a>
+                <a class="nickname" href="{:U('Shop/user',array('id'=>$val['shop_id']))}">{$val['shop_info']['user_name']}</a>
+            </div><!-- /.user-info -->
+            <div class="order-info" data-page-url="{:U('index',array('order_id'=>$val['order_id']))}">
+                <span class="no"><label>订单号:</label><em>{$val['order_id']}</em></span>
+                <a class="view" href="{:U('index',array('order_id'=>$val['order_id']))}">查看订单</a>
+                <switch name="val['status']">
+                    <case value="1">
+                        <span class="status">待支付</span>
+                    </case>
+                    <case value="2">
+                        <span class="status">确认发货</span>
+                    </case>
+                    <case value="3">
+                        <span class="status">待收货</span>
+                    </case>
+                    <case value="4">
+                        <span class="status">成功</span>
+                    </case>
+                    <case value="5">
+                        <span class="status">关闭</span>
+                    </case>
+                </switch>
+            </div><!-- /.order-info -->
+            <div class="goods-info" data-page-url="{:U('index',array('order_id'=>$val['order_id']))}">
+                <div class="am-img-thumbnail img-center" style="height: 80px;">
+                    <img class="lazy" data-height="1280" data-original="{$val['product_info']['product_img']}" data-width="960" src="{$val['product_info']['product_img']}">
+                </div>
+                <div class="info">
+                    <h3>{$val['product_info']['product_name']}</h3>
+                    <ul>
+                        <!-- <li class="money">
+                            <label>保证金:</label><i>¥</i><em>{$val['product_info']['bail_money']}</em>
+                        </li> -->
+                        <li class="money">
+                            <label>成交价:</label><i>¥</i><em>{$val['price']}</em>
+                        </li>
+                        <li class="money">
+                            <label>运费:</label><i>¥</i><em>{$val['product_info']['postage']}</em>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="action">
+                <switch name="val['status']">
+                    <case value="1">
+                        <a class="am-btn am-btn-sm am-btn-secondary" href="{:U('index',array('order_id'=>$val['order_id']))}">待支付</a>
+                    </case>
+                    <case value="2">
+                        <a class="am-btn am-btn-sm am-btn-secondary" href="{:U('index',array('order_id'=>$val['order_id']))}">确认发货</a>
+                    </case>
+                    <case value="3">
+                        <a class="am-btn am-btn-sm am-btn-secondary" href="{:U('index',array('order_id'=>$val['order_id']))}">待收货</a>
+                    </case>
+                    <case value="4">
+                        <a class="am-btn am-btn-sm am-btn-secondary" href="{:U('index',array('order_id'=>$val['order_id']))}">成功</a>
+                    </case>
+                    <case value="5">
+                        <a class="am-btn am-btn-sm am-btn-secondary" href="{:U('index',array('order_id'=>$val['order_id']))}">关闭</a>
+                    </case>
+                </switch>
+                <small>共1件拍品，</small>
+                <p class="total">
+                    <label>总额:</label>
+                    <span class="money text-red"><i>¥</i><em>{$val['z_price']}</em></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</volist>

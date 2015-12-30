@@ -1,0 +1,301 @@
+<extend name="Public/base" />
+<block name="css">
+<link rel="stylesheet" href="__HOME__css/pages/seller-goods-edit-1.css<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>">
+</block>
+<block name="js">
+	<script src="__HOME__js/pages/seller-goods-edit-2.js"></script>
+	<script>
+	    function checkEndTime() {
+	        var beginTime = $("#beginDay").val() + " " + $("#beginHour").val();
+	        var endTime = $("#endDay").val() + " " + $("#endHour").val();
+	        var sDate = new Date(beginTime);
+	        var eDate = new Date(endTime);
+	        if (sDate >= eDate) {
+	            utils.showAlert({
+	                content: "结拍时间不能小于开拍时间"
+	            });
+	            return false;
+	        }
+	    }
+	    $("#beginDay").val("{:date('Y-m-d', $product_info['begin_time'])}");
+	    $("#beginHour").val("{:date('H:00', $product_info['begin_time'])}");
+	    $("#endDay").val("{:date('Y-m-d', $product_info['end_time'])}");
+	    $("#endHour").val("{:date('H:00', $product_info['end_time'])}");
+	</script>
+</block>
+<block name="main">
+	<div class="am-g">
+	    <form class="am-form am-form-horizontal" id="my-form" method="post" action="">
+	        <input type="hidden" name="goUrl" value="" disabled="disabled">
+	        <input type="hidden" name="productId" value="{$product_info['product_id']}">
+	        <input type="hidden" name="AuctionType" value="{$product_info['product_type']}">
+	        <input type="hidden" name="onsale" value="1">
+			<ul class="ui-list">
+				<li class="ui-list-item">
+					<div class="ui-list-item-inner am-form-group">
+						<label class="am-form-label am-u-sm-4">拍品分类</label>
+						<div class="am-u-sm-8 am-u-end">
+							<select id="product_cate" name="product_cate">
+								<option value="0">选择分类</option>
+							<volist name=":C('PRODUCT_CATE')" id="val">
+								<option value="{$key}"<eq name="key" value="$product_info['product_cate']"> selected="selected"</eq>>{$val}</option>
+							</volist>
+							</select>
+						</div>
+					</div>
+				</li>
+			</ul>
+	        <ul class="ui-list">
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">开拍时间</label>
+	                    <div class="am-u-sm-5">
+	                        <select id="beginDay" name="beginDay" onchange="checkEndTime()">
+							<volist name=":time_list()" id="val">
+	                            <option value="{$val}">{$val}</option>
+							</volist>
+	                        </select>
+	                    </div>
+
+	                    <div class="am-u-sm-3 am-u-end">
+	                        <select class="am-input" id="beginHour" name="beginHour" onchange="checkEndTime()">
+								<option value="00:00">00:00</option>
+								<option value="00:30">00:30</option>
+								<option value="01:00">01:00</option>
+								<option value="01:30">01:30</option>
+								<option value="02:00">02:00</option>
+								<option value="02:30">02:30</option>
+								<option value="03:00">03:00</option>
+								<option value="03:30">03:30</option>
+								<option value="04:00">04:00</option>
+								<option value="04:30">04:30</option>
+								<option value="05:00">05:00</option>
+								<option value="05:30">05:30</option>
+								<option value="06:00">06:00</option>
+								<option value="06:30">06:30</option>
+								<option value="07:00">07:00</option>
+								<option value="07:30">07:30</option>
+								<option value="08:00">08:00</option>
+								<option value="08:30">08:30</option>
+								<option value="09:00">09:00</option>
+								<option value="09:30">09:30</option>
+								<option value="10:00">10:00</option>
+								<option value="10:30">10:30</option>
+								<option value="11:00">11:00</option>
+								<option value="11:30">11:30</option>
+								<option value="12:00">12:00</option>
+								<option value="12:30">12:30</option>
+								<option value="13:00">13:00</option>
+								<option value="13:30">13:30</option>
+								<option value="14:00">14:00</option>
+								<option value="14:30">14:30</option>
+								<option value="15:00">15:00</option>
+								<option value="15:30">15:30</option>
+								<option value="16:00">16:00</option>
+								<option value="16:30">16:30</option>
+								<option value="17:00">17:00</option>
+								<option value="17:30">17:30</option>
+								<option value="18:00">18:00</option>
+								<option value="18:30">18:30</option>
+								<option value="19:00">19:00</option>
+								<option value="19:30">19:30</option>
+								<option value="20:00">20:00</option>
+								<option value="20:30">20:30</option>
+								<option value="21:00">21:00</option>
+								<option value="21:30">21:30</option>
+								<option value="22:00">22:00</option>
+								<option value="22:30">22:30</option>
+								<option value="23:00">23:00</option>
+								<option value="23:30">23:30</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </li>
+
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">结拍时间</label>
+	                    <div class="am-u-sm-5">
+	                        <select id="endDay" name="endDay" onchange="checkEndTime()">
+							<volist name=":time_list()" id="val">
+	                            <option value="{$val}">{$val}</option>
+							</volist>
+	                        </select>
+	                    </div>
+
+	                    <div class="am-u-sm-3 am-u-end">
+	                        <select class="am-input" id="endHour" onchange="checkEndTime()" name="endHour">
+	                                    <option value="00:00">00:00</option>
+	                                    <option value="00:30">00:30</option>
+	                                    <option value="01:00">01:00</option>
+	                                    <option value="01:30">01:30</option>
+	                                    <option value="02:00">02:00</option>
+	                                    <option value="02:30">02:30</option>
+	                                    <option value="03:00">03:00</option>
+	                                    <option value="03:30">03:30</option>
+	                                    <option value="04:00">04:00</option>
+	                                    <option value="04:30">04:30</option>
+	                                    <option value="05:00">05:00</option>
+	                                    <option value="05:30">05:30</option>
+	                                    <option value="06:00">06:00</option>
+	                                    <option value="06:30">06:30</option>
+	                                    <option value="07:00">07:00</option>
+	                                    <option value="07:30">07:30</option>
+	                                    <option value="08:00">08:00</option>
+	                                    <option value="08:30">08:30</option>
+	                                    <option value="09:00">09:00</option>
+	                                    <option value="09:30">09:30</option>
+	                                    <option value="10:00">10:00</option>
+	                                    <option value="10:30">10:30</option>
+	                                    <option value="11:00">11:00</option>
+	                                    <option value="11:30">11:30</option>
+	                                    <option value="12:00">12:00</option>
+	                                    <option value="12:30">12:30</option>
+	                                    <option value="13:00">13:00</option>
+	                                    <option value="13:30">13:30</option>
+	                                    <option value="14:00">14:00</option>
+	                                    <option value="14:30">14:30</option>
+	                                    <option value="15:00">15:00</option>
+	                                    <option value="15:30">15:30</option>
+	                                    <option value="16:00">16:00</option>
+	                                    <option value="16:30">16:30</option>
+	                                    <option value="17:00">17:00</option>
+	                                    <option value="17:30">17:30</option>
+	                                    <option value="18:00">18:00</option>
+	                                    <option value="18:30">18:30</option>
+	                                    <option value="19:00">19:00</option>
+	                                    <option value="19:30">19:30</option>
+	                                    <option value="20:00">20:00</option>
+	                                    <option value="20:30">20:30</option>
+	                                    <option value="21:00">21:00</option>
+	                                    <option value="21:30">21:30</option>
+	                                    <option value="22:00">22:00</option>
+	                                    <option value="22:30">22:30</option>
+	                                    <option value="23:00">23:00</option>
+	                                    <option value="23:30">23:30</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </li>
+	        </ul>
+	        <ul class="ui-list">
+		<switch name="product_info['product_type']">
+			<case value="1|2">
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">起拍价</label>
+	                    <div class="am-u-sm-8">
+	                        <input type="tel" name="startPrice" value="<notempty name="product_info['start_price']">{$product_info['start_price']}</notempty>" placeholder="0">
+	                    </div>
+	                </div>
+	            </li>
+
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">最低加价幅度</label>
+	                    <div class="am-u-sm-8">
+	                        <input type="tel" name="priceRange" value="<notempty name="product_info['range_price']">{$product_info['range_price']}</notempty>" placeholder="0">
+	                    </div>
+	                </div>
+	            </li>
+
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">保留价</label>
+	                    <div class="am-u-sm-8">
+	                        <input type="tel" name="reservePrice" value="<notempty name="product_info['reserve_price']">{$product_info['reserve_price']}</notempty>" placeholder="0">
+	                    </div>
+	                </div>
+	            </li>
+			</case>
+			<case value="3">
+				<li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">秒杀价</label>
+	                    <div class="am-u-sm-8">
+	                        <input type="tel" name="priceRange" value="<notempty name="product_info['range_price']">{$product_info['range_price']}</notempty>" placeholder="0">
+	                    </div>
+	                </div>
+	            </li>
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">秒杀数</label>
+	                    <div class="am-u-sm-8">
+	                        <input type="tel" name="reservePrice" value="<notempty name="product_info['reserve_price']">{$product_info['reserve_price']}</notempty>" placeholder="1">
+	                    </div>
+	                </div>
+	            </li>
+			</case>
+		</switch>
+	            <!-- <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">保证金</label>
+	                    <div class="am-u-sm-8">
+	                        <input type="tel" name="bailMoney" value="{$product_info['bail_money']}" placeholder="0">
+	                    </div>
+	                </div>
+	            </li> -->
+	        </ul>
+
+	        <ul class="ui-list">
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">运费</label>
+	                    <div class="am-u-sm-5 am-u-end">
+	                        <select id="postage" name="postage">
+	                            <option value="0">卖家包邮</option>
+							<volist name=":C('POSTAGE_LIST')" id="val">
+	                            <option value="{$val}"<eq name="val" value="$product_info['postage']"> selected="selected"</eq>>{$val}</option>
+							</volist>
+	                        </select>
+	                    </div>
+	                </div>
+	            </li>
+	        </ul>
+
+	        <ul class="ui-list">
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">包退服务</label>
+	                    <div class="am-u-sm-5 am-u-end">
+	                        <select id="baotui" name="baotui">
+								<volist name=":C('BAOTUI_LIST')" id="val">
+		                            <option value="{$key}"<eq name="val" value="$product_info['baotui']"> selected="selected"</eq>>{$val}</option>
+								</volist>
+								<option value="0">不包退</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </li>
+	        </ul>
+
+			<ul class="ui-list">
+	            <li class="ui-list-item">
+	                <div class="ui-list-item-inner am-form-group">
+	                    <label class="am-form-label am-u-sm-4">包换服务</label>
+	                    <div class="am-u-sm-5 am-u-end">
+	                        <select id="baohuan" name="baohuan">
+								<volist name=":C('BAOHUAN_LIST')" id="val">
+		                            <option value="{$key}"<eq name="val" value="$product_info['baohuan']"> selected="selected"</eq>>{$val}</option>
+								</volist>
+								<option value="0">不包换</option>
+	                        </select>
+	                    </div>
+	                </div>
+	            </li>
+	        </ul>
+	        <!-- <div class="am-u-sm-12">
+	            <div class="ui-tip">
+	                <h3>保证金规则</h3>
+	                <p>如果设置了保证金，买卖双方都需要缴纳等额的保证金。一旦一方违约，保证金将自动赔付给另一方。</p>
+	            </div>
+	        </div> -->
+
+	        <div class="am-u-sm-12">
+	            <button type="submit" class="am-btn am-btn-primary am-btn-block btn-post">立即发布</button>
+	            <button type="button" class="am-btn am-btn-secondary am-btn-block btn-save">保存至仓库</button>
+	        </div>
+
+	    </form>
+	</div>
+</block>

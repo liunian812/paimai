@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta content="遵循Apache2开源协议,免费提供使用,微信功能插件化开发,多公众号管理,配置简单" name="keywords"/>
+<meta content="UCToo 开源微信公众平台开发框架微信功能插件化开发,多公众号管理,配置简单" name="description"/>
+<include file="Public/seo"/>
+<link rel="alternate icon" type="image/png" href="{:SITE_URL}/favicon.ico">
+
+<link rel="stylesheet" href="__AUI__/css/amazeui.min.css"/>
+
+<block name="style"></block>
+<script type="text/javascript">
+var  STATIC = "__STATIC__";
+var  ROOT = "__ROOT__";
+</script>
+<!-- 页面header钩子，一般用于加载插件CSS文件和代码 -->
+{:hook('pageHeader')}
+
+</head>
+<body id="mobile_body">
+
+<header data-am-widget="header" class="am-header am-header-default">
+    <div class="am-header-left am-header-nav">
+        <a href="#" class="">
+            <i class="am-header-icon am-icon-home"></i>
+        </a>
+        <a href="#phone-link" class="">
+            <i class="am-header-icon am-icon-phone"></i>
+        </a>
+    </div>
+    <h1 class="am-header-title">微活动</h1>
+    <div class="am-header-right am-header-nav">
+        <!-- <a href="{:addons_url ( 'UserCenter://UserCenter/userCenter' )}" class="">
+          <i class="am-header-icon am-icon-user"></i>
+        </a>
+        -->
+        <a href="#cart-link" class="">
+            <i class="am-header-icon am-icon-shopping-cart"></i>
+        </a>
+        <a href="#" class=""><!--Menu icon placeholder-->
+            <i class="am-header-icon "></i>
+        </a>
+    </div>
+</header>
+
+<nav data-am-widget="menu" class="am-menu  am-menu-default">
+    <a href="javascript: void(0)" class="am-menu-toggle">
+        <i class="am-menu-toggle-icon am-icon-bars"></i>
+    </a>
+    <ul class="am-menu-nav am-avg-sm-3">
+        <li class="am-parent">
+            <a href="##" >分类</a>
+            <ul class="am-menu-sub am-collapse  am-avg-sm-2 ">
+                <li class="">
+                    <a href="{:U('index',array('norh'=>$norh))}" <eq name="type_id" value="">class="active"</eq>>全部分类</a>
+                </li>
+                <volist name="tree" id="top">
+                    <li class="">
+                    <a href="{:U('index',array('type_id'=>$top['id'],'norh'=>$norh))}" <eq name="type_id" value="$top['id']">class="active"</eq>
+                     data="{$top.id}">{$top.title|op_t}</a>
+                    </li>
+                </volist>
+            </ul>
+        </li>
+        <li class="am-parent">
+            <a href="##" class="">排序</a>
+            <ul class="am-menu-sub am-collapse  am-avg-sm-3 ">
+                <li class="">
+                    <a href="{:U('index',array('norh'=>'new','type_id'=>$type_id))}" class="<if condition="$norh eq 'new'">active</if>">最新</a>
+                </li>
+                <li class="">
+                    <a href="{:U('index',array('norh'=>'hot','type_id'=>$type_id))}" class="<if condition="$norh eq 'hot'">active</if>">最热</a>
+                </li>
+            </ul>
+        </li>
+        <li class="am-parent">
+            <a href="#c3" class="">我的活动</a>
+            <ul class="am-menu-sub am-collapse  am-avg-sm-4 ">
+                <li class="">
+                    <a href="{:U('myevent',array('lora'=>'','type_id'=>$type_id))}" class="<if condition="$lora eq ''">active</if>">我发起的</a>
+                </li>
+                <li class="">
+                    <a href="{:U('myevent',array('lora'=>'attend','type_id'=>$type_id))}" class="<if condition="$lora eq 'attend'">active</if>">我参加的</a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</nav>
+
+
+
+	<div data-am-widget="list_news" class="am-list-news am-list-news-default">
+  <!--列表标题-->
+  <div class="am-list-news-hd am-cf">
+    <!--带更多链接-->
+    <a href="###" class="">
+      <h2><if condition="$norh eq 'new'">最新</if><if condition="$norh eq 'hot'">最热</if>活动</h2>
+      <span class="am-list-news-more am-fr">更多 &raquo;</span>
+    </a>
+  </div>
+  <div class="am-list-news-bd">
+    <ul class="am-list">
+      <!--缩略图在标题左边-->
+        <volist name="contents" id="vo">
+      <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+        <div class="am-u-sm-4 am-list-thumb">
+          <a href="{:U('Event/Index/detail',array('id'=>$vo['id'],'mp_id'=>$mp_id))}" class="">
+            <img src="{$vo.cover_id|getThumbImageById=320,210}" alt="{$vo.title}"
+            />
+          </a>
+        </div>
+        <div class=" am-u-sm-8 am-list-main">
+          <h3 class="am-list-item-hd">
+            <a href="{:U('Event/Index/detail',array('id'=>$vo['id'],'mp_id'=>$mp_id))}" class="">{$vo.title}</a>
+          </h3>
+            <span class="am-icon-map-marker"></span> {$vo.city|get_district=###,"name"}
+            <span class="am-icon-clock-o"></span><span class="am-list-date">{:date('Y-m-d  H:i',$vo['sTime'])}</span></br>
+            <span class="am-icon-microphone"></span><a class="" href="{$vo.user.space_url}"><span class="event_count">{$vo.user.nickname}</span></a>
+            <span class="am-icon-eye"></span> {$vo.view_count}
+          <div class="am-list-item-text">{$vo.explain|op_t|getShortSp=30}</div>
+        </div>
+      </li>
+        </volist>
+
+    </ul>
+      <div class="row issue_list">
+
+          <if condition="count($contents) eq 0">
+              <div style="font-size:3em;padding:2em 0;color: #ccc;text-align: center">此分类下暂无内容哦。O(∩_∩)O~</div>
+          </if>
+
+      </div>
+  </div>
+</div>
+
+	<!-- /主体 -->
+
+	<!-- 底部 -->
+    <!-- 底部
+    ================================================== -->
+<footer data-am-widget="footer" class="am-footer am-footer-default ">
+      <div class="am-footer-switch">
+          <p class="copyright">{$system_copy_right}</p>
+      </div>
+  <div class="am-footer-miscs ">
+    <p>本系统由<a href="http://www.uctoo.com/" title="UCToo" target="_blank">UCToo</a>强力驱动</p>
+  </div>
+</footer>
+
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="__AUI__/js/polyfill/rem.min.js"></script>
+    <script src="__AUI__/js/polyfill/respond.min.js"></script>
+    <script src="__AUI__/js/amazeui.legacy.js"></script>
+    <![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="__AUI__/js/jquery.min.js"></script>
+    <script src="__AUI__/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+    <include file="Public/var"/>
+<block name="script"></block> <!-- 用于加载addon的js代码 -->
+<!-- 页面footer钩子，一般用于加载插件JS文件和JS代码 -->
+{:hook('pageFooter', 'widget')}
+<div class="hidden"><!-- 用于加载统计代码等隐藏元素 -->
+	<block name="hidden"></block>
+</div>
+
+	<!-- /底部 -->
+</body>
+</html>

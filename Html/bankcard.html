@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://pai.ys.com/finance/bankcard -->
+<html lang="zh-CN" class="js cssanimations"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>手机拍卖用拍卖神器</title>
+    <meta name="keywords">
+    <meta name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+<link rel="stylesheet" href="css/amazeui.min.css">
+<link rel="stylesheet" href="css/common.css">
+
+    
+
+
+<script src="js/hm.js"></script><script>
+    var _shareInfo = {
+        title: '拍卖神器',
+        content: '手机拍卖就用拍卖神器！',
+        pics: 'http://static.ys.com/pai/img/logo_120.jpg',
+        url: 'http://pai.ys.com'
+    };
+</script>
+
+<script src="js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: false,
+        appId: 'wxef5047e223dc7570',
+        timestamp: '1444637299',
+        nonceStr: 'InGahcLJY2BUK08m',
+        signature: 'c0fda4f7704db264502fc8142f6c49e87f34d12e',
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'openLocation', 'getLocation', 'scanQRCode', 'openProductSpecificView', 'chooseWXPay']
+    });
+</script>
+
+
+</head>
+<body class="">
+    <div class="am-container">
+        <div class="am-g">
+            
+<link rel="stylesheet" href="css/finance.css">
+
+        </div>
+        
+
+
+
+
+<div class="am-g">
+    <div class="ui-section">
+        <div class="ui-section-bd">
+            <a class="am-btn am-btn-default am-btn-block btn-add" href="javascript:void(0)" data-url="/finance/bankcard-add?goUrl=/finance/bankcard">+添加银行卡</a>
+        </div>
+    </div>
+
+
+
+
+            <div style=" margin:50px; text-align:center;">您还没有添加银行卡！</div>
+
+
+        <div class="am-g">
+            
+
+
+<nav class="bottom-bar fixed-bottom" id="bottom-bar">
+    <ul>
+
+        <li class="home ">
+
+            <a href="http://pai.ys.com/" title="首页">
+                <i class="ys-icon-bottom-bar-home"></i><span>首页</span>
+            </a>
+        </li>
+
+        <li class="auction ">
+
+            <a href="http://pai.ys.com/user/auction/item-auction-list" title="我参加的拍卖">
+                <i class="ys-icon-bottom-bar-auction"></i><span>我出价的</span>
+            </a>
+        </li>
+
+        <li class="post ">
+
+            <a class="post" href="javascript:;" title="发布拍品" data-am-modal="{target:&#39;#upload-actions&#39;}">
+                <i class="ys-icon-bottom-bar-post"></i><span>发布</span>
+            </a>
+        </li>
+
+        <li class="goods ">
+
+            <a href="http://pai.ys.com/user/product" title="拍品管理">
+                <i class="ys-icon-bottom-bar-goods"></i><span>我上传的</span>
+            </a>
+        </li>
+
+        <li class="user-home ">
+
+            <a href="http://pai.ys.com/user" title="用户中心">
+                <i class="ys-icon-bottom-bar-user"></i><span>我的</span>
+            </a>
+        </li>
+    </ul>
+</nav><!-- /.bottom-bar -->
+
+<div class="am-g">
+    <div class="am-modal-actions" id="upload-actions">
+        <div class="am-modal-actions-group">
+            <ul class="am-list">
+                <li>
+                    <a href="http://pai.ys.com/user/product/new-zengjia">普通增价拍发布</a>
+                </li>
+                <li>
+                    <a href="http://pai.ys.com/user/product/new-susheng">速胜增价拍发布</a>
+                </li>
+            </ul>
+        </div>
+        <div class="am-modal-actions-group">
+            <button class="am-btn am-btn-default am-btn-block" data-am-modal-close="">取消</button>
+        </div>
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script src="js/ejs.min.js"></script>
+<script src="js/amazeui.min.js"></script>
+<script src="js/common.js"></script><script src="js/main.js"></script>
+
+    
+    
+
+
+
+
+<script type="text/javascript">
+
+
+    function checkPayPassword(a) {
+        var strhtml = '<div class="paypassitem"><input id="ckPayPassword" class="am-input" type="password"  placeholder="支付密码"></div>';
+        utils.showAlert({
+            content: strhtml,
+        });
+        $(".am-modal-btn")[0].onclick = function () {
+            var payPassword = $("#ckPayPassword").val();
+            var checkPaypasswordApi = "/api/user/checkpaypass";
+            utils.ajax({
+                url: checkPaypasswordApi,
+                data: {
+                    payPassword: payPassword
+                },
+                success: function (b) {
+                    if (1 == b.resultCode) "function" == typeof a && a(payPassword)
+                    else {
+                        utils.hideAlert();
+                        utils.showAlert({
+                            content: b.resultMessage
+                        });
+                        $(".am-modal-btn")[0].onclick = function () { void(0);}
+                    }
+                }
+            });
+        };
+     
+    }
+
+   
+
+    $(function () {
+        $(".edit,.btn-add").click(function () {
+            var url = $(this).data("url");
+            checkPayPassword(function (a) {
+             location.href= url + "&paypassword=" + a;
+            });
+            return false;
+        });
+
+        $(".del").on("click", function () {
+            var bankId = $(this).data("id");
+            checkPayPassword(function (a) {
+                utils.ajax({
+                    url: _delApi,
+                    data: {
+                        bankId: bankId,
+                        paypassword:a
+                    },
+                    success: function (b) {
+                        if (1 == b.resultCode) location.reload()
+                        else {
+                            utils.hideAlert();
+                            utils.showAlert({
+                                content: b.resultMessage
+                            });
+                            $(".am-modal-btn")[0].onclick = function () { void (0); }
+                        }
+                    }
+                })
+            });
+
+        });
+
+
+    })
+
+
+    function setDefault(a, b) {
+        utils.ajax({
+            url: _setDefaultApi,
+            data: {
+                bankId: a
+            },
+            success: function (a) {
+                1 === a.resultCode ? utils.showAlert({
+                    content: a.resultMessage,
+                    onButtonClick: function () {
+                        "function" == typeof b && b(a)
+                    }
+                }) : utils.showAlert({
+                    content: a.resultMessage
+                })
+            }
+        })
+    }
+
+    //function del(a, b) {
+    //    utils.showConfirm({
+    //        content: "是否确定删除该银行卡？",
+    //        onConfirm: function () {
+    //            utils.ajax({
+    //                url: _delApi,
+    //                data: {
+    //                    bankId: a
+    //                },
+    //                success: function (a) {
+    //                    1 == a.resultCode ? "function" == typeof b && b(a) : utils.showAlert({
+    //                        content: a.resultMessage
+    //                    })
+    //                }
+    //            })
+    //        }
+    //    })
+    //}
+
+    $(function () {
+        if ($(".set").on("click", function (a) {
+            a.preventDefault(), setDefault($(this).data("id"), function (a) {
+                location.reload()
+        })
+        }), window._isPick) {
+            var a = $(".item"),
+                b = $(".ui-section-bd");
+            b.on("click", function (b) {
+                if (a.removeClass("active"), $(this).parent().addClass("active"), window._goUrl) {
+                    var c = _goUrl + "?bankId=" + $(this).data("id");
+                    window.location.href = c
+                }
+            })
+        }
+    });
+
+
+</script>
+
+
+    <script>
+        var _setDefaultApi = '/api/user/banksetdefault';
+        var _delApi = '/api/user/bankremove';
+    </script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?a61f55850f1bd2f0bb5573a28426d393";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div><div class="am-modal am-modal-alert am-modal-out" tabindex="-1" id="my-alert" style="display: none; margin-top: -52px;">                <div class="am-modal-dialog">                    <div class="am-modal-hd"></div>                    <div class="am-modal-bd">支付密码错误</div>                    <div class="am-modal-footer">                        <span class="am-modal-btn">确定</span>                    </div>                </div>            </div><div class="am-dimmer" data-am-dimmer="" style="display: none;"></div></body></html>

@@ -1,0 +1,57 @@
+<extend name="Public/base" />
+<block name="js">
+    <script src="__HOME__js/utils/localSelectorHelper.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+    <script src="__HOME__js/pages/account-area.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+</block>
+<block name="main">
+    <script type="text/javascript">
+        var _province = '{$user_info['area']['province']|default=北京}';
+        var _city = '{$user_info['area']['city']}';
+        var _area = '{$user_info['area']['area']}';
+    </script>
+    <div class="am-g">
+        <form class="am-form am-form-horizontal" id="my-form" method="post" action="">
+            <ul class="ui-list">
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-form-label am-u-sm-3">
+                            省/直辖市
+                        </label>
+                        <div class="am-u-sm-9">
+                            <select id="province" name="province">
+
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-form-label am-u-sm-3">
+                            城市
+                        </label>
+                        <div class="am-u-sm-9">
+                            <select id="city" name="city">
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-form-label am-u-sm-3">
+                            区/县
+                        </label>
+                        <div class="am-u-sm-9">
+                            <select id="area" name="area">
+                            </select>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="am-u-sm-12">
+                <button type="submit" class="am-btn am-btn-primary am-btn-block btn-next">
+                    保存
+                </button>
+            </div>
+        </form>
+    </div>
+</block>

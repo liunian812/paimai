@@ -1,0 +1,51 @@
+<extend name="Public/base" />
+<block name="main">
+	<div class="am-g">
+	    <ul class="ui-list ui-list-inset">
+	        <li class="ui-list-item" data-page-url="{:U('addressList')}">
+	            <div class="ui-list-item-inner">
+	                <a class="title" href="{:U('addressList')}">收货地址</a>
+	                    <span class="sub-title">{$user_consign['area']['province']}&nbsp;{$user_consign['area']['city']}&nbsp;{$user_consign['area']['area']}</span>
+	            </div>
+	        </li>
+
+	        <li class="ui-list-item" data-page-url="{:U('editWx')}">
+	            <div class="ui-list-item-inner">
+	                <a class="title" href="{:U('editWx')}">微信号</a>
+	                <span class="sub-title">{$user_info['wechat_number']|default=去添加}</span>
+	            </div>
+	        </li>
+	    </ul>
+
+	    <ul class="ui-list ui-list-inset">
+	        <li class="ui-list-item" data-page-url="{:U('editMainBues')}">
+	            <div class="ui-list-item-inner">
+	                <a class="title" href="{:U('editMainBues')}">主营项目</a>
+	                <span class="sub-title">{$user_info['main_business']|default=去添加}</span>
+	            </div>
+	        </li>
+
+	        <li class="ui-list-item" data-page-url="{:U('editArea')}">
+	            <div class="ui-list-item-inner">
+	                <a class="title" href="{:U('editArea')}">地区</a>
+	                <span class="sub-title">{$user_info['area']['province']} {$user_info['area']['city']} {$user_info['area']['area']} </span>
+	            </div>
+	        </li>
+	    </ul>
+
+	    <ul class="ui-list ui-list-inset">
+	        <li class="ui-list-item" data-page-url="{:U('editSign')}">
+	            <div class="ui-list-item-inner">
+	                <a class="title" href="{:U('editSign')}">签名</a>
+	                <span class="sub-title">{$user_info['signature']|default=去添加}</span>
+	            </div>
+	        </li>
+			<li class="ui-list-item" data-page-url="{:U('editMobile')}">
+	            <div class="ui-list-item-inner">
+	                <a class="title" href="{:U('editMobile')}">手机号</a><font color="red">*</font>
+	                <span class="sub-title">{$user_info['mobile']|default=去添加}</span>
+	            </div>
+	        </li>
+	    </ul>
+	</div>
+</block>

@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta content="遵循Apache2开源协议,免费提供使用,微信功能插件化开发,多公众号管理,配置简单" name="keywords"/>
+    <meta content="UCToo 开源微信公众平台开发框架微信功能插件化开发,多公众号管理,配置简单" name="description"/>
+    <include file="Public/seo"/>
+    <link rel="alternate icon" type="image/png" href="{:SITE_URL}/favicon.ico">
+
+    <link rel="stylesheet" href="__AUI__/css/amazeui.min.css"/>
+
+    <block name="style"></block>
+    <script type="text/javascript">
+        var  STATIC = "__STATIC__";
+        var  ROOT = "__ROOT__";
+    </script>
+    <!-- 页面header钩子，一般用于加载插件CSS文件和代码 -->
+    {:hook('pageHeader')}
+
+</head>
+<body id="mobile_body">
+<block name="body">
+
+<!--导航-->
+    <header data-am-widget="header" class="am-header am-header-default">
+        <div class="am-header-left am-header-nav">
+            <a href="#" class="">
+                <i class="am-header-icon am-icon-home"></i>
+            </a>
+            <a href="#phone-link" class="">
+                <i class="am-header-icon am-icon-phone"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            <a href="#title-link">微活动</a>
+        </h1>
+        <div class="am-header-right am-header-nav">
+            <a href="{:addons_url ( 'Ucuser://Ucuser/index',array('mp_id'=>$mp_id) )}" class="">
+                <i class="am-header-icon am-icon-user"></i>
+            </a>
+            <a href="#cart-link" class="">
+                <i class="am-header-icon am-icon-shopping-cart"></i>
+            </a>
+        </div>
+    </header>
+
+    <div  data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{&quot;directionNav&quot;:false}'>
+        <ul class="am-slides">
+            <empty name="content.cover_id">
+                <li>
+                    <img src="__IMG__/background.png">
+                </li>
+                <else />
+                <li>
+                    <img src="{$content.cover_id|getThumbImageById=345,250}">
+                </li>
+            </empty>
+
+        </ul>
+    </div>
+
+    <section data-am-widget="accordion" class="am-accordion am-accordion-gapped"
+             data-am-accordion='{ "multiple": true }'>
+        <dl class="am-accordion-item am-active">
+            <dt class="am-accordion-title">{$content.title}</dt>
+            <dd class="am-accordion-bd am-collapse am-in">
+                <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+                <div class="am-accordion-content">
+                    <span class="am-icon-eye"></span> {$content.view_count}
+                    <span class="am-icon-clock-o"></span> {$content.start_time|time_format}<br/>
+                    <span class="am-icon-map-marker"></span> {$content.address}
+                    <notempty name="content.map">
+                        <a href="#" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0, width: 400, height: 300}">
+                            查看地图
+                        </a>
+                        <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+                            <div class="am-modal-dialog">
+                                <div class="am-modal-hd">{$content.title}
+                                    <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                                </div>
+                                <div class="am-modal-bd">
+                                    <div data-am-widget="map" class="am-map am-map-default" data-longitude="{$content.longitude}" data-latitude="{$content.latitude}"
+                                         data-scaleControl="" data-zoomControl="true" data-setZoom="6" data-icon="http://amuituku.qiniudn.com/mapicon.png">
+                                        <div id="bd-map"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </notempty>
+                    <br/>
+                    <span class="am-icon-file-text"></span> 限额{$content.limitCount}人<br/>
+                    <span class="am-icon-microphone"></span> {$content.user.nickname}<br/><br/>
+
+
+
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <button class="am-btn am-btn-default" data-am-modal="{target: '#my-actions'}">
+                                <i class="am-icon-heart-o"></i>收藏/分享
+                            </button>
+                            <a class="am-btn am-btn-primary" href="#form">
+                                我要报名
+                            </a>
+                        </div>
+                    </div>
+                    <div class="am-modal-actions" id="my-actions">
+                        <div class="am-modal-actions-group">
+                            <img src="__IMG__/guide.png" />
+                            <ul class="am-list">
+                                <li class="am-modal-actions-header">分享</li>
+                                <li><a href="#"><span class="am-icon-gift"></span>收藏</a></li>
+                            </ul>
+                        </div>
+                        <div class="am-modal-actions-group">
+                            <button class="am-btn am-btn-secondary am-btn-block" data-am-modal-close>取消</button>
+                        </div>
+                    </div>
+            </dd>
+        </dl>
+        <dl class="am-accordion-item am-active">
+            <dt class="am-accordion-title">活动介绍</dt>
+            <dd class="am-accordion-bd am-collapse am-in">
+                <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+                <div class="am-accordion-content">
+                    <article class="am-article">
+                        <div class="am-article-hd">
+                            <h1 class="am-article-title">{$content.title}</h1>
+                            <p class="am-article-meta">{$content.sponsor}</p>
+                        </div>
+                        <div class="am-article-bd">
+
+                                {$content.explain}
+                            <div class="pull-right" style="color: #999;font-size: 12px;">
+                                发布时间： {$content.create_time|friendlyDate} &nbsp;&nbsp;
+                                更新时间： {$content.update_time|friendlyDate}
+                            </div>
+                    </article>
+                </div>
+            </dd>
+        </dl>
+        <dl class="am-accordion-item am-active">
+            <dt class="am-accordion-title">报名</dt>
+            <dd class="am-accordion-bd am-collapse am-in">
+                <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+                <div class="am-accordion-content">
+
+
+                    <php>if($content['uid'] != is_login() || is_administrator(is_login())){</php>
+                    <php>if(!$check_isSign){</php>
+                    <php>if($content['deadline'] < time()){</php>
+                    <a class="am-btn am-btn-default  " href="javascript:"
+                       onclick="alert('报名已截止')">报名已截止 </a>
+                    <php>}else{</php>
+                    <if condition="is_login() eq 0">
+                        <a class="am-btn  am-btn-primary   " href="javascript:"style="color: #fff"
+                           onclick="alert('请登陆后再报名')">报名参加 </a>
+                        <else/>
+
+                        <form id="form" class="am-form" action="{:U('ajax_sign',array('event_id'=>$content['id']))}" method="post">
+                            <fieldset>
+                                <div class="am-form-group">
+                                    <label for="doc-ipt-email-1">邮件</label>
+                                    <input type="email" class="" id="doc-ipt-email-1" placeholder="输入电子邮件">
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="doc-ipt-pwd-1">密码</label>
+                                    <input type="password" class="" id="doc-ipt-pwd-1" placeholder="设置个密码吧">
+                                </div>
+                                <p><button type="submit" class="am-btn am-btn-primary event_sign">报名参加</button></p>
+                            </fieldset>
+                        </form>
+
+                    </if>
+                    <php>}</php>
+                    <php>}else{</php>
+                    <a class="am-btn am-btn-default" href="javascript:"
+                       id="unSign">取消报名 </a>
+
+                                <span style="line-height: 34px;float: left"> 已报名&nbsp;&nbsp;&nbsp;&nbsp;<if
+                                        condition="$check_isSign[0]['status'] eq 1">已审核
+                                    <else/>
+                                    未审核
+                                </if></span>
+                    <php>}
+                        }</php>
+
+
+
+
+                </div>
+            </dd>
+        </dl>
+
+        <div class="clearfix"></div>
+        <div style="padding: 5px 20px 50px 20px;">
+            {:hook('localComment', array('path'=>"Event/event/$content[id]", 'uid'=>$content['uid']))}
+        </div>
+
+
+    </section>
+
+
+
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <script>
+        $(function () {
+
+            /**
+             * 取消报名
+             * */
+            $('#unSign').click(function () {
+                if (confirm('确定要取消报名么？')) {
+                    var event_id = "{$content['id']}";
+                    $.post("{:U('Event/Index/unSign')}", {event_id: event_id}, function (res) {
+                        if (res.status) {
+                            alert(res.info);
+                            setTimeout(function () {
+                                location.reload();
+                            }, 1500);
+                        }
+                        else {
+                            alert(res.info);
+                        }
+                    }, 'json');
+                }
+            });
+
+        })
+    </script>
+
+    <!-- /主体 -->
+
+    <!-- 底部 -->
+    <!-- 底部
+    ================================================== -->
+    <footer data-am-widget="footer" class="am-footer am-footer-default ">
+        <div class="am-footer-switch">
+            <p class="copyright">{$system_copy_right}</p>
+        </div>
+        <div class="am-footer-miscs ">
+            <p>本系统由<a href="http://www.uctoo.com/" title="UCToo" target="_blank">UCToo</a>强力驱动</p>
+        </div>
+    </footer>
+
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="__AUI__/js/polyfill/rem.min.js"></script>
+    <script src="__AUI__/js/polyfill/respond.min.js"></script>
+    <script src="__AUI__/js/amazeui.legacy.js"></script>
+    <![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="__AUI__/js/jquery.min.js"></script>
+    <script src="__AUI__/js/amazeui.min.js"></script>
+    <!--<![endif]-->
+
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+    <include file="Public/var"/>
+</block>
+    <!-- 页面footer钩子，一般用于加载插件JS文件和JS代码 -->
+    {:hook('pageFooter', 'widget')}
+    <div class="hidden"><!-- 用于加载统计代码等隐藏元素 -->
+        <block name="hidden"></block>
+    </div>
+
+    <!-- /底部 -->
+
+</body>
+</html>
+

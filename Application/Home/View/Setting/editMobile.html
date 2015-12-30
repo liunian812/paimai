@@ -1,0 +1,22 @@
+<extend name="Public/base" />
+<block name="js">
+<script src="__HOME__js/pages/account-mobile.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+</block>
+<block name="main">
+    <div class="am-g">
+        <form class="am-form am-form-horizontal" id="my-form" method="post" action="">
+            <div class="ui-list last">
+                <div class="ui-list-item">
+                    <div class="ui-list-item-inner">
+                        <div class="am-form-group">
+                            <input type="text" class="am-input" name="mobile" autocomplete="on" maxlength="11" placeholder="请输入您手机号" value="{$user_info['mobile']}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="am-u-sm-12">
+                <button type="submit" class="am-btn am-btn-primary am-btn-block btn-next">保存</button>
+            </div>
+        </form>
+    </div>
+</block>

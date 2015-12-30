@@ -1,0 +1,43 @@
+<extend name="Public/base" />
+<block name="js">
+<script src="__HOME__js/pages/finance-mention.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+<script src="__HOME__js/widget/validateCodeButton.js<if condition="C('DEVELOP_MODE') == 1">?t={:time()}</if>"></script>
+</block>
+<block name="main">
+    <div class="am-g">
+        <form class="am-form am-form-horizontal mention-form" id="my-form" method="post" action="">
+            <input type="hidden" name="goUrl" value="" disabled="disabled">
+            <input type="hidden" name="bankCardId" value="0">
+            <ul class="ui-list">
+                <!-- <li class="ui-list-item inset" data-page-url="/finance/bankcard-add?goUrl=/finance/mention">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-u-sm-12 am-form-label">去添加银行卡</label>
+                    </div>
+                </li> -->
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-u-sm-3 am-form-label">可用余额</label>
+                        <span class="am-u-sm-9 ys-form-static money"><i>¥</i><em>{$user_info['fund']|default=0}</em></span>
+                    </div>
+                </li>
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-u-sm-3 am-form-label">提现金额</label>
+                        <span class="am-u-sm-9"><input type="tel" class="am-input" name="money" value="" placeholder="0" maxlength="9" autocomplete="off" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></span>
+                    </div>
+                </li>
+            </ul>
+            <!-- <ul class="ui-list">
+                <li class="ui-list-item">
+                    <div class="ui-list-item-inner am-form-group">
+                        <label class="am-u-sm-3 am-form-label">支付密码</label>
+                        <span class="am-u-sm-9"><input class="am-input" type="password" name="payPassWord" requied="" placeholder="支付密码"></span>
+                    </div>
+                </li>
+            </ul> -->
+            <div class="am-u-sm-12">
+                <button type="submit" class="am-btn am-btn-primary am-btn-block btn-submit">提交</button>
+            </div>
+        </form>
+    </div>
+</block>

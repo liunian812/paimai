@@ -1,0 +1,183 @@
+body {
+    padding-top: 50px;
+}
+
+.ys-icon-goods-view {
+    background-image: url(../images/fangdajing.png);
+    background-size: 15px 15px;
+    width: 15px;
+    height: 15px;
+}
+
+.ys-icon-goods-edit {
+    background-image: url(../images/bianji.png);
+    background-size: 15px 15px;
+    width: 15px;
+    height: 15px;
+}
+
+.ys-icon-goods-delete {
+    background-image: url(../images/shanchu.png);
+    background-size: 15px 15px;
+    width: 15px;
+    height: 15px
+}
+
+.goods-list .user-info,.goods-list .goods-info {
+    border-bottom: 1px solid #ddd
+}
+
+.goods-list .user-info {
+    font-size: 14px;
+    padding: 0 0 10px 0
+}
+
+.goods-list .user-info:before,.goods-list .user-info:after {
+    content: " ";
+    display: table
+}
+
+.goods-list .user-info:after {
+    clear: both
+}
+
+.goods-list .user-info .avatar {
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px
+}
+
+.goods-list .user-info .avatar img {
+    width: 30px;
+    height: 30px;
+    border: none
+}
+
+.goods-list .user-info .nickname {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 200px;
+    margin-left: 35px;
+    line-height: 30px;
+    color: #666
+}
+
+.goods-list .goods-info {
+    padding: 10px 0
+}
+
+.goods-list .goods-info:before,.goods-list .goods-info:after {
+    content: " ";
+    display: table
+}
+
+.goods-list .goods-info:after {
+    clear: both
+}
+
+.goods-list .goods-info .am-img-thumbnail {
+    float: left;
+    width: 80px;
+    height: 80px;
+    padding: 0
+}
+
+.goods-list .goods-info .info {
+    position: relative;
+    height: 80px;
+    margin: 0 0 0 90px
+}
+
+.goods-list .goods-info .info h3 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+    font-weight: normal;
+    font-size: 17px;
+    color: #222
+}
+
+.goods-list .goods-info .info ul {
+    position: absolute;
+    list-style: none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    line-height: 16px;
+    font-size: 14px
+}
+
+.goods-list .goods-info .info ul li {
+    padding: 0;
+    margin: 0
+}
+
+.goods-list .goods-info .type {
+    line-height: 20px;
+    color: #2e93e0
+}
+
+.goods-list .goods-info .status {
+    position: absolute;
+    right: 0;
+    top: -88px;
+    font-size: 16px
+}
+
+.goods-list .goods-info .status.preview {
+    color: #2e93e0
+}
+
+.goods-list .goods-info .status.ing {
+    color: #e43a3d
+}
+
+.goods-list .goods-info .status.finish {
+    color: #999
+}
+
+.goods-list .action {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right
+}
+
+.goods-list .action:before,.goods-list .action:after {
+    content: " ";
+    display: table
+}
+
+.goods-list .action:after {
+    clear: both
+}
+
+.goods-list .action li {
+    float: left;
+    width: 50%;
+    padding-top: 10px
+}
+
+.goods-list .action li a {
+    display: block;
+    width: 100%;
+    height: 15px;
+    border-right: 1px solid #ddd;
+    line-height: 15px;
+    text-align: center
+}
+
+.goods-list .action li:last-child a {
+    border-right: none
+}
+
+.goods-list .action [class*=ys-icon] {
+    margin-right: 3px;
+    vertical-align: -2px
+}

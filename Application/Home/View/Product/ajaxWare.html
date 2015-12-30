@@ -1,0 +1,48 @@
+<volist name="product_list" id="val">
+<div class="ui-section item" id="item-{$val['product_id']}">
+	<div class="ui-section-bd">
+		<div class="goods-info" data-page-url="{:U('Index/product', array('id'=>$val['product_id']))}">
+			<a class="am-img-thumbnail img-center" href="{:U('Index/product', array('id'=>$val['product_id']))}" style="height: 80px;">
+				<img class="lazy" data-height="640" data-original="{$val['product_img']}" data-width="854" src="{$val['product_img']}" style="display: block; max-width: none; width: 106px; height: 80px; margin: 0px -13px;">
+			</a>
+			<div class="info">
+				<h3><a href="{:U('Index/product', array('id'=>$val['product_id']))}">{$val['product_name']}</a></h3>
+				<ul>
+					<li class="type">{$product_type[$val['product_type']]}</li>
+					<switch	name="val['product_type']">
+						<case value="1|2">
+							<li class="money current"><label>起拍价:</label><i>¥</i><em>{$val['start_price']}</em></li>
+							<li class="money reserve"><label>加价幅度:</label><i>¥</i><em>{$val['range_price']}</em></li>
+							<li class="time">
+								<label>保留价:</label>
+								<span ><i>¥</i><em>{$val['reserve_price']}</em></span>
+							</li>
+						</case>
+						<case value="3">
+							<li class="money current"><label>秒杀数:</label><i>¥</i><em>{$val['reserve_price']}</em></li>
+							<li class="money reserve"><label>秒杀价:</label><i>¥</i><em>{$val['range_price']}</em></li>
+						</case>
+					</switch>
+				</ul>
+			</div>
+		</div>
+		<ul class="action">
+            <li>
+                <a class="edit" href="{:U('Product/add', array('id'=>$val['product_id']))}">
+                    <i class="ys-icon-goods-edit"></i><span>编辑</span>
+                </a>
+            </li>
+            <li>
+                <a class="onsale" href="javascript:;" data-id="{$val['product_id']}">
+                    <i class="ys-icon-goods-onsale"></i><span>上架</span>
+                </a>
+            </li>
+            <li>
+                <a class="del" href="javascript:;" data-id="{$val['product_id']}">
+                    <i class="ys-icon-goods-delete"></i><span>删除</span>
+                </a>
+            </li>
+        </ul>
+	</div>
+</div>
+</volist>
